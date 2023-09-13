@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "beyond_earth",
+	"version": "${version}",
+	"name": "beyond_earth",
+	"description": "Fly to Other Planets and Beyond!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/beyond-earth",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "Beyond Earth License",
+	"icon": "assets/beyond_earth/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.mrscauthd.beyond_earth.BeyondEarth"
+		],
+		"client": [
+			"net.mrscauthd.beyond_earth.BeyondEarthClient"
+		],
+		"fabric-datagen": [
+			"net.mrscauthd.beyond_earth.BeyondEarthDataGenerator"
+		]
+	},
+	"mixins": [
+		"beyond_earth.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.22",
+		"minecraft": "~1.19.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

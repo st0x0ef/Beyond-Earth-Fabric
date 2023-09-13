@@ -1,0 +1,34 @@
+{
+  "rocket_fly": {
+    "sounds": [
+      {
+        "name": "beyond_earth:rocket_fly",
+        "stream": false
+      }
+    ]
+  },
+    "boost": {
+    "sounds": [
+      {
+        "name": "beyond_earth:boost",
+        "stream": false
+      }
+    ]
+  },
+    "beep": {
+    "sounds": [
+      {
+        "name": "beyond_earth:beep",
+        "stream": false
+      }
+    ]
+  },
+    "sonic_boom": {
+    "sounds": [
+      {
+        "name": "beyond_earth:sonic_boom",
+        "stream": false
+      }
+    ]
+  }
+}
