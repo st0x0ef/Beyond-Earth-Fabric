@@ -5,7 +5,9 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
+import net.minecraft.data.client.TexturedModel;
 import net.minecraft.item.Item;
+import net.mrscauthd.beyond_earth.common.blocks.ModBlocks;
 import net.mrscauthd.beyond_earth.common.items.ModItems;
 
 public class ModModelGenerator extends FabricModelProvider {
@@ -15,7 +17,92 @@ public class ModModelGenerator extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        // ORES
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MOON_CHEESE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MOON_DESH_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MOON_IRON_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MOON_ICE_SHARD_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MARS_IRON_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MARS_DIAMOND_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MARS_OSTRUM_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MARS_ICE_SHARD_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MERCURY_IRON_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VENUS_COAL_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VENUS_GOLD_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VENUS_DIAMOND_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VENUS_CALORITE_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GLACIO_ICE_SHARD_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GLACIO_COAL_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GLACIO_COPPER_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GLACIO_IRON_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GLACIO_LAPIS_ORE);
 
+        // FALLING BLOCKS
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MOON_SAND);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MARS_SAND);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VENUS_SAND);
+
+        // NORMAL BLOCKS
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.STEEL_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DESH_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.OSTRUM_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CALORITE_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_DESH_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_OSTRUM_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_CALORITE_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.IRON_PLATING_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.DESH_PLATING_BLOCK);
+        blockStateModelGenerator.registerAxisRotated(ModBlocks.DESH_PILLAR_BLOCK, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
+        blockStateModelGenerator.registerAxisRotated(ModBlocks.BLUE_IRON_PILLAR, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
+        blockStateModelGenerator.registerAxisRotated(ModBlocks.BARRICADE_BLOCK, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
+        blockStateModelGenerator.registerAxisRotated(ModBlocks.IRON_MARK_BLOCK, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
+
+        // NATURAL BLOCKS (without category)
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.METEORITE);
+        blockStateModelGenerator.registerAxisRotated(ModBlocks.INFERNAL_SPIRE, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
+
+        // MOON BLOCKS
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MOON_STONE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_MOON_STONE_BRICKS);
+        BlockStateModelGenerator.BlockTexturePool moonStonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MOON_STONE_BRICKS);
+        moonStonePool.slab(ModBlocks.MOON_STONE_BRICK_SLAB);
+        moonStonePool.stairs(ModBlocks.MOON_STONE_BRICK_STAIRS);
+
+        // MARS BLOCKS
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MARS_STONE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_MARS_STONE_BRICKS);
+        BlockStateModelGenerator.BlockTexturePool marsStonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MARS_STONE_BRICKS);
+        marsStonePool.slab(ModBlocks.MARS_STONE_BRICK_SLAB);
+        marsStonePool.stairs(ModBlocks.MARS_STONE_BRICK_STAIRS);
+
+        // MERCURY BLOCKS
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MERCURY_STONE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_MERCURY_STONE_BRICKS);
+        BlockStateModelGenerator.BlockTexturePool mercuryStonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.MERCURY_STONE_BRICKS);
+        mercuryStonePool.slab(ModBlocks.MERCURY_STONE_BRICK_SLAB);
+        mercuryStonePool.stairs(ModBlocks.MERCURY_STONE_BRICK_STAIRS);
+
+        // VENUS BLOCKS
+        blockStateModelGenerator.registerAxisRotated(ModBlocks.VENUS_STONE, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_VENUS_STONE_BRICKS);
+        BlockStateModelGenerator.BlockTexturePool venusStonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.VENUS_STONE_BRICKS);
+        venusStonePool.slab(ModBlocks.VENUS_STONE_BRICK_SLAB);
+        venusStonePool.stairs(ModBlocks.VENUS_STONE_BRICK_STAIRS);
+
+        // VENUS SANDSTONE BLOCKS
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.VENUS_SANDSTONE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_VENUS_SANDSTONE_BRICKS);
+        BlockStateModelGenerator.BlockTexturePool venusSandStonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.VENUS_SANDSTONE_BRICKS);
+        venusSandStonePool.slab(ModBlocks.VENUS_SANDSTONE_BRICK_SLAB);
+        venusSandStonePool.stairs(ModBlocks.VENUS_SANDSTONE_BRICK_STAIRS);
+
+        // GLACIO BLOCKS
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GLACIO_STONE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PERMAFROST);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_GLACIO_STONE_BRICKS);
+        BlockStateModelGenerator.BlockTexturePool glacioStonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.GLACIO_STONE_BRICKS);
+        glacioStonePool.slab(ModBlocks.GLACIO_STONE_BRICK_SLAB);
+        glacioStonePool.stairs(ModBlocks.GLACIO_STONE_BRICK_STAIRS);
     }
 
     @Override
@@ -54,5 +141,7 @@ public class ModModelGenerator extends FabricModelProvider {
         itemModelGenerator.register(ModItems.OSTRUM_TANK, Models.GENERATED);
         itemModelGenerator.register(ModItems.CALORITE_TANK, Models.GENERATED);
         itemModelGenerator.register(ModItems.ROCKET_FIN, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CHEESE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.HAMMER, Models.HANDHELD);
     }
 }

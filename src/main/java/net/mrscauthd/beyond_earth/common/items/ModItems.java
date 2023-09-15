@@ -8,13 +8,15 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.mrscauthd.beyond_earth.BeyondEarth;
+import net.mrscauthd.beyond_earth.common.items.custom.HammerItem;
 
 public class ModItems {
+    /** NORMAL ITEMS */
     // SPECIAL ITEMS
     //public static final RegistryObject<Item> COAL_TORCH_ITEM = ITEMS.register("coal_torch", () -> new CoalTorchItem(BlockRegistry.COAL_TORCH_BLOCK.get(), BlockRegistry.WALL_COAL_TORCH_BLOCK.get(),new Item.Properties().tab(Tabs.tab_basics)));
 
-    //public static final Item CHEESE = registerItemGroupBasics("cheese", () -> new Item(new FabricItemSettings().food().nutrition(4).saturationMod(3f).build())));
-    //public static final Item HAMMER = registerItemGroupBasics("hammer", () -> new HammerItem(new Item.Properties().tab(Tabs.tab_basics).durability(9).setNoRepair()));
+    public static final Item CHEESE = registerItemGroupNormal("cheese", new Item(new FabricItemSettings().food(ModFoodComponents.CHEESE)));
+    public static final Item HAMMER = registerItemGroupBasics("hammer", new HammerItem(new FabricItemSettings().maxDamage(9)));
     public static final Item IRON_ROD = registerItemGroupBasics("iron_rod", new Item(new FabricItemSettings()));
     public static final Item OXYGEN_GEAR = registerItemGroupBasics("oxygen_gear", new Item(new FabricItemSettings()));
     public static final Item OXYGEN_TANK = registerItemGroupBasics("oxygen_tank", new Item(new FabricItemSettings()));
@@ -64,33 +66,39 @@ public class ModItems {
     public static final Item RAW_CALORITE = registerItemGroupMaterials("raw_calorite", new Item(new FabricItemSettings()));
 
 
-    private static Item registerItemWithoutGroup(String name, Item item){
-        return Registry.register(Registries.ITEM,new Identifier(BeyondEarth.MOD_ID,name),item);
+    private static Item registerItemWithoutGroup(String name, Item item) {
+        return Registry.register(Registries.ITEM, new Identifier(BeyondEarth.MOD_ID, name), item);
     }
 
-    private static Item registerItem(String name, Item item, ItemGroup group){
-        Item item1 = Registry.register(Registries.ITEM,new Identifier(BeyondEarth.MOD_ID,name),item);
+    private static Item registerItem(String name, Item item, ItemGroup group) {
+        Item item1 = Registry.register(Registries.ITEM, new Identifier(BeyondEarth.MOD_ID, name), item);
         addToItemGroup(item1, group);
         return item1;
     }
 
-    private static Item registerItemGroupMaterials(String name, Item item){
-        Item item1 = Registry.register(Registries.ITEM,new Identifier(BeyondEarth.MOD_ID,name),item);
+    private static Item registerItemGroupMaterials(String name, Item item) {
+        Item item1 = Registry.register(Registries.ITEM, new Identifier(BeyondEarth.MOD_ID, name), item);
         addToItemGroup(item1, ModItemGroups.MATERIALS_ITEM_GROUP);
         return item1;
     }
 
-    private static Item registerItemGroupBasics(String name, Item item){
-        Item item1 = Registry.register(Registries.ITEM,new Identifier(BeyondEarth.MOD_ID,name),item);
+    private static Item registerItemGroupNormal(String name, Item item) {
+        Item item1 = Registry.register(Registries.ITEM, new Identifier(BeyondEarth.MOD_ID, name), item);
+        addToItemGroup(item1, ModItemGroups.NORMAL_ITEM_GROUP);
+        return item1;
+    }
+
+    private static Item registerItemGroupBasics(String name, Item item) {
+        Item item1 = Registry.register(Registries.ITEM, new Identifier(BeyondEarth.MOD_ID, name), item);
         addToItemGroup(item1, ModItemGroups.BASICS_ITEM_GROUP);
         return item1;
     }
 
-    private static void addToItemGroup(Item item, ItemGroup group){
+    private static void addToItemGroup(Item item, ItemGroup group) {
         ItemGroupEvents.modifyEntriesEvent(group).register(entries -> entries.add(item));
     }
 
-    public static void registerModItems(){
+    public static void registerModItems() {
         BeyondEarth.LOGGER.info("Registering Mod Items for " + BeyondEarth.MOD_ID);
     }
 }
