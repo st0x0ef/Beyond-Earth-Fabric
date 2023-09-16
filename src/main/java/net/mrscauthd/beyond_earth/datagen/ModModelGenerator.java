@@ -55,6 +55,7 @@ public class ModModelGenerator extends FabricModelProvider {
         blockStateModelGenerator.registerAxisRotated(ModBlocks.DESH_PILLAR_BLOCK, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
         blockStateModelGenerator.registerAxisRotated(ModBlocks.BLUE_IRON_PILLAR, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
         blockStateModelGenerator.registerAxisRotated(ModBlocks.BARRICADE_BLOCK, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
+        blockStateModelGenerator.registerAxisRotated(ModBlocks.RED_BARRICADE_BLOCK, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
         blockStateModelGenerator.registerAxisRotated(ModBlocks.IRON_MARK_BLOCK, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
 
         // NATURAL BLOCKS (without category)
@@ -103,6 +104,10 @@ public class ModModelGenerator extends FabricModelProvider {
         BlockStateModelGenerator.BlockTexturePool glacioStonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.GLACIO_STONE_BRICKS);
         glacioStonePool.slab(ModBlocks.GLACIO_STONE_BRICK_SLAB);
         glacioStonePool.stairs(ModBlocks.GLACIO_STONE_BRICK_STAIRS);
+
+        // FLUIDS
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FUEL_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.OIL_BLOCK);
     }
 
     @Override
@@ -143,5 +148,7 @@ public class ModModelGenerator extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ROCKET_FIN, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHEESE, Models.GENERATED);
         itemModelGenerator.register(ModItems.HAMMER, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.FUEL_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.OIL_BUCKET, Models.GENERATED);
     }
 }

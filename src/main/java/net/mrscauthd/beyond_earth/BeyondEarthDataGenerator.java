@@ -13,5 +13,6 @@ public class BeyondEarthDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModModelGenerator::new);
 		pack.addProvider(ModTagsGenerator.ModBlockTagsGenerator::new);
 		pack.addProvider(ModTagsGenerator.ModItemTagsGenerator::new);
+		pack.addProvider(ModTagsGenerator.ModFluidTagsGenerator::new);
 	}
 }

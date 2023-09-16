@@ -13,36 +13,11 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.mrscauthd.beyond_earth.BeyondEarth;
+import net.mrscauthd.beyond_earth.common.fluids.FuelFluid;
+import net.mrscauthd.beyond_earth.common.fluids.ModFluids;
 import net.mrscauthd.beyond_earth.common.items.ModItemGroups;
 
 public class ModBlocks {
-    /** ORES */
-    public static final Block MOON_CHEESE_ORE = registerBlock("moon_cheese_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
-    public static final Block MOON_DESH_ORE = registerBlock("moon_desh_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
-    public static final Block MOON_IRON_ORE = registerBlock("moon_iron_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
-    public static final Block MOON_ICE_SHARD_ORE = registerBlock("moon_ice_shard_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(0, 2)));
-    public static final Block MARS_IRON_ORE = registerBlock("mars_iron_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
-    public static final Block MARS_DIAMOND_ORE = registerBlock("mars_diamond_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(3, 7)));
-    public static final Block MARS_OSTRUM_ORE = registerBlock("mars_ostrum_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
-    public static final Block MARS_ICE_SHARD_ORE = registerBlock("mars_ice_shard_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(0, 2)));
-    public static final Block MERCURY_IRON_ORE = registerBlock("mercury_iron_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
-    public static final Block VENUS_COAL_ORE = registerBlock("venus_coal_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(0, 2)));
-    public static final Block VENUS_GOLD_ORE = registerBlock("venus_gold_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
-    public static final Block VENUS_DIAMOND_ORE = registerBlock("venus_diamond_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(3, 7)));
-    public static final Block VENUS_CALORITE_ORE = registerBlock("venus_calorite_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
-    public static final Block GLACIO_ICE_SHARD_ORE = registerBlock("glacio_ice_shard_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(0, 2)));
-    public static final Block GLACIO_COAL_ORE = registerBlock("glacio_coal_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(0, 2)));
-    public static final Block GLACIO_COPPER_ORE = registerBlock("glacio_copper_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
-    public static final Block GLACIO_IRON_ORE = registerBlock("glacio_iron_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
-    public static final Block GLACIO_LAPIS_ORE = registerBlock("glacio_lapis_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(2, 5)));
-
-
-    /** FALLING BLOCKS */
-    public static final Block MOON_SAND = registerBlock("moon_sand",  new FallingBlock(FabricBlockSettings.copy(Blocks.SAND).strength(0.5f, 0.5f)));
-    public static final Block MARS_SAND = registerBlock("mars_sand",  new FallingBlock(FabricBlockSettings.copy(Blocks.SAND).strength(0.5f, 0.5f)));
-    public static final Block VENUS_SAND = registerBlock("venus_sand",  new FallingBlock(FabricBlockSettings.copy(Blocks.SAND).strength(0.5f, 0.5f)));
-
-
     /**
      * NORMAL BLOCKS
      */
@@ -54,15 +29,15 @@ public class ModBlocks {
     public static final Block RAW_OSTRUM_BLOCK = registerBlock("raw_ostrum_block", new Block(FabricBlockSettings.of(Material.METAL).strength(1.5f, 1f).requiresTool()));
     public static final Block RAW_CALORITE_BLOCK = registerBlock("raw_calorite_block", new Block(FabricBlockSettings.of(Material.METAL).strength(1.5f, 1f).requiresTool()));
     public static final Block IRON_PLATING_BLOCK = registerBlock("iron_plating_block", new Block(FabricBlockSettings.of(Material.METAL).strength(5f, 2.5f).requiresTool()));
+    public static final PillarBlock IRON_MARK_BLOCK = (PillarBlock) registerBlock("iron_mark_block", new PillarBlock(FabricBlockSettings.of(Material.METAL).strength(5f, 2.5f).requiresTool()));
     public static final PillarBlock DESH_PILLAR_BLOCK = (PillarBlock) registerBlock("desh_pillar", new PillarBlock(FabricBlockSettings.of(Material.METAL).strength(5f, 2.5f).requiresTool()));
     public static final Block DESH_PLATING_BLOCK = registerBlock("desh_plating_block", new Block(FabricBlockSettings.of(Material.METAL).strength(5f, 2.5f).requiresTool()));
     public static final PillarBlock BLUE_IRON_PILLAR = (PillarBlock) registerBlock("blue_iron_pillar", new PillarBlock(FabricBlockSettings.of(Material.METAL).strength(5f, 2.5f).luminance(15).requiresTool()));
-    public static final PillarBlock BARRICADE_BLOCK = (PillarBlock) registerBlock("barricade_block", new PillarBlock(FabricBlockSettings.of(Material.METAL).strength(5f, 2.5f).requiresTool()));
-    public static final PillarBlock IRON_MARK_BLOCK = (PillarBlock) registerBlock("iron_mark_block", new PillarBlock(FabricBlockSettings.of(Material.METAL).strength(5f, 2.5f).requiresTool()));
-
-    // NATURAL BLOCKS (without category)
-    public static final Block METEORITE = registerBlock("meteorite", new Block(FabricBlockSettings.of(Material.STONE).strength(1.5f, 1f).requiresTool()));
     public static final PillarBlock INFERNAL_SPIRE = (PillarBlock) registerBlock("infernal_spire", new PillarBlock(FabricBlockSettings.of(Material.STONE).strength(1.5f, 1f).requiresTool()));
+    public static final PillarBlock BARRICADE_BLOCK = (PillarBlock) registerBlock("barricade_block", new PillarBlock(FabricBlockSettings.of(Material.METAL).strength(5f, 2.5f).requiresTool()));
+    public static final PillarBlock RED_BARRICADE_BLOCK = (PillarBlock) registerBlock("red_barricade_block", new PillarBlock(FabricBlockSettings.of(Material.METAL).strength(5f, 2.5f).requiresTool()));
+    public static final Block METEORITE = registerBlock("meteorite", new Block(FabricBlockSettings.of(Material.STONE).strength(1.5f, 1f).requiresTool()));
+
 
     // MOON BLOCKS
     public static final Block MOON_STONE = registerBlock("moon_stone", new Block(FabricBlockSettings.of(Material.STONE).strength(1.5f, 1f).requiresTool()));
@@ -100,12 +75,43 @@ public class ModBlocks {
     public static final StairsBlock VENUS_SANDSTONE_BRICK_STAIRS = (StairsBlock) registerBlock("venus_sandstone_brick_stairs",  new StairsBlock( VENUS_SANDSTONE_BRICKS.getDefaultState(), FabricBlockSettings.copy(VENUS_SANDSTONE_BRICKS).requiresTool()));
 
     // GLACIO BLOCKS
-    public static final Block GLACIO_STONE = registerBlock("glacio_stone",  new Block(FabricBlockSettings.of(Material.STONE).strength(1.5f, 1f).requiresTool()));
     public static final Block PERMAFROST = registerBlock("permafrost",  new Block(FabricBlockSettings.of(Material.STONE).strength(1.5f, 1f).requiresTool()));
+    public static final Block GLACIO_STONE = registerBlock("glacio_stone",  new Block(FabricBlockSettings.of(Material.STONE).strength(1.5f, 1f).requiresTool()));
     public static final Block CRACKED_GLACIO_STONE_BRICKS = registerBlock("cracked_glacio_stone_bricks",  new Block(FabricBlockSettings.of(Material.STONE).strength(1.5f, 1f).requiresTool()));
     public static final Block GLACIO_STONE_BRICKS = registerBlock("glacio_stone_bricks",  new Block(FabricBlockSettings.of(Material.STONE).strength(1.5f, 1f).requiresTool()));
     public static final SlabBlock GLACIO_STONE_BRICK_SLAB = (SlabBlock) registerBlock("glacio_stone_brick_slab",  new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(1.5f, 1f).requiresTool()));
     public static final StairsBlock GLACIO_STONE_BRICK_STAIRS = (StairsBlock) registerBlock("glacio_stone_brick_stairs",  new StairsBlock( VENUS_STONE_BRICKS.getDefaultState(), FabricBlockSettings.copy(VENUS_STONE_BRICKS).requiresTool()));
+
+    /** FALLING BLOCKS */
+    public static final Block MOON_SAND = registerBlock("moon_sand",  new FallingBlock(FabricBlockSettings.copy(Blocks.SAND).strength(0.5f, 0.5f)));
+    public static final Block MARS_SAND = registerBlock("mars_sand",  new FallingBlock(FabricBlockSettings.copy(Blocks.SAND).strength(0.5f, 0.5f)));
+    public static final Block VENUS_SAND = registerBlock("venus_sand",  new FallingBlock(FabricBlockSettings.copy(Blocks.SAND).strength(0.5f, 0.5f)));
+
+
+    /** ORES */
+    public static final Block MOON_CHEESE_ORE = registerBlock("moon_cheese_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block MOON_DESH_ORE = registerBlock("moon_desh_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block MOON_IRON_ORE = registerBlock("moon_iron_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block MOON_ICE_SHARD_ORE = registerBlock("moon_ice_shard_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(0, 2)));
+    public static final Block MARS_IRON_ORE = registerBlock("mars_iron_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block MARS_DIAMOND_ORE = registerBlock("mars_diamond_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(3, 7)));
+    public static final Block MARS_OSTRUM_ORE = registerBlock("mars_ostrum_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block MARS_ICE_SHARD_ORE = registerBlock("mars_ice_shard_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(0, 2)));
+    public static final Block MERCURY_IRON_ORE = registerBlock("mercury_iron_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block VENUS_COAL_ORE = registerBlock("venus_coal_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(0, 2)));
+    public static final Block VENUS_GOLD_ORE = registerBlock("venus_gold_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block VENUS_DIAMOND_ORE = registerBlock("venus_diamond_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(3, 7)));
+    public static final Block VENUS_CALORITE_ORE = registerBlock("venus_calorite_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block GLACIO_ICE_SHARD_ORE = registerBlock("glacio_ice_shard_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(0, 2)));
+    public static final Block GLACIO_COAL_ORE = registerBlock("glacio_coal_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(0, 2)));
+    public static final Block GLACIO_COPPER_ORE = registerBlock("glacio_copper_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block GLACIO_IRON_ORE = registerBlock("glacio_iron_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block GLACIO_LAPIS_ORE = registerBlock("glacio_lapis_ore",  new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool(), UniformIntProvider.create(2, 5)));
+
+
+    //LIQUID BLOCKS
+    public static final FluidBlock FUEL_BLOCK = (FluidBlock) registerBlockWithoutBlockItem("fuel", new FluidBlock(ModFluids.FUEL_STILL, FabricBlockSettings.of(Material.WATER).noCollision().nonOpaque().strength(100).dropsNothing()));
+    public static final FluidBlock OIL_BLOCK = (FluidBlock) registerBlockWithoutBlockItem("oil", new FluidBlock(ModFluids.OIL_STILL, FabricBlockSettings.of(Material.WATER).noCollision().nonOpaque().strength(100).dropsNothing()));
 
 
     private static Block registerBlock(String name, Block block) {

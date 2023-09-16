@@ -4,11 +4,14 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.mrscauthd.beyond_earth.BeyondEarth;
+import net.mrscauthd.beyond_earth.common.fluids.ModFluids;
 import net.mrscauthd.beyond_earth.common.items.custom.HammerItem;
+import net.mrscauthd.beyond_earth.common.items.custom.ModifiedBucketItem;
 
 public class ModItems {
     /** NORMAL ITEMS */
@@ -21,9 +24,10 @@ public class ModItems {
     public static final Item OXYGEN_GEAR = registerItemGroupBasics("oxygen_gear", new Item(new FabricItemSettings()));
     public static final Item OXYGEN_TANK = registerItemGroupBasics("oxygen_tank", new Item(new FabricItemSettings()));
     public static final Item WHEEL = registerItemGroupBasics("wheel", new Item(new FabricItemSettings()));
-    public static final Item ENGINE_FRAME = registerItemGroupBasics("engine_frame", new Item(new FabricItemSettings()));
     public static final Item ENGINE_FAN = registerItemGroupBasics("engine_fan", new Item(new FabricItemSettings()));
+    public static final Item ENGINE_FRAME = registerItemGroupBasics("engine_frame", new Item(new FabricItemSettings()));
     public static final Item ROCKET_NOSE_CONE = registerItemGroupBasics("rocket_nose_cone", new Item(new FabricItemSettings()));
+    public static final Item ROCKET_FIN = registerItemGroupBasics("rocket_fin", new Item(new FabricItemSettings()));
     public static final Item STEEL_ENGINE = registerItemGroupBasics("steel_engine", new Item(new FabricItemSettings()));
     public static final Item DESH_ENGINE = registerItemGroupBasics("desh_engine", new Item(new FabricItemSettings()));
     public static final Item OSTRUM_ENGINE = registerItemGroupBasics("ostrum_engine", new Item(new FabricItemSettings()));
@@ -32,8 +36,6 @@ public class ModItems {
     public static final Item DESH_TANK = registerItemGroupBasics("desh_tank", new Item(new FabricItemSettings()));
     public static final Item OSTRUM_TANK = registerItemGroupBasics("ostrum_tank", new Item(new FabricItemSettings()));
     public static final Item CALORITE_TANK = registerItemGroupBasics("calorite_tank", new Item(new FabricItemSettings()));
-    public static final Item ROCKET_FIN = registerItemGroupBasics("rocket_fin", new Item(new FabricItemSettings()));
-
 
     // INGOTS
     public static final Item STEEL_INGOT = registerItemGroupMaterials("steel_ingot", new Item(new FabricItemSettings()));
@@ -64,6 +66,11 @@ public class ModItems {
     public static final Item RAW_DESH = registerItemGroupMaterials("raw_desh", new Item(new FabricItemSettings()));
     public static final Item RAW_OSTRUM = registerItemGroupMaterials("raw_ostrum", new Item(new FabricItemSettings()));
     public static final Item RAW_CALORITE = registerItemGroupMaterials("raw_calorite", new Item(new FabricItemSettings()));
+
+    /** BUCKET ITEMS */
+    public static final ModifiedBucketItem FUEL_BUCKET = (ModifiedBucketItem) registerItemGroupNormal("fuel_bucket", new ModifiedBucketItem(ModFluids.FUEL_STILL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1), true));
+    public static final ModifiedBucketItem OIL_BUCKET = (ModifiedBucketItem) registerItemGroupNormal("oil_bucket", new ModifiedBucketItem(ModFluids.OIL_STILL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1), false));
+
 
 
     private static Item registerItemWithoutGroup(String name, Item item) {
