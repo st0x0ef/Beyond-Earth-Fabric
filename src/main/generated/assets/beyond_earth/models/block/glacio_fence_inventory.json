@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_inventory",
+  "textures": {
+    "texture": "beyond_earth:block/glacio_wood_planks"
+  }
+}

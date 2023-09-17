@@ -1,15 +1,17 @@
 package net.mrscauthd.beyond_earth.client.registries;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.util.Identifier;
 import net.mrscauthd.beyond_earth.BeyondEarth;
 import net.mrscauthd.beyond_earth.client.renderers.entities.globe.GlobeBlockRenderer;
-import net.mrscauthd.beyond_earth.client.renderers.entities.globe.globeItemRenderers.EarthGlobeItemRenderer;
+import net.mrscauthd.beyond_earth.client.renderers.entities.globe.EarthGlobeItemRenderer;
 import net.mrscauthd.beyond_earth.client.renderers.entities.globe.GlobeModel;
 import net.mrscauthd.beyond_earth.common.blocks.ModBlocks;
 import net.mrscauthd.beyond_earth.common.blocks.entities.ModBlockEntities;
@@ -24,6 +26,12 @@ public class BeyondEarthClient implements ClientModInitializer {
     private void registerFluidRendererHandlers() {
         registerFluids();
         registerGlobes();
+        registerBlocksWithCutout();
+    }
+
+    private void registerBlocksWithCutout(){
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GLACIO_WOOD_DOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GLACIO_WOOD_TRAPDOOR, RenderLayer.getCutout());
     }
 
     private void registerGlobes() {

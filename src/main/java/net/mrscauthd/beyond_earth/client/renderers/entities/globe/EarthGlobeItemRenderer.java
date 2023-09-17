@@ -1,4 +1,4 @@
-package net.mrscauthd.beyond_earth.client.renderers.entities.globe.globeItemRenderers;
+package net.mrscauthd.beyond_earth.client.renderers.entities.globe;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

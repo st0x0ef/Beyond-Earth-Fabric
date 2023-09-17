@@ -4,10 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.FluidTags;
-import net.minecraft.registry.tag.TagKey;
 import net.mrscauthd.beyond_earth.common.blocks.ModBlocks;
-import net.mrscauthd.beyond_earth.common.fluids.ModFluids;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -19,15 +16,56 @@ public class ModTagsGenerator {
 
         @Override
         protected void configure(RegistryWrapper.WrapperLookup arg) {
-            //addGlacioWoodSet();
+            addGlacioWoodSet();
+            addStairs();
+            addSlabs();
+            addSand();
+            addDirt();
+        }
+
+        private void addStairs() {
+            getOrCreateTagBuilder(BlockTags.STAIRS)
+                    .add(ModBlocks.GLACIO_STONE_BRICK_STAIRS)
+                    .add(ModBlocks.MARS_STONE_BRICK_STAIRS)
+                    .add(ModBlocks.MERCURY_STONE_BRICK_STAIRS)
+                    .add(ModBlocks.MOON_STONE_BRICK_STAIRS)
+                    .add(ModBlocks.VENUS_SANDSTONE_BRICK_STAIRS)
+                    .add(ModBlocks.VENUS_STONE_BRICK_STAIRS);
+        }
+
+        private void addSlabs() {
+            getOrCreateTagBuilder(BlockTags.SLABS)
+                    .add(ModBlocks.MARS_STONE_BRICK_SLAB)
+                    .add(ModBlocks.MOON_STONE_BRICK_SLAB)
+                    .add(ModBlocks.MERCURY_STONE_BRICK_SLAB)
+                    .add(ModBlocks.VENUS_STONE_BRICK_SLAB)
+                    .add(ModBlocks.VENUS_SANDSTONE_BRICK_SLAB)
+                    .add(ModBlocks.GLACIO_STONE_BRICK_SLAB);
+        }
+
+        private void addSand() {
+         getOrCreateTagBuilder(BlockTags.SAND)
+                 .add(ModBlocks.MARS_SAND)
+                 .add(ModBlocks.MOON_SAND)
+                 .add(ModBlocks.VENUS_SAND);
+        }
+
+        private void addDirt() {
+            getOrCreateTagBuilder(BlockTags.DIRT).add(ModBlocks.PERMAFROST_DIRT);
         }
 
         private void addGlacioWoodSet() {
+            getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS).add(ModBlocks.GLACIO_BUTTON);
+            getOrCreateTagBuilder(BlockTags.WOODEN_DOORS).add(ModBlocks.GLACIO_WOOD_DOOR);
+            getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(ModBlocks.GLACIO_FENCE);
             getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(ModBlocks.GLACIO_WOOD_SLAB);
             getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(ModBlocks.GLACIO_WOOD_STAIRS);
-            getOrCreateTagBuilder(BlockTags.LEAVES).add(ModBlocks.GLACIO_WOOD_LEAVES);
-            getOrCreateTagBuilder(BlockTags.LOGS).add(ModBlocks.GLACIO_WOOD_LOG);
+            getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES).add(ModBlocks.GLACIO_PRESSURE_PLATE);
+            getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS).add(ModBlocks.GLACIO_WOOD_TRAPDOOR);
+            getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(ModBlocks.GLACIO_FENCE_GATE);
             getOrCreateTagBuilder(BlockTags.PLANKS).add(ModBlocks.GLACIO_WOOD_PLANKS);
+            getOrCreateTagBuilder(BlockTags.LEAVES).add(ModBlocks.GLACIO_WOOD_LEAVES);
+            getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).add(ModBlocks.GLACIO_WOOD_LOG).add(ModBlocks.GLACIO_WOOD);
         }
     }
 

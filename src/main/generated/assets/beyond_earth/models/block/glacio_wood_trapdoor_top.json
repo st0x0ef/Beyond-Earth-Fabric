@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_trapdoor_top",
+  "textures": {
+    "texture": "beyond_earth:block/glacio_wood_trapdoor"
+  }
+}

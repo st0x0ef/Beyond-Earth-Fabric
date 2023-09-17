@@ -11,11 +11,9 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
-import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.mrscauthd.beyond_earth.BeyondEarth;
 import net.mrscauthd.beyond_earth.common.blocks.custom.GlobeBlock;
-import net.mrscauthd.beyond_earth.common.fluids.FuelFluid;
 import net.mrscauthd.beyond_earth.common.fluids.ModFluids;
 import net.mrscauthd.beyond_earth.common.items.ModItemGroups;
 import net.mrscauthd.beyond_earth.common.items.custom.GlobeItem;
@@ -84,17 +82,28 @@ public class ModBlocks {
     public static final Block GLACIO_STONE_BRICKS = registerBlock("glacio_stone_bricks", new Block(FabricBlockSettings.of(Material.STONE).strength(1.5f, 1f).requiresTool()));
     public static final SlabBlock GLACIO_STONE_BRICK_SLAB = (SlabBlock) registerBlock("glacio_stone_brick_slab", new SlabBlock(FabricBlockSettings.of(Material.STONE).strength(1.5f, 1f).requiresTool()));
     public static final StairsBlock GLACIO_STONE_BRICK_STAIRS = (StairsBlock) registerBlock("glacio_stone_brick_stairs", new StairsBlock(VENUS_STONE_BRICKS.getDefaultState(), FabricBlockSettings.copy(VENUS_STONE_BRICKS).requiresTool()));
-    public static final Block GLACIO_WOOD_LOG = registerBlock("glacio_wood_log", new PillarBlock(FabricBlockSettings.copy(Blocks.BIRCH_LOG).requiresTool()));
-    public static final Block GLACIO_WOOD = registerBlock("glacio_wood", new Block(FabricBlockSettings.copy(Blocks.BIRCH_WOOD).requiresTool()));
+
+    // GLACIO WOOD SET
+    public static final BlockSetType GLACIO_BLOCK_SET_TYPE = new BlockSetType("glacio");
+    public static final WoodType GLACIO_WOOD_TYPE = new WoodType("glacio", GLACIO_BLOCK_SET_TYPE);
+    public static final Block GLACIO_WOOD_LOG = registerBlock("glacio_wood_log", new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).requiresTool()));
+    public static final Block GLACIO_WOOD = registerBlock("glacio_wood", new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_WOOD).requiresTool()));
     public static final Block GLACIO_WOOD_LEAVES = registerBlock("glacio_tree_leaves", new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).requiresTool()));
     public static final Block GLACIO_WOOD_PLANKS = registerBlock("glacio_wood_planks", new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS).requiresTool()));
     //public static final Block GLACIO_TREE_SAPLING = registerBlock("glacio_tree_sapling",  new GlacioTreeSapling(new GlacioTreeGrower(), FabricBlockSettings.copy(Blocks.SPRUCE_SAPLING).requiresTool().noCollision()));
-    //public static final Block GLACIO_WOOD_DOOR = registerBlock("glacio_wood_door",  new DoorBlock(FabricBlockSettings.of(Material.WOOD, GLACIO_WOOD_PLANKS.getDefaultMapColor()).strength(3.0F).nonOpaque(), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN));
-    //public static final Block GLACIO_WOOD_TRAPDOOR = registerBlock("glacio_wood_trapdoor",  new TrapdoorBlock(FabricBlockSettings.of(Material.WOOD, GLACIO_WOOD_PLANKS.getDefaultMapColor()).strength(3.0F).nonOpaque(), SoundEvents.WOODEN_DOOR_CLOSE, SoundEvents.WOODEN_DOOR_OPEN));
+    public static final Block GLACIO_WOOD_DOOR = registerBlock("glacio_wood_door",  new DoorBlock(FabricBlockSettings.of(Material.WOOD, GLACIO_WOOD_PLANKS.getDefaultMapColor()).strength(3.0F).nonOpaque(), GLACIO_BLOCK_SET_TYPE));
+    public static final Block GLACIO_WOOD_TRAPDOOR = registerBlock("glacio_wood_trapdoor",  new TrapdoorBlock(FabricBlockSettings.of(Material.WOOD, GLACIO_WOOD_PLANKS.getDefaultMapColor()).strength(3.0F).nonOpaque(), GLACIO_BLOCK_SET_TYPE));
     public static final Block GLACIO_WOOD_STAIRS = registerBlock("glacio_wood_stairs", new StairsBlock(GLACIO_WOOD_PLANKS.getDefaultState(), FabricBlockSettings.copy(GLACIO_WOOD_PLANKS)));
     public static final Block GLACIO_WOOD_SLAB = registerBlock("glacio_wood_slab", new SlabBlock(FabricBlockSettings.copy(Blocks.OAK_SLAB)));
-    //public static final Block PERMAFROST_GRASS = registerBlock("permafrost_grass",  new PermafrostGrass(FabricBlockSettings.copy(Blocks.GRASS_BLOCK)));
+    public static final Block GLACIO_FENCE = registerBlock("glacio_fence", new FenceBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE)));
+    public static final Block GLACIO_FENCE_GATE = registerBlock("glacio_fence_gate", new FenceGateBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE), GLACIO_WOOD_TYPE));
+    public static final Block GLACIO_BUTTON = registerBlock("glacio_button", new ButtonBlock(FabricBlockSettings.copy(Blocks.OAK_FENCE), GLACIO_BLOCK_SET_TYPE, 30,true));
+    public static final Block GLACIO_PRESSURE_PLATE = registerBlock("glacio_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING ,FabricBlockSettings.copy(Blocks.OAK_FENCE), GLACIO_BLOCK_SET_TYPE));
 
+
+
+    // PERMAFROST GRASS
+    //public static final Block PERMAFROST_GRASS = registerBlock("permafrost_grass",  new PermafrostGrass(FabricBlockSettings.copy(Blocks.GRASS_BLOCK)));
     public static final Block PERMAFROST_DIRT = registerBlock("permafrost_dirt", new Block(FabricBlockSettings.copy(Blocks.DIRT)));
 
     /**

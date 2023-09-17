@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_side",
+  "textures": {
+    "texture": "beyond_earth:block/glacio_wood_planks"
+  }
+}

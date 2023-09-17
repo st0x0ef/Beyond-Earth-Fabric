@@ -6,7 +6,6 @@ import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
 import net.minecraft.data.client.TexturedModel;
-import net.minecraft.item.Item;
 import net.mrscauthd.beyond_earth.common.blocks.ModBlocks;
 import net.mrscauthd.beyond_earth.common.items.ModItems;
 
@@ -105,11 +104,17 @@ public class ModModelGenerator extends FabricModelProvider {
         glacioStonePool.slab(ModBlocks.GLACIO_STONE_BRICK_SLAB);
         glacioStonePool.stairs(ModBlocks.GLACIO_STONE_BRICK_STAIRS);
         blockStateModelGenerator.registerAxisRotated(ModBlocks.GLACIO_WOOD_LOG, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
-        blockStateModelGenerator.registerAxisRotated(ModBlocks.GLACIO_WOOD, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GLACIO_WOOD_LEAVES);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PERMAFROST_DIRT);
         BlockStateModelGenerator.BlockTexturePool glacioPlanksPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.GLACIO_WOOD_PLANKS);
         glacioPlanksPool.stairs(ModBlocks.GLACIO_WOOD_STAIRS);
         glacioPlanksPool.slab(ModBlocks.GLACIO_WOOD_SLAB);
+        glacioPlanksPool.fence(ModBlocks.GLACIO_FENCE);
+        glacioPlanksPool.fenceGate(ModBlocks.GLACIO_FENCE_GATE);
+        glacioPlanksPool.button(ModBlocks.GLACIO_BUTTON);
+        glacioPlanksPool.pressurePlate(ModBlocks.GLACIO_PRESSURE_PLATE);
+        blockStateModelGenerator.registerDoor(ModBlocks.GLACIO_WOOD_DOOR);
+        blockStateModelGenerator.registerTrapdoor(ModBlocks.GLACIO_WOOD_TRAPDOOR);
 
         // FLUIDS
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FUEL_BLOCK);

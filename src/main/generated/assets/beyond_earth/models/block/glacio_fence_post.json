@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/fence_post",
+  "textures": {
+    "texture": "beyond_earth:block/glacio_wood_planks"
+  }
+}
