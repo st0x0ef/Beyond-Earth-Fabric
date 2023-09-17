@@ -3,6 +3,7 @@ package net.mrscauthd.beyond_earth;
 import net.fabricmc.api.ModInitializer;
 
 import net.mrscauthd.beyond_earth.common.blocks.ModBlocks;
+import net.mrscauthd.beyond_earth.common.blocks.entities.ModBlockEntities;
 import net.mrscauthd.beyond_earth.common.fluids.ModFluids;
 import net.mrscauthd.beyond_earth.common.items.ModItemGroups;
 import net.mrscauthd.beyond_earth.common.items.ModItems;
@@ -20,5 +21,6 @@ public class BeyondEarth implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModSounds.registerModSounds();
+		ModBlockEntities.registerAllBlockEntities();
 	}
 }

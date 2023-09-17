@@ -3,8 +3,10 @@ package net.mrscauthd.beyond_earth.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.registry.tag.TagKey;
+import net.mrscauthd.beyond_earth.common.blocks.ModBlocks;
 import net.mrscauthd.beyond_earth.common.fluids.ModFluids;
 
 import java.util.concurrent.CompletableFuture;
@@ -17,6 +19,15 @@ public class ModTagsGenerator {
 
         @Override
         protected void configure(RegistryWrapper.WrapperLookup arg) {
+            //addGlacioWoodSet();
+        }
+
+        private void addGlacioWoodSet() {
+            getOrCreateTagBuilder(BlockTags.WOODEN_SLABS).add(ModBlocks.GLACIO_WOOD_SLAB);
+            getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS).add(ModBlocks.GLACIO_WOOD_STAIRS);
+            getOrCreateTagBuilder(BlockTags.LEAVES).add(ModBlocks.GLACIO_WOOD_LEAVES);
+            getOrCreateTagBuilder(BlockTags.LOGS).add(ModBlocks.GLACIO_WOOD_LOG);
+            getOrCreateTagBuilder(BlockTags.PLANKS).add(ModBlocks.GLACIO_WOOD_PLANKS);
         }
     }
 

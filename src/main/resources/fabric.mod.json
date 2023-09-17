@@ -19,7 +19,7 @@
 			"net.mrscauthd.beyond_earth.BeyondEarth"
 		],
 		"client": [
-			"net.mrscauthd.beyond_earth.BeyondEarthClient"
+			"net.mrscauthd.beyond_earth.client.registries.BeyondEarthClient"
 		],
 		"fabric-datagen": [
 			"net.mrscauthd.beyond_earth.BeyondEarthDataGenerator"

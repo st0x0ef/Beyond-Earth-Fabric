@@ -1,9 +1,18 @@
-package net.mrscauthd.beyond_earth;
+package net.mrscauthd.beyond_earth.client.registries;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
+import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.minecraft.util.Identifier;
+import net.mrscauthd.beyond_earth.BeyondEarth;
+import net.mrscauthd.beyond_earth.client.renderers.entities.globe.GlobeBlockRenderer;
+import net.mrscauthd.beyond_earth.client.renderers.entities.globe.globeItemRenderers.EarthGlobeItemRenderer;
+import net.mrscauthd.beyond_earth.client.renderers.entities.globe.GlobeModel;
+import net.mrscauthd.beyond_earth.common.blocks.ModBlocks;
+import net.mrscauthd.beyond_earth.common.blocks.entities.ModBlockEntities;
 import net.mrscauthd.beyond_earth.common.fluids.ModFluids;
 
 public class BeyondEarthClient implements ClientModInitializer {
@@ -13,6 +22,24 @@ public class BeyondEarthClient implements ClientModInitializer {
     }
 
     private void registerFluidRendererHandlers() {
+        registerFluids();
+        registerGlobes();
+    }
+
+    private void registerGlobes() {
+        EntityModelLayerRegistry.registerModelLayer(GlobeModel.LAYER_LOCATION, GlobeModel::createLayer);
+        BlockEntityRendererRegistry.register(ModBlockEntities.GLOBE_TILE_ENTITY, GlobeBlockRenderer::new);
+
+        // GLOBE ITEMS
+        BuiltinItemRendererRegistry.INSTANCE.register(ModBlocks.EARTH_GLOBE_BLOCK, new EarthGlobeItemRenderer());
+        BuiltinItemRendererRegistry.INSTANCE.register(ModBlocks.MOON_GLOBE_BLOCK, new EarthGlobeItemRenderer());
+        BuiltinItemRendererRegistry.INSTANCE.register(ModBlocks.MARS_GLOBE_BLOCK, new EarthGlobeItemRenderer());
+        BuiltinItemRendererRegistry.INSTANCE.register(ModBlocks.MERCURY_GLOBE_BLOCK, new EarthGlobeItemRenderer());
+        BuiltinItemRendererRegistry.INSTANCE.register(ModBlocks.VENUS_GLOBE_BLOCK, new EarthGlobeItemRenderer());
+        BuiltinItemRendererRegistry.INSTANCE.register(ModBlocks.GLACIO_GLOBE_BLOCK, new EarthGlobeItemRenderer());
+    }
+
+    private void registerFluids() {
         FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.FUEL_FLOWING,
                 new SimpleFluidRenderHandler(
                         new Identifier(BeyondEarth.MOD_ID, "block/fluid/fuel_still"),
@@ -36,5 +63,6 @@ public class BeyondEarthClient implements ClientModInitializer {
                         new Identifier(BeyondEarth.MOD_ID, "block/fluid/oil_still"),
                         new Identifier(BeyondEarth.MOD_ID, "block/fluid/oil_flow"),
                         new Identifier(BeyondEarth.MOD_ID, "block/fluid/oil_overlay")));
+
     }
 }

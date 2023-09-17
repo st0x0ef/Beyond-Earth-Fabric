@@ -104,6 +104,12 @@ public class ModModelGenerator extends FabricModelProvider {
         BlockStateModelGenerator.BlockTexturePool glacioStonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.GLACIO_STONE_BRICKS);
         glacioStonePool.slab(ModBlocks.GLACIO_STONE_BRICK_SLAB);
         glacioStonePool.stairs(ModBlocks.GLACIO_STONE_BRICK_STAIRS);
+        blockStateModelGenerator.registerAxisRotated(ModBlocks.GLACIO_WOOD_LOG, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
+        blockStateModelGenerator.registerAxisRotated(ModBlocks.GLACIO_WOOD, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GLACIO_WOOD_LEAVES);
+        BlockStateModelGenerator.BlockTexturePool glacioPlanksPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.GLACIO_WOOD_PLANKS);
+        glacioPlanksPool.stairs(ModBlocks.GLACIO_WOOD_STAIRS);
+        glacioPlanksPool.slab(ModBlocks.GLACIO_WOOD_SLAB);
 
         // FLUIDS
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FUEL_BLOCK);

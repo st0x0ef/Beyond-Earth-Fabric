@@ -14,7 +14,7 @@ public class ModItemGroups {
     public static final ItemGroup NORMAL_ITEM_GROUP = FabricItemGroup.builder(new Identifier(BeyondEarth.MOD_ID, "tab_normal"))
             .icon(() -> new ItemStack(Items.COAL)).build();
     public static final ItemGroup GLOBES_ITEM_GROUP = FabricItemGroup.builder(new Identifier(BeyondEarth.MOD_ID, "tab_globes"))
-            .icon(() -> new ItemStack(Items.CARTOGRAPHY_TABLE)).build();
+            .icon(() -> new ItemStack(ModBlocks.GLACIO_GLOBE_BLOCK)).build();
     public static final ItemGroup MACHINES_ITEM_GROUP = FabricItemGroup.builder(new Identifier(BeyondEarth.MOD_ID, "tab_machines"))
             .icon(() -> new ItemStack(Items.PISTON)).build();
     public static final ItemGroup BASICS_ITEM_GROUP = FabricItemGroup.builder(new Identifier(BeyondEarth.MOD_ID, "tab_basics"))
