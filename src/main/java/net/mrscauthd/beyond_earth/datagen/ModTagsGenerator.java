@@ -5,6 +5,9 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 import net.mrscauthd.beyond_earth.common.blocks.ModBlocks;
+import net.mrscauthd.beyond_earth.common.fluids.ModFluids;
+import net.mrscauthd.beyond_earth.common.items.ModItems;
+import net.mrscauthd.beyond_earth.common.util.ModTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -77,6 +80,7 @@ public class ModTagsGenerator {
 
         @Override
         protected void configure(RegistryWrapper.WrapperLookup arg) {
+            //getOrCreateTagBuilder(ModTags.ROCKET_UPGRADE_TAG).add(ModItems.)
         }
     }
 
@@ -90,6 +94,8 @@ public class ModTagsGenerator {
         protected void configure(RegistryWrapper.WrapperLookup arg) {
             //getOrCreateTagBuilder(FluidTags.WATER).add(ModFluids.FUEL_STILL).add(ModFluids.FUEL_FLOWING);
             //getOrCreateTagBuilder(FluidTags.WATER).add(ModFluids.OIL_STILL).add(ModFluids.OIL_FLOWING);
+            getOrCreateTagBuilder(ModTags.FLUID_OIL_FLUID_TAG).add(ModFluids.OIL_FLOWING).add(ModFluids.OIL_STILL);
+            getOrCreateTagBuilder(ModTags.FLUID_VEHICLE_FUEL_TAG).add(ModFluids.FUEL_FLOWING).add(ModFluids.FUEL_STILL);
         }
     }
 }
