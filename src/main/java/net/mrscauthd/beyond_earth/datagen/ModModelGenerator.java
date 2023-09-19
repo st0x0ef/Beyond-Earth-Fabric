@@ -2,10 +2,7 @@ package net.mrscauthd.beyond_earth.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.client.Models;
-import net.minecraft.data.client.TexturedModel;
+import net.minecraft.data.client.*;
 import net.mrscauthd.beyond_earth.common.blocks.ModBlocks;
 import net.mrscauthd.beyond_earth.common.items.ModItems;
 
@@ -116,6 +113,11 @@ public class ModModelGenerator extends FabricModelProvider {
         blockStateModelGenerator.registerDoor(ModBlocks.GLACIO_WOOD_DOOR);
         blockStateModelGenerator.registerTrapdoor(ModBlocks.GLACIO_WOOD_TRAPDOOR);
 
+        // URANIUM
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.URANIUM_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MERCURY_URANIUM_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_URANIUM_BLOCK);
+
         // FLUIDS
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FUEL_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.OIL_BLOCK);
@@ -161,5 +163,7 @@ public class ModModelGenerator extends FabricModelProvider {
         itemModelGenerator.register(ModItems.HAMMER, Models.HANDHELD);
         itemModelGenerator.register(ModItems.FUEL_BUCKET, Models.GENERATED);
         itemModelGenerator.register(ModItems.OIL_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.URANIUM_INGOT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.RAW_URANIUM, Models.GENERATED);
     }
 }

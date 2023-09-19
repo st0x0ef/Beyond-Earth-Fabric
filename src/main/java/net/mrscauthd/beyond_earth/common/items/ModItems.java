@@ -12,9 +12,12 @@ import net.mrscauthd.beyond_earth.BeyondEarth;
 import net.mrscauthd.beyond_earth.common.fluids.ModFluids;
 import net.mrscauthd.beyond_earth.common.items.custom.HammerItem;
 import net.mrscauthd.beyond_earth.common.items.custom.ModifiedBucketItem;
+import net.mrscauthd.beyond_earth.common.items.custom.RadioactiveItem;
 
 public class ModItems {
-    /** NORMAL ITEMS */
+    /**
+     * NORMAL ITEMS
+     */
     // SPECIAL ITEMS
     //public static final RegistryObject<Item> COAL_TORCH_ITEM = ITEMS.register("coal_torch", () -> new CoalTorchItem(BlockRegistry.COAL_TORCH_BLOCK.get(), BlockRegistry.WALL_COAL_TORCH_BLOCK.get(),new Item.Properties().tab(Tabs.tab_basics)));
 
@@ -67,10 +70,17 @@ public class ModItems {
     public static final Item RAW_OSTRUM = registerItemGroupMaterials("raw_ostrum", new Item(new FabricItemSettings()));
     public static final Item RAW_CALORITE = registerItemGroupMaterials("raw_calorite", new Item(new FabricItemSettings()));
 
-    /** BUCKET ITEMS */
+    /**
+     * BUCKET ITEMS
+     */
     public static final ModifiedBucketItem FUEL_BUCKET = (ModifiedBucketItem) registerItemGroupNormal("fuel_bucket", new ModifiedBucketItem(ModFluids.FUEL_STILL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1), true));
     public static final ModifiedBucketItem OIL_BUCKET = (ModifiedBucketItem) registerItemGroupNormal("oil_bucket", new ModifiedBucketItem(ModFluids.OIL_STILL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1), false));
 
+    /**
+     * URANIUM
+     */
+    public static final Item URANIUM_INGOT = registerItemGroupMaterials("uranium_ingot", new RadioactiveItem(new FabricItemSettings()));
+    public static final Item RAW_URANIUM = registerItemGroupMaterials("raw_uranium", new RadioactiveItem(new FabricItemSettings()));
 
 
     private static Item registerItemWithoutGroup(String name, Item item) {

@@ -5,13 +5,14 @@
 	"name": "beyond_earth",
 	"description": "Fly to Other Planets and Beyond!",
 	"authors": [
-		"Me!"
+		"MrScautHD, St0x0ef and other contributors",
+		"Ported to fabric by Sn0wix_"
 	],
 	"contact": {
 		"homepage": "https://www.curseforge.com/minecraft/mc-mods/beyond-earth",
 		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "Beyond Earth License",
+	"license": "All Rights Reserved unless otherwise explicitly stated",
 	"icon": "assets/beyond_earth/icon.png",
 	"environment": "*",
 	"entrypoints": {

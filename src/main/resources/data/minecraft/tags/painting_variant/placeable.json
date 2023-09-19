@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "beyond_earth:the_milky_way",
+    "beyond_earth:sun",
+    "beyond_earth:earth",
+    "beyond_earth:moon",
+    "beyond_earth:mars",
+    "beyond_earth:mercury",
+    "beyond_earth:venus",
+    "beyond_earth:neptune",
+    "beyond_earth:saturn",
+    "beyond_earth:jupiter",
+    "beyond_earth:pluto",
+    "beyond_earth:uranus",
+    "beyond_earth:proxima_centaury",
+    "beyond_earth:glacio"
+  ]
+}

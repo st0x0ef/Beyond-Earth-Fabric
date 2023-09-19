@@ -140,6 +140,21 @@ public class ModBlocks {
     public static final Block PERMAFROST_DIRT = registerBlock("permafrost_dirt", new Block(FabricBlockSettings.copy(Blocks.DIRT)));
 
 
+
+
+
+    /**
+     * CHANGE TO URANUIM BLOCKS AND ADD BLOCK ENTITIES
+     */
+
+
+
+
+    // URANIUM
+    public static final Block MERCURY_URANIUM_ORE = registerBlock("mercury_uranium_ore", new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block URANIUM_BLOCK = registerBlock("uranium_block", new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block RAW_URANIUM_BLOCK = registerBlock("raw_uranium_block", new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+
     /**
      * GLOBE BLOCKS
      */

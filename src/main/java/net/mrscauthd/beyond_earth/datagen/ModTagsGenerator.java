@@ -2,8 +2,12 @@ package net.mrscauthd.beyond_earth.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.minecraft.data.server.tag.TagProvider;
+import net.minecraft.entity.damage.DamageType;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.registry.tag.TagBuilder;
 import net.mrscauthd.beyond_earth.common.blocks.ModBlocks;
 import net.mrscauthd.beyond_earth.common.fluids.ModFluids;
 import net.mrscauthd.beyond_earth.common.items.ModItems;
@@ -24,6 +28,7 @@ public class ModTagsGenerator {
             addSlabs();
             addSand();
             addDirt();
+            addBeaconBaseBlocks();
         }
 
         private void addStairs() {
@@ -47,10 +52,10 @@ public class ModTagsGenerator {
         }
 
         private void addSand() {
-         getOrCreateTagBuilder(BlockTags.SAND)
-                 .add(ModBlocks.MARS_SAND)
-                 .add(ModBlocks.MOON_SAND)
-                 .add(ModBlocks.VENUS_SAND);
+            getOrCreateTagBuilder(BlockTags.SAND)
+                    .add(ModBlocks.MARS_SAND)
+                    .add(ModBlocks.MOON_SAND)
+                    .add(ModBlocks.VENUS_SAND);
         }
 
         private void addDirt() {
@@ -70,6 +75,14 @@ public class ModTagsGenerator {
             getOrCreateTagBuilder(BlockTags.LEAVES).add(ModBlocks.GLACIO_WOOD_LEAVES);
             getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).add(ModBlocks.GLACIO_WOOD_LOG).add(ModBlocks.GLACIO_WOOD);
         }
+
+        private void addBeaconBaseBlocks() {
+            getOrCreateTagBuilder(BlockTags.BEACON_BASE_BLOCKS)
+                    .add(ModBlocks.STEEL_BLOCK)
+                    .add(ModBlocks.DESH_BLOCK)
+                    .add(ModBlocks.OSTRUM_BLOCK)
+                    .add(ModBlocks.CALORITE_BLOCK);
+        }
     }
 
 
@@ -81,6 +94,7 @@ public class ModTagsGenerator {
         @Override
         protected void configure(RegistryWrapper.WrapperLookup arg) {
             //getOrCreateTagBuilder(ModTags.ROCKET_UPGRADE_TAG).add(ModItems.)
+            getOrCreateTagBuilder(ItemTags.PIGLIN_LOVED).add(ModBlocks.VENUS_GOLD_ORE.asItem());
         }
     }
 
