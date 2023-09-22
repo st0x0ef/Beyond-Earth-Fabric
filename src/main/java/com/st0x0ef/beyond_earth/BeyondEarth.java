@@ -4,6 +4,7 @@ import com.st0x0ef.beyond_earth.common.blocks.ModBlocks;
 import com.st0x0ef.beyond_earth.common.blocks.entities.ModBlockEntities;
 import com.st0x0ef.beyond_earth.common.effect.ModStatusEffects;
 import com.st0x0ef.beyond_earth.common.entity.ModEntities;
+import com.st0x0ef.beyond_earth.common.entity.custom.sensors.ModSensors;
 import com.st0x0ef.beyond_earth.common.items.ModItemGroups;
 import com.st0x0ef.beyond_earth.common.items.ModItems;
 import com.st0x0ef.beyond_earth.common.sounds.ModSounds;
@@ -31,5 +32,6 @@ public class BeyondEarth implements ModInitializer {
 		ModDamageSources.registerDamageSources();
 		ModPaintings.registerPaintings();
 		ModEntities.registerModEntities();
+		ModSensors.registerModMobSensors();
 	}
 }

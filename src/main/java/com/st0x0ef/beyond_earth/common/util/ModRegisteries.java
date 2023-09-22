@@ -1,9 +1,9 @@
 package com.st0x0ef.beyond_earth.common.util;
 
-import com.st0x0ef.beyond_earth.client.renderers.entities.pygrobrute.PygroBruteRenderer;
 import com.st0x0ef.beyond_earth.common.blocks.ModBlocks;
 import com.st0x0ef.beyond_earth.common.entity.ModEntities;
 import com.st0x0ef.beyond_earth.common.entity.custom.livingEntities.PygroBruteEntity;
+import com.st0x0ef.beyond_earth.common.entity.custom.livingEntities.PygroEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 
@@ -16,6 +16,7 @@ public class ModRegisteries {
 
     private static void registerAttributes() {
         FabricDefaultAttributeRegistry.register(ModEntities.PYGRO_BRUTE, PygroBruteEntity.setAttributes());
+        FabricDefaultAttributeRegistry.register(ModEntities.PYGRO, PygroEntity.setAttributes());
     }
 
 

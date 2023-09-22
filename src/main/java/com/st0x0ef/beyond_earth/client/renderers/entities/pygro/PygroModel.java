@@ -1,22 +1,17 @@
 package com.st0x0ef.beyond_earth.client.renderers.entities.pygro;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterables;
 import com.st0x0ef.beyond_earth.BeyondEarth;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
-import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.CrossbowPosing;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.render.entity.model.PlayerEntityModel;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.mob.AbstractPiglinEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.PiglinActivity;
 import net.minecraft.entity.mob.PiglinEntity;
-import net.minecraft.util.Arm;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
@@ -72,7 +67,6 @@ public class PygroModel<T extends MobEntity> extends PlayerEntityModel<T> {
         this.leftArm.setTransform(this.leftArmDefault);
         this.rightArm.setTransform(this.rightArmDefault);
         super.setAngles(livingEntity, f, g, h, i, j);
-        //float f = ((float)Math.PI / 6F);
         float f1 = h * 0.1F + f * 0.5F;
         float f2 = 0.08F + g * 0.4F;
         this.leftEar.roll = (-(float) Math.PI / 6F) - MathHelper.cos(f1 * 1.2F) * f2;
@@ -135,10 +129,4 @@ public class PygroModel<T extends MobEntity> extends PlayerEntityModel<T> {
             super.animateArms(entity, animationProgress);
         }
     }
-
-    /*@Override
-    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
-        ImmutableList.of(createBodyLayer().createModel()).forEach((modelRenderer) ->
-                modelRenderer.render(matrices, vertices, light, overlay, red, green, blue, alpha));
-    }*/
 }
