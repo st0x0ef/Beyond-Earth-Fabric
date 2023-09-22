@@ -17,13 +17,13 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.mrscauthd.beyond_earth.BeyondEarth"
+          "com.st0x0ef.beyond_earth.BeyondEarth"
 		],
 		"client": [
-			"net.mrscauthd.beyond_earth.client.registries.BeyondEarthClient"
+          "com.st0x0ef.beyond_earth.client.BeyondEarthClient"
 		],
 		"fabric-datagen": [
-			"net.mrscauthd.beyond_earth.BeyondEarthDataGenerator"
+          "com.st0x0ef.beyond_earth.BeyondEarthDataGenerator"
 		]
 	},
 	"mixins": [
