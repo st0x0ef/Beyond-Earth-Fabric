@@ -2,10 +2,7 @@ package com.st0x0ef.beyond_earth.common.util;
 
 import com.st0x0ef.beyond_earth.common.blocks.ModBlocks;
 import com.st0x0ef.beyond_earth.common.entity.ModEntities;
-import com.st0x0ef.beyond_earth.common.entity.custom.livingEntities.MoglerEntity;
-import com.st0x0ef.beyond_earth.common.entity.custom.livingEntities.PygroBruteEntity;
-import com.st0x0ef.beyond_earth.common.entity.custom.livingEntities.PygroEntity;
-import com.st0x0ef.beyond_earth.common.entity.custom.livingEntities.StarCrawlerEntity;
+import com.st0x0ef.beyond_earth.common.entity.custom.livingEntities.*;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 
@@ -21,6 +18,7 @@ public class ModRegisteries {
         FabricDefaultAttributeRegistry.register(ModEntities.PYGRO, PygroEntity.setAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.MOGLER, MoglerEntity.setAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.STAR_CRAWLER, StarCrawlerEntity.setAttributes());
+        FabricDefaultAttributeRegistry.register(ModEntities.MARTIAN_RAPTOR, MartianRaptorEntity.setAttributes());
     }
 
 

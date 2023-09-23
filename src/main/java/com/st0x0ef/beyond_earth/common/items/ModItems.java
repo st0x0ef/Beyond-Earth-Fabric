@@ -24,7 +24,7 @@ public class ModItems {
     public static final Item PYGRO_SPAWN_EGG = registerSpawnEgg("pygro_spawn_egg", new SpawnEggItem(ModEntities.PYGRO, -3381760, -6750208, new FabricItemSettings()));
     public static final Item PYGRO_BRUTE_SPAWN_EGG = registerSpawnEgg("pygro_brute_spawn_egg", new SpawnEggItem(ModEntities.PYGRO_BRUTE, -3381760, -67208, new FabricItemSettings()));
     public static final Item MOGLER_SPAWN_EGG = registerSpawnEgg("mogler_spawn_egg", new SpawnEggItem(ModEntities.MOGLER, -13312, -3407872, new FabricItemSettings()));
-    //public static final Item MARTIAN_RAPTOR_SPAWN_EGG = registerSpawnEgg("martian_raptor_spawn_egg", new SpawnEggItem(ModEntities.MARTIAN_RAPTOR, 5349438, -13312, new FabricItemSettings()));
+    public static final Item MARTIAN_RAPTOR_SPAWN_EGG = registerSpawnEgg("martian_raptor_spawn_egg", new SpawnEggItem(ModEntities.MARTIAN_RAPTOR, 5349438, -13312, new FabricItemSettings()));
 
 
     /**
