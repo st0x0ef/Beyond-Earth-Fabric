@@ -1,9 +1,6 @@
 package com.st0x0ef.beyond_earth.common.entity.custom.livingEntities;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.PiglinBruteEntity;

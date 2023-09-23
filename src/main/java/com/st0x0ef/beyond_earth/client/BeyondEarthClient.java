@@ -1,5 +1,7 @@
 package com.st0x0ef.beyond_earth.client;
 
+import com.st0x0ef.beyond_earth.client.renderers.entities.mogler.MoglerModel;
+import com.st0x0ef.beyond_earth.client.renderers.entities.mogler.MoglerRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.pygro.PygroModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.pygro.PygroRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.pygrobrute.PygroBruteRenderer;
@@ -60,9 +62,12 @@ public class BeyondEarthClient implements ClientModInitializer {
 
     private void registerEntityRenderers() {
         EntityModelLayerRegistry.registerModelLayer(PygroModel.LAYER_LOCATION, PygroModel::createBodyLayer);
+        EntityModelLayerRegistry.registerModelLayer(MoglerModel.LAYER_LOCATION, MoglerModel::getTexturedModelData);
 
         EntityRendererRegistry.register(ModEntities.PYGRO_BRUTE, context -> new PygroBruteRenderer(context, EntityModelLayers.PIGLIN_BRUTE_INNER_ARMOR, EntityModelLayers.PIGLIN_BRUTE_OUTER_ARMOR));
         EntityRendererRegistry.register(ModEntities.PYGRO, context -> new PygroRenderer(context, EntityModelLayers.PIGLIN_INNER_ARMOR, EntityModelLayers.PIGLIN_OUTER_ARMOR));
+
+        EntityRendererRegistry.register(ModEntities.MOGLER, MoglerRenderer::new);
     }
 
 
