@@ -3,6 +3,7 @@ package com.st0x0ef.beyond_earth.common.util;
 import com.st0x0ef.beyond_earth.common.blocks.ModBlocks;
 import com.st0x0ef.beyond_earth.common.entity.ModEntities;
 import com.st0x0ef.beyond_earth.common.entity.custom.livingEntities.*;
+import com.st0x0ef.beyond_earth.common.entity.custom.livingEntities.alien.AlienEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 
@@ -19,6 +20,7 @@ public class ModRegisteries {
         FabricDefaultAttributeRegistry.register(ModEntities.MOGLER, MoglerEntity.setAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.STAR_CRAWLER, StarCrawlerEntity.setAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.MARTIAN_RAPTOR, MartianRaptorEntity.setAttributes());
+        FabricDefaultAttributeRegistry.register(ModEntities.ALIEN, AlienEntity.setAttributes());
     }
 
 

@@ -1,6 +1,7 @@
 package com.st0x0ef.beyond_earth.common.entity;
 
 import com.st0x0ef.beyond_earth.common.entity.custom.livingEntities.*;
+import com.st0x0ef.beyond_earth.common.entity.custom.livingEntities.alien.AlienEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -12,7 +13,7 @@ import com.st0x0ef.beyond_earth.BeyondEarth;
 
 public class ModEntities {
     /** LIVING ENTITIES */
-    //public static final EntityType<AlienEntity> ALIEN = Registry.register(Registries.ENTITY_TYPE, new Identifier(BeyondEarth.MOD_ID, "alien"), FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, AlienEntity::new).dimensions(EntityDimensions.fixed(0.75f, 2.5f)).build());
+    public static final EntityType<AlienEntity> ALIEN = Registry.register(Registries.ENTITY_TYPE, new Identifier(BeyondEarth.MOD_ID, "alien"), FabricEntityTypeBuilder.create(SpawnGroup.CREATURE, AlienEntity::new).dimensions(EntityDimensions.fixed(0.75f, 2.5f)).build());
     //public static final EntityType<AlienZombieEntity> ALIEN_ZOMBIE = Registry.register(Registries.ENTITY_TYPE, new Identifier(BeyondEarth.MOD_ID, "alien_zombie"), FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, AlienZombieEntity::new).dimensions(EntityDimensions.fixed(0.6f, 2.4f)).build());
     public static final EntityType<StarCrawlerEntity> STAR_CRAWLER = Registry.register(Registries.ENTITY_TYPE, new Identifier(BeyondEarth.MOD_ID, "star_crawler"), FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, StarCrawlerEntity::new).dimensions(EntityDimensions.fixed(1.3f, 1f)).build());
     public static final EntityType<PygroEntity> PYGRO = Registry.register(Registries.ENTITY_TYPE, new Identifier(BeyondEarth.MOD_ID, "pygro"), FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, PygroEntity::new).fireImmune().dimensions(EntityDimensions.fixed(0.6f, 1.8f)).build());

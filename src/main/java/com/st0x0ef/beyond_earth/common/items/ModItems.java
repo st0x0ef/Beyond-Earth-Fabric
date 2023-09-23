@@ -18,7 +18,7 @@ import com.st0x0ef.beyond_earth.common.fluids.ModFluids;
 
 public class ModItems {
     /** SPAWN EGG ITEMS */
-    //public static final Item ALIEN_SPAWN_EGG = registerSpawnEgg("alien_spawn_egg", new SpawnEggItem(ModEntities.ALIEN, -13382401, -11650781, new FabricItemSettings()));
+    public static final Item ALIEN_SPAWN_EGG = registerSpawnEgg("alien_spawn_egg", new SpawnEggItem(ModEntities.ALIEN, -13382401, -11650781, new FabricItemSettings()));
     //public static final Item ALIEN_ZOMBIE_SPAWN_EGG = registerSpawnEgg("alien_zombie_spawn_egg", new SpawnEggItem(ModEntities.ALIEN_ZOMBIE, -14804199, -16740159, new FabricItemSettings()));
     public static final Item STAR_CRAWLER_SPAWN_EGG = registerSpawnEgg("star_crawler_spawn_egg", new SpawnEggItem(ModEntities.STAR_CRAWLER, -13421773, -16724788, new FabricItemSettings()));
     public static final Item PYGRO_SPAWN_EGG = registerSpawnEgg("pygro_spawn_egg", new SpawnEggItem(ModEntities.PYGRO, -3381760, -6750208, new FabricItemSettings()));

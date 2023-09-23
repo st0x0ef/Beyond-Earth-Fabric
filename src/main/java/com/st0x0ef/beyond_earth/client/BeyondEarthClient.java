@@ -1,5 +1,7 @@
 package com.st0x0ef.beyond_earth.client;
 
+import com.st0x0ef.beyond_earth.client.renderers.entities.alien.AlienModel;
+import com.st0x0ef.beyond_earth.client.renderers.entities.alien.AlienRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.martianRaptor.MartianRaptorModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.martianRaptor.MartianRaptorRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.mogler.MoglerModel;
@@ -69,6 +71,7 @@ public class BeyondEarthClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(MoglerModel.LAYER_LOCATION, MoglerModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(StarCrawlerModel.LAYER_LOCATION, StarCrawlerModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(MartianRaptorModel.LAYER_LOCATION, MartianRaptorModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(AlienModel.LAYER_LOCATION, AlienModel::getTexturedModelData);
 
         EntityRendererRegistry.register(ModEntities.PYGRO_BRUTE, context -> new PygroBruteRenderer(context, EntityModelLayers.PIGLIN_BRUTE_INNER_ARMOR, EntityModelLayers.PIGLIN_BRUTE_OUTER_ARMOR));
         EntityRendererRegistry.register(ModEntities.PYGRO, context -> new PygroRenderer(context, EntityModelLayers.PIGLIN_INNER_ARMOR, EntityModelLayers.PIGLIN_OUTER_ARMOR));
@@ -76,6 +79,7 @@ public class BeyondEarthClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.MOGLER, MoglerRenderer::new);
         EntityRendererRegistry.register(ModEntities.STAR_CRAWLER, StarCrawlerRenderer::new);
         EntityRendererRegistry.register(ModEntities.MARTIAN_RAPTOR, MartianRaptorRenderer::new);
+        EntityRendererRegistry.register(ModEntities.ALIEN, AlienRenderer::new);
     }
 
 
