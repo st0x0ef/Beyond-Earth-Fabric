@@ -25,6 +25,5 @@ public class MoglerRenderer extends MobEntityRenderer<MoglerEntity, EntityModel<
     @Override
     protected boolean isShaking(MoglerEntity entity) {
         return super.isShaking(entity) || entity.canConvert();
-
     }
 }

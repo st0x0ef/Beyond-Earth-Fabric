@@ -5,6 +5,8 @@ import com.st0x0ef.beyond_earth.client.renderers.entities.mogler.MoglerRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.pygro.PygroModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.pygro.PygroRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.pygrobrute.PygroBruteRenderer;
+import com.st0x0ef.beyond_earth.client.renderers.entities.starCrawler.StarCrawlerModel;
+import com.st0x0ef.beyond_earth.client.renderers.entities.starCrawler.StarCrawlerRenderer;
 import com.st0x0ef.beyond_earth.common.blocks.entities.ModBlockEntities;
 import com.st0x0ef.beyond_earth.common.entity.ModEntities;
 import net.fabricmc.api.ClientModInitializer;
@@ -63,11 +65,13 @@ public class BeyondEarthClient implements ClientModInitializer {
     private void registerEntityRenderers() {
         EntityModelLayerRegistry.registerModelLayer(PygroModel.LAYER_LOCATION, PygroModel::createBodyLayer);
         EntityModelLayerRegistry.registerModelLayer(MoglerModel.LAYER_LOCATION, MoglerModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(StarCrawlerModel.LAYER_LOCATION, StarCrawlerModel::getTexturedModelData);
 
         EntityRendererRegistry.register(ModEntities.PYGRO_BRUTE, context -> new PygroBruteRenderer(context, EntityModelLayers.PIGLIN_BRUTE_INNER_ARMOR, EntityModelLayers.PIGLIN_BRUTE_OUTER_ARMOR));
         EntityRendererRegistry.register(ModEntities.PYGRO, context -> new PygroRenderer(context, EntityModelLayers.PIGLIN_INNER_ARMOR, EntityModelLayers.PIGLIN_OUTER_ARMOR));
 
         EntityRendererRegistry.register(ModEntities.MOGLER, MoglerRenderer::new);
+        EntityRendererRegistry.register(ModEntities.STAR_CRAWLER, StarCrawlerRenderer::new);
     }
 
 
