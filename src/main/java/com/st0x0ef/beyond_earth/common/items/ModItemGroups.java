@@ -23,7 +23,7 @@ public class ModItemGroups {
     public static final ItemGroup BLOCKS_ITEM_GROUP = FabricItemGroup.builder(new Identifier(BeyondEarth.MOD_ID, "tab_blocks"))
             .icon(() -> new ItemStack(ModBlocks.MOON_STONE_BRICKS)).build();
     public static final ItemGroup SPAWN_EGGS_ITEM_GROUP = FabricItemGroup.builder(new Identifier(BeyondEarth.MOD_ID, "tab_spawn_eggs"))
-            .icon(() -> new ItemStack(Items.SHEEP_SPAWN_EGG)).build();
+            .icon(() -> new ItemStack(ModItems.ALIEN_SPAWN_EGG)).build();
 
     public static void registerModItemGroups(){
         BeyondEarth.LOGGER.info("Registering item groups for " + BeyondEarth.MOD_ID);

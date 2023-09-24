@@ -2,6 +2,8 @@ package com.st0x0ef.beyond_earth.client.renderers.entities.martianRaptor;
 
 import com.st0x0ef.beyond_earth.BeyondEarth;
 import com.st0x0ef.beyond_earth.common.entity.custom.livingEntities.MartianRaptorEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
@@ -10,6 +12,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
+@Environment(EnvType.CLIENT)
 public class MartianRaptorModel<T extends MartianRaptorEntity> extends EntityModel<T> {
     public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(new Identifier(BeyondEarth.MOD_ID, "martian_raptor"), "main");
 
@@ -85,7 +88,7 @@ public class MartianRaptorModel<T extends MartianRaptorEntity> extends EntityMod
     @Override
     public void setAngles(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
 
-        float i = entity.getAttackAnim();
+        float i = entity.getAttackTicksLeft();
         float f = 1.0F - MathHelper.abs(10 - 2 * i) / 10.0F;
 
         this.body.getChild("head").getChild("bone2").getChild("mouth1").roll = MathHelper.lerp(f, 0.0F, -1.14906584F);
@@ -96,7 +99,6 @@ public class MartianRaptorModel<T extends MartianRaptorEntity> extends EntityMod
 
         this.body.getChild("head").yaw = headYaw / (180F / (float) Math.PI);
         this.body.getChild("head").pitch = headPitch / (180F / (float) Math.PI);
-
     }
 
     @Override

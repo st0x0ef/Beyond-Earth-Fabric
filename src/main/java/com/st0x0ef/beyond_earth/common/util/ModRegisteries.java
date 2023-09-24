@@ -21,6 +21,7 @@ public class ModRegisteries {
         FabricDefaultAttributeRegistry.register(ModEntities.STAR_CRAWLER, StarCrawlerEntity.setAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.MARTIAN_RAPTOR, MartianRaptorEntity.setAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.ALIEN, AlienEntity.setAttributes());
+        FabricDefaultAttributeRegistry.register(ModEntities.ALIEN_ZOMBIE, AlienZombieEntity.setAttributes());
     }
 
 

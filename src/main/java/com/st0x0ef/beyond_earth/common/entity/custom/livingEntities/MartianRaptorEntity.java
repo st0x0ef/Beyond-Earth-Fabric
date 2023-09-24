@@ -15,7 +15,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.World;
 
 public class MartianRaptorEntity extends HostileEntity {
-    private float AttackAnim = 0;
+    private float attackAnim = 0;
 
     public MartianRaptorEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);
@@ -50,17 +50,11 @@ public class MartianRaptorEntity extends HostileEntity {
         return SoundEvents.ENTITY_STRIDER_DEATH;
     }
 
-    @Override
-    public boolean tryAttack(Entity target) {
-        this.AttackAnim = 10;
-        this.getWorld().sendEntityStatus(this, (byte)4);
-        return super.tryAttack(target);
-    }
 
     @Override
     public void handleStatus(byte status) {
         if (status == 4) {
-            this.AttackAnim = 10;
+            this.attackAnim = 10;
         } else {
             super.handleStatus(status);
         }
@@ -69,9 +63,16 @@ public class MartianRaptorEntity extends HostileEntity {
     @Override
     public void tickMovement() {
         super.tickMovement();
-        if (this.AttackAnim > 0) {
-            --this.AttackAnim;
+        if (this.attackAnim > 0) {
+            --this.attackAnim;
         }
+    }
+
+    @Override
+    public boolean tryAttack(Entity target) {
+        this.attackAnim = 10;
+        world.sendEntityStatus(this, (byte)4);
+        return super.tryAttack(target);
     }
 
     /*Override
@@ -84,8 +85,8 @@ public class MartianRaptorEntity extends HostileEntity {
         }
     }*/
 
-    public float getAttackAnim() {
-        return AttackAnim;
+    public float getAttackTicksLeft() {
+        return attackAnim;
     }
 
     @Override

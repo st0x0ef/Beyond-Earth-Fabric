@@ -2,6 +2,8 @@ package com.st0x0ef.beyond_earth.client;
 
 import com.st0x0ef.beyond_earth.client.renderers.entities.alien.AlienModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.alien.AlienRenderer;
+import com.st0x0ef.beyond_earth.client.renderers.entities.alienZombie.AlienZombieModel;
+import com.st0x0ef.beyond_earth.client.renderers.entities.alienZombie.AlienZombieRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.martianRaptor.MartianRaptorModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.martianRaptor.MartianRaptorRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.mogler.MoglerModel;
@@ -22,6 +24,8 @@ import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
+import net.minecraft.client.render.entity.ProjectileEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
 import com.st0x0ef.beyond_earth.BeyondEarth;
@@ -72,6 +76,7 @@ public class BeyondEarthClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(StarCrawlerModel.LAYER_LOCATION, StarCrawlerModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(MartianRaptorModel.LAYER_LOCATION, MartianRaptorModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(AlienModel.LAYER_LOCATION, AlienModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(AlienZombieModel.LAYER_LOCATION, AlienZombieModel::getTexturedModelData);
 
         EntityRendererRegistry.register(ModEntities.PYGRO_BRUTE, context -> new PygroBruteRenderer(context, EntityModelLayers.PIGLIN_BRUTE_INNER_ARMOR, EntityModelLayers.PIGLIN_BRUTE_OUTER_ARMOR));
         EntityRendererRegistry.register(ModEntities.PYGRO, context -> new PygroRenderer(context, EntityModelLayers.PIGLIN_INNER_ARMOR, EntityModelLayers.PIGLIN_OUTER_ARMOR));
@@ -80,6 +85,8 @@ public class BeyondEarthClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.STAR_CRAWLER, StarCrawlerRenderer::new);
         EntityRendererRegistry.register(ModEntities.MARTIAN_RAPTOR, MartianRaptorRenderer::new);
         EntityRendererRegistry.register(ModEntities.ALIEN, AlienRenderer::new);
+        EntityRendererRegistry.register(ModEntities.ALIEN_ZOMBIE, AlienZombieRenderer::new);
+        EntityRendererRegistry.register(ModEntities.ICE_SPIT_ENTITY, FlyingItemEntityRenderer::new);
     }
 
 

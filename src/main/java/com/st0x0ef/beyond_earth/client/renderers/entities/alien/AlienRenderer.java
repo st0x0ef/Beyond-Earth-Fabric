@@ -2,12 +2,15 @@ package com.st0x0ef.beyond_earth.client.renderers.entities.alien;
 
 import com.st0x0ef.beyond_earth.BeyondEarth;
 import com.st0x0ef.beyond_earth.common.entity.custom.livingEntities.alien.AlienEntity;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.util.Identifier;
 import net.minecraft.village.VillagerProfession;
 
+@Environment(EnvType.CLIENT)
 public class AlienRenderer extends MobEntityRenderer<AlienEntity, EntityModel<AlienEntity>> {
     /** TEXTURES */
     public static final Identifier ALIEN = new Identifier(BeyondEarth.MOD_ID,"textures/entity/alien/alien.png");
