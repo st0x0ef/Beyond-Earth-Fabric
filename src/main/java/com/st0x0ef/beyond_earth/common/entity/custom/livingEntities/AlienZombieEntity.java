@@ -90,6 +90,7 @@ public class AlienZombieEntity extends HostileEntity implements RangedAttackMob 
         iceSpitEntity.setDamage(2);
         iceSpitEntity.setPunch(1);
         iceSpitEntity.setCritical(false);
+        iceSpitEntity.setOwner(this);
         return iceSpitEntity;
     }
 
