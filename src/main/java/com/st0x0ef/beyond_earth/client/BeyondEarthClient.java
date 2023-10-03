@@ -4,6 +4,8 @@ import com.st0x0ef.beyond_earth.client.renderers.entities.alien.AlienModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.alien.AlienRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.alienZombie.AlienZombieModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.alienZombie.AlienZombieRenderer;
+import com.st0x0ef.beyond_earth.client.renderers.entities.flag.FlagHeadModel;
+import com.st0x0ef.beyond_earth.client.renderers.entities.flag.FlagHeadRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.martianRaptor.MartianRaptorModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.martianRaptor.MartianRaptorRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.mogler.MoglerModel;
@@ -25,7 +27,6 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
-import net.minecraft.client.render.entity.ProjectileEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
 import com.st0x0ef.beyond_earth.BeyondEarth;
@@ -77,6 +78,9 @@ public class BeyondEarthClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(MartianRaptorModel.LAYER_LOCATION, MartianRaptorModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(AlienModel.LAYER_LOCATION, AlienModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(AlienZombieModel.LAYER_LOCATION, AlienZombieModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(FlagHeadModel.LAYER_LOCATION, FlagHeadModel::createHumanoidHeadLayer);
+
+        BlockEntityRendererRegistry.register(ModBlockEntities.FLAG_BLOCK_ENTITY, ctx -> new FlagHeadRenderer());
 
         EntityRendererRegistry.register(ModEntities.PYGRO_BRUTE, context -> new PygroBruteRenderer(context, EntityModelLayers.PIGLIN_BRUTE_INNER_ARMOR, EntityModelLayers.PIGLIN_BRUTE_OUTER_ARMOR));
         EntityRendererRegistry.register(ModEntities.PYGRO, context -> new PygroRenderer(context, EntityModelLayers.PIGLIN_INNER_ARMOR, EntityModelLayers.PIGLIN_OUTER_ARMOR));

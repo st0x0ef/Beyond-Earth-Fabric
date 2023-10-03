@@ -1,6 +1,6 @@
 package com.st0x0ef.beyond_earth.common.blocks.custom;
 
-import com.st0x0ef.beyond_earth.common.blocks.entities.GlobeTileEntity;
+import com.st0x0ef.beyond_earth.common.blocks.entities.custom.GlobeTileEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;

@@ -1,15 +1,13 @@
 package com.st0x0ef.beyond_earth.common.items;
 
+import com.st0x0ef.beyond_earth.common.blocks.ModBlocks;
 import com.st0x0ef.beyond_earth.common.entity.ModEntities;
 import com.st0x0ef.beyond_earth.common.items.custom.HammerItem;
 import com.st0x0ef.beyond_earth.common.items.custom.ModifiedBucketItem;
 import com.st0x0ef.beyond_earth.common.items.custom.RadioactiveItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.Items;
-import net.minecraft.item.SpawnEggItem;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -17,7 +15,9 @@ import com.st0x0ef.beyond_earth.BeyondEarth;
 import com.st0x0ef.beyond_earth.common.fluids.ModFluids;
 
 public class ModItems {
-    /** SPAWN EGG ITEMS */
+    /**
+     * SPAWN EGG ITEMS
+     */
     public static final Item ALIEN_SPAWN_EGG = registerSpawnEgg("alien_spawn_egg", new SpawnEggItem(ModEntities.ALIEN, -13382401, -11650781, new FabricItemSettings()));
     public static final Item ALIEN_ZOMBIE_SPAWN_EGG = registerSpawnEgg("alien_zombie_spawn_egg", new SpawnEggItem(ModEntities.ALIEN_ZOMBIE, -14804199, -16740159, new FabricItemSettings()));
     public static final Item STAR_CRAWLER_SPAWN_EGG = registerSpawnEgg("star_crawler_spawn_egg", new SpawnEggItem(ModEntities.STAR_CRAWLER, -13421773, -16724788, new FabricItemSettings()));
@@ -25,6 +25,11 @@ public class ModItems {
     public static final Item PYGRO_BRUTE_SPAWN_EGG = registerSpawnEgg("pygro_brute_spawn_egg", new SpawnEggItem(ModEntities.PYGRO_BRUTE, -3381760, -67208, new FabricItemSettings()));
     public static final Item MOGLER_SPAWN_EGG = registerSpawnEgg("mogler_spawn_egg", new SpawnEggItem(ModEntities.MOGLER, -13312, -3407872, new FabricItemSettings()));
     public static final Item MARTIAN_RAPTOR_SPAWN_EGG = registerSpawnEgg("martian_raptor_spawn_egg", new SpawnEggItem(ModEntities.MARTIAN_RAPTOR, 5349438, -13312, new FabricItemSettings()));
+
+    /**
+     * SPECIAL ITEMS
+     */
+    public static final Item FLAG_ITEM =  registerItemGroupNormal("flag_item", new TallBlockItem(ModBlocks.FLAG_BLOCK, new FabricItemSettings()));
 
 
     /**

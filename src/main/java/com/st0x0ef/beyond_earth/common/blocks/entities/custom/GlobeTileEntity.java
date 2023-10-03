@@ -1,5 +1,6 @@
-package com.st0x0ef.beyond_earth.common.blocks.entities;
+package com.st0x0ef.beyond_earth.common.blocks.entities.custom;
 
+import com.st0x0ef.beyond_earth.common.blocks.entities.ModBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;

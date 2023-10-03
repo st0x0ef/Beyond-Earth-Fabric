@@ -1,6 +1,6 @@
 package com.st0x0ef.beyond_earth.client.renderers.entities.globe;
 
-import com.st0x0ef.beyond_earth.common.blocks.entities.GlobeTileEntity;
+import com.st0x0ef.beyond_earth.common.blocks.entities.custom.GlobeTileEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;

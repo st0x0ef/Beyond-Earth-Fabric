@@ -1,5 +1,6 @@
 package com.st0x0ef.beyond_earth.common.blocks;
 
+import com.st0x0ef.beyond_earth.common.blocks.custom.FlagBlock;
 import com.st0x0ef.beyond_earth.common.items.custom.GlobeItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -19,6 +20,12 @@ import com.st0x0ef.beyond_earth.common.fluids.ModFluids;
 import com.st0x0ef.beyond_earth.common.items.ModItemGroups;
 
 public class ModBlocks {
+    /**
+     * FLAG BLOCKS
+     */
+    public static final Block FLAG_BLOCK = registerBlock("flag", new FlagBlock(FabricBlockSettings.of(Material.STONE).mapColor(MapColor.STONE_GRAY).strength(1.0F, 1.0F).nonOpaque().luminance(1).solidBlock((bs, br, bp) -> false).dropsNothing()));
+
+
     /**
      * NORMAL BLOCKS
      */
@@ -140,14 +147,9 @@ public class ModBlocks {
     public static final Block PERMAFROST_DIRT = registerBlock("permafrost_dirt", new Block(FabricBlockSettings.copy(Blocks.DIRT)));
 
 
-
-
-
     /**
      * CHANGE TO URANUIM BLOCKS AND ADD BLOCK ENTITIES
      */
-
-
 
 
     // URANIUM
