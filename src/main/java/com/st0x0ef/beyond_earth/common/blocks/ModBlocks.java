@@ -1,6 +1,7 @@
 package com.st0x0ef.beyond_earth.common.blocks;
 
 import com.st0x0ef.beyond_earth.common.blocks.custom.FlagBlock;
+import com.st0x0ef.beyond_earth.common.blocks.custom.RocketLaunchPadBlock;
 import com.st0x0ef.beyond_earth.common.items.custom.GlobeItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -20,10 +21,16 @@ import com.st0x0ef.beyond_earth.common.fluids.ModFluids;
 import com.st0x0ef.beyond_earth.common.items.ModItemGroups;
 
 public class ModBlocks {
+    /** SPECIAL BLOCKS */
+    public static final Block ROCKET_LAUNCH_PAD = registerBlock("rocket_launch_pad",  new RocketLaunchPadBlock(FabricBlockSettings.of(Material.METAL).strength(5f, 2.5f).requiresTool()), ModItemGroups.NORMAL_ITEM_GROUP);
+    //public static final Block COAL_TORCH_BLOCK = registerBlock("coal_torch",  new CoalTorchBlock(FabricBlockSettings.of().mapColor(MapColor.WOOD).noCollission().instabreak().sound(SoundType.WOOD)));
+    //public static final Block WALL_COAL_TORCH_BLOCK = registerBlock("wall_coal_torch",  new WallCoalTorchBlock(FabricBlockSettings.of().mapColor(MapColor.WOOD).noCollission().instabreak().sound(SoundType.WOOD).lootFrom(COAL_TORCH_BLOCK)));
+   // public static final Block COAL_LANTERN_BLOCK = registerBlock("coal_lantern",  new CoalLanternBlock(FabricBlockSettings.of().mapColor(MapColor.METAL).strength(3.5F).sound(SoundType.LANTERN).nonOpaque().requiresTool()));
+
     /**
      * FLAG BLOCKS
      */
-    public static final Block FLAG_BLOCK = registerBlock("flag", new FlagBlock(FabricBlockSettings.of(Material.STONE).mapColor(MapColor.STONE_GRAY).strength(1.0F, 1.0F).nonOpaque().luminance(1).solidBlock((bs, br, bp) -> false).dropsNothing()));
+    public static final Block FLAG_BLOCK = registerBlockWithoutBlockItem("flag", new FlagBlock(FabricBlockSettings.of(Material.STONE).mapColor(MapColor.STONE_GRAY).strength(1.0F, 1.0F).nonOpaque().luminance(1).solidBlock((bs, br, bp) -> false).dropsNothing()));
 
 
     /**
@@ -178,6 +185,12 @@ public class ModBlocks {
     private static Block registerBlock(String name, Block block) {
         Item item = registerBlockItem(name, block);
         addBlockItemToGroup(item, ModItemGroups.BLOCKS_ITEM_GROUP);
+        return Registry.register(Registries.BLOCK, new Identifier(BeyondEarth.MOD_ID, name), block);
+    }
+
+    private static Block registerBlock(String name, Block block, ItemGroup itemGroup) {
+        Item item = registerBlockItem(name, block);
+        addBlockItemToGroup(item, itemGroup);
         return Registry.register(Registries.BLOCK, new Identifier(BeyondEarth.MOD_ID, name), block);
     }
 

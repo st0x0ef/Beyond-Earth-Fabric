@@ -165,5 +165,8 @@ public class ModModelGenerator extends FabricModelProvider {
         itemModelGenerator.register(ModItems.OIL_BUCKET, Models.GENERATED);
         itemModelGenerator.register(ModItems.URANIUM_INGOT, Models.GENERATED);
         itemModelGenerator.register(ModItems.RAW_URANIUM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ADVANCED_FUEL_UPGRADE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BASIC_FUEL_UPGRADE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.HYDROGEN_MOTOR_UPGRADE, Models.GENERATED);
     }
 }

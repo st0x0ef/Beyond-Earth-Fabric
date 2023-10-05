@@ -5,6 +5,7 @@ import com.st0x0ef.beyond_earth.common.entity.ModEntities;
 import com.st0x0ef.beyond_earth.common.items.custom.HammerItem;
 import com.st0x0ef.beyond_earth.common.items.custom.ModifiedBucketItem;
 import com.st0x0ef.beyond_earth.common.items.custom.RadioactiveItem;
+import com.st0x0ef.beyond_earth.common.items.custom.RocketUpgradeItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
@@ -98,6 +99,12 @@ public class ModItems {
      */
     public static final Item URANIUM_INGOT = registerItemGroupMaterials("uranium_ingot", new RadioactiveItem(new FabricItemSettings()));
     public static final Item RAW_URANIUM = registerItemGroupMaterials("raw_uranium", new RadioactiveItem(new FabricItemSettings()));
+
+    /** ROCKET UPGRADE */
+    public static final Item BASIC_FUEL_UPGRADE = registerItemGroupBasics("basic_fuel_upgrade", new RocketUpgradeItem(new FabricItemSettings(), 1, 0));
+    public static final Item ADVANCED_FUEL_UPGRADE = registerItemGroupBasics("advanced_fuel_upgrade", new RocketUpgradeItem(new FabricItemSettings(), 3, 0));
+    public static final Item HYDROGEN_MOTOR_UPGRADE = registerItemGroupBasics("hydrogen_motor_upgrade", new RocketUpgradeItem(new FabricItemSettings(), 0, -2));
+
 
 
     private static Item registerItemWithoutGroup(String name, Item item) {
