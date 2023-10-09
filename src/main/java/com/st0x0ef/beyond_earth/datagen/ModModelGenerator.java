@@ -2,6 +2,7 @@ package com.st0x0ef.beyond_earth.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
 import com.st0x0ef.beyond_earth.common.blocks.ModBlocks;
 import com.st0x0ef.beyond_earth.common.items.ModItems;
@@ -13,6 +14,10 @@ public class ModModelGenerator extends FabricModelProvider {
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        // SPECIAL BLOCKS
+        blockStateModelGenerator.registerLantern(ModBlocks.COAL_LANTERN_BLOCK);
+        blockStateModelGenerator.registerTorch(ModBlocks.COAL_TORCH_BLOCK, ModBlocks.WALL_COAL_TORCH_BLOCK);
+
         // ORES
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MOON_CHEESE_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MOON_DESH_ORE);
@@ -100,7 +105,7 @@ public class ModModelGenerator extends FabricModelProvider {
         BlockStateModelGenerator.BlockTexturePool glacioStonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.GLACIO_STONE_BRICKS);
         glacioStonePool.slab(ModBlocks.GLACIO_STONE_BRICK_SLAB);
         glacioStonePool.stairs(ModBlocks.GLACIO_STONE_BRICK_STAIRS);
-        blockStateModelGenerator.registerAxisRotated(ModBlocks.GLACIO_WOOD_LOG, TexturedModel.CUBE_COLUMN, TexturedModel.CUBE_COLUMN_HORIZONTAL);
+        blockStateModelGenerator.registerLog(ModBlocks.GLACIO_WOOD_LOG).log(ModBlocks.GLACIO_WOOD_LOG).wood(ModBlocks.GLACIO_WOOD);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GLACIO_WOOD_LEAVES);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.PERMAFROST_DIRT);
         BlockStateModelGenerator.BlockTexturePool glacioPlanksPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.GLACIO_WOOD_PLANKS);
@@ -116,6 +121,7 @@ public class ModModelGenerator extends FabricModelProvider {
         // URANIUM
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.URANIUM_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.MERCURY_URANIUM_ORE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.GLACIO_URANIUM_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.RAW_URANIUM_BLOCK);
 
         // FLUIDS

@@ -1,7 +1,6 @@
 package com.st0x0ef.beyond_earth.common.blocks;
 
-import com.st0x0ef.beyond_earth.common.blocks.custom.FlagBlock;
-import com.st0x0ef.beyond_earth.common.blocks.custom.RocketLaunchPadBlock;
+import com.st0x0ef.beyond_earth.common.blocks.custom.*;
 import com.st0x0ef.beyond_earth.common.items.custom.GlobeItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -12,20 +11,20 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import com.st0x0ef.beyond_earth.BeyondEarth;
-import com.st0x0ef.beyond_earth.common.blocks.custom.GlobeBlock;
 import com.st0x0ef.beyond_earth.common.fluids.ModFluids;
 import com.st0x0ef.beyond_earth.common.items.ModItemGroups;
 
 public class ModBlocks {
     /** SPECIAL BLOCKS */
     public static final Block ROCKET_LAUNCH_PAD = registerBlock("rocket_launch_pad",  new RocketLaunchPadBlock(FabricBlockSettings.of(Material.METAL).strength(5f, 2.5f).requiresTool()), ModItemGroups.NORMAL_ITEM_GROUP);
-    //public static final Block COAL_TORCH_BLOCK = registerBlock("coal_torch",  new CoalTorchBlock(FabricBlockSettings.of().mapColor(MapColor.WOOD).noCollission().instabreak().sound(SoundType.WOOD)));
-    //public static final Block WALL_COAL_TORCH_BLOCK = registerBlock("wall_coal_torch",  new WallCoalTorchBlock(FabricBlockSettings.of().mapColor(MapColor.WOOD).noCollission().instabreak().sound(SoundType.WOOD).lootFrom(COAL_TORCH_BLOCK)));
-   // public static final Block COAL_LANTERN_BLOCK = registerBlock("coal_lantern",  new CoalLanternBlock(FabricBlockSettings.of().mapColor(MapColor.METAL).strength(3.5F).sound(SoundType.LANTERN).nonOpaque().requiresTool()));
+    public static final Block COAL_TORCH_BLOCK = registerBlockWithoutBlockItem("coal_torch",  new CoalTorchBlock(FabricBlockSettings.of(Material.WOOD).noCollision().breakInstantly().sounds(BlockSoundGroup.WOOD)));
+    public static final Block WALL_COAL_TORCH_BLOCK = registerBlockWithoutBlockItem("wall_coal_torch",  new WallCoalTorchBlock(FabricBlockSettings.of(Material.WOOD).noCollision().breakInstantly().sounds(BlockSoundGroup.WOOD).dropsLike(COAL_TORCH_BLOCK)));
+    public static final Block COAL_LANTERN_BLOCK = registerBlock("coal_lantern",  new CoalLanternBlock(FabricBlockSettings.of(Material.METAL).strength(3.5F).sounds(BlockSoundGroup.LANTERN).nonOpaque().requiresTool()), ModItemGroups.NORMAL_ITEM_GROUP);
 
     /**
      * FLAG BLOCKS
@@ -149,8 +148,8 @@ public class ModBlocks {
     public static final Block GLACIO_PRESSURE_PLATE = registerBlock("glacio_pressure_plate", new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING, FabricBlockSettings.copy(Blocks.OAK_FENCE), GLACIO_BLOCK_SET_TYPE));
 
 
-    // PERMAFROST GRASS
-    //public static final Block PERMAFROST_GRASS = registerBlock("permafrost_grass",  new PermafrostGrass(FabricBlockSettings.copy(Blocks.GRASS_BLOCK)));
+     //PERMAFROST GRASS
+    public static final Block PERMAFROST_GRASS = registerBlock("permafrost_grass",  new PermafrostGrass(FabricBlockSettings.copy(Blocks.GRASS_BLOCK)));
     public static final Block PERMAFROST_DIRT = registerBlock("permafrost_dirt", new Block(FabricBlockSettings.copy(Blocks.DIRT)));
 
 
@@ -160,9 +159,10 @@ public class ModBlocks {
 
 
     // URANIUM
-    public static final Block MERCURY_URANIUM_ORE = registerBlock("mercury_uranium_ore", new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
-    public static final Block URANIUM_BLOCK = registerBlock("uranium_block", new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
-    public static final Block RAW_URANIUM_BLOCK = registerBlock("raw_uranium_block", new ExperienceDroppingBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block GLACIO_URANIUM_ORE = registerBlock("glacio_uranium_ore", new GlacioUraniumOre(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block MERCURY_URANIUM_ORE = registerBlock("mercury_uranium_ore", new MercuryUraniumOre(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block URANIUM_BLOCK = registerBlock("uranium_block", new UraniumBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
+    public static final Block RAW_URANIUM_BLOCK = registerBlock("raw_uranium_block", new UraniumRawBlock(FabricBlockSettings.of(Material.STONE).strength(3.0F, 3.0F).requiresTool()));
 
     /**
      * GLOBE BLOCKS

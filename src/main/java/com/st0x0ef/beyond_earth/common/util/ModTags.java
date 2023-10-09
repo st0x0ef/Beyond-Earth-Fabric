@@ -15,6 +15,8 @@ public class ModTags {
     public static final TagKey<EntityType<?>> ENTITY_NO_OXYGEN_NEEDED_TAG = createEntityTag("no_oxygen_needed");
     public static final TagKey<EntityType<?>> ENTITY_PLANET_FIRE_TAG = createEntityTag("planet_fire");
     public static final TagKey<EntityType<?>> ENTITY_VENUS_RAIN_TAG = createEntityTag("venus_rain");
+    public static final TagKey<EntityType<?>> ENTITY_RADIATION_INVULNERABLE_TAG = createEntityTag("radiations_invulnerable");
+
 
 
     /** FLUIDS */

@@ -2,6 +2,10 @@ package com.st0x0ef.beyond_earth.common.blocks.entities;
 
 import com.st0x0ef.beyond_earth.common.blocks.entities.custom.FlagBlockEntity;
 import com.st0x0ef.beyond_earth.common.blocks.entities.custom.GlobeTileEntity;
+import com.st0x0ef.beyond_earth.common.blocks.entities.custom.uranium.GlacioUraniumOreEntity;
+import com.st0x0ef.beyond_earth.common.blocks.entities.custom.uranium.MercuryUraniumOreEntity;
+import com.st0x0ef.beyond_earth.common.blocks.entities.custom.uranium.RawUraniumBlockEntity;
+import com.st0x0ef.beyond_earth.common.blocks.entities.custom.uranium.UraniumBlockEntity;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.registry.Registries;
@@ -15,6 +19,13 @@ public class ModBlockEntities {
 
     public static BlockEntityType<FlagBlockEntity> FLAG_BLOCK_ENTITY;
 
+    /** BLOCK ENTITIES (Uranium) */
+    public static BlockEntityType<MercuryUraniumOreEntity> MERCURY_URANIUM_ORE_BLOCK_ENTITY;
+    public static BlockEntityType<RawUraniumBlockEntity> URANIUM_RAW_BLOCK_ENTITY;
+    public static BlockEntityType<UraniumBlockEntity> URANIUM_BLOCK_ENTITY;
+    public static BlockEntityType<GlacioUraniumOreEntity> GLACIO_URANIUM_ORE_BLOCK_ENTITY;
+
+
     public static void registerAllBlockEntities() {
         GLOBE_TILE_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(BeyondEarth.MOD_ID, "globe"),
                 FabricBlockEntityTypeBuilder.create(GlobeTileEntity::new, ModBlocks.EARTH_GLOBE_BLOCK, ModBlocks.GLACIO_GLOBE_BLOCK, ModBlocks.MARS_GLOBE_BLOCK,
@@ -22,5 +33,19 @@ public class ModBlockEntities {
 
         FLAG_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(BeyondEarth.MOD_ID, "flag"),
                 FabricBlockEntityTypeBuilder.create(FlagBlockEntity::new, ModBlocks.FLAG_BLOCK).build());
+
+
+        /** URANUIM */
+        MERCURY_URANIUM_ORE_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(BeyondEarth.MOD_ID, "mercury_uranium_ore"),
+                FabricBlockEntityTypeBuilder.create(MercuryUraniumOreEntity::new, ModBlocks.MERCURY_URANIUM_ORE).build());
+
+        URANIUM_RAW_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(BeyondEarth.MOD_ID, "raw_uranium_block"),
+                FabricBlockEntityTypeBuilder.create(RawUraniumBlockEntity::new, ModBlocks.RAW_URANIUM_BLOCK).build());
+
+        URANIUM_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(BeyondEarth.MOD_ID, "uranium_block"),
+                FabricBlockEntityTypeBuilder.create(UraniumBlockEntity::new, ModBlocks.URANIUM_BLOCK).build());
+
+        GLACIO_URANIUM_ORE_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(BeyondEarth.MOD_ID, "glacio_uranium_ore"),
+                FabricBlockEntityTypeBuilder.create(GlacioUraniumOreEntity::new, ModBlocks.GLACIO_URANIUM_ORE).build());
     }
 }

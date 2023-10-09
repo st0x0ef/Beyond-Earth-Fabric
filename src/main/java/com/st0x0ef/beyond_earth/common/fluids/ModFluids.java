@@ -1,6 +1,8 @@
 package com.st0x0ef.beyond_earth.common.fluids;
 
 import com.st0x0ef.beyond_earth.BeyondEarth;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.fabricmc.fabric.impl.transfer.fluid.FluidVariantImpl;
 import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -12,6 +14,8 @@ public class ModFluids {
 
     public static final FlowableFluid OIL_STILL = registerFluid("oil", new OilFluid.Still());
     public static final FlowableFluid OIL_FLOWING = registerFluid("flowing_oil", new OilFluid.Flowing());
+
+
 
     private static FlowableFluid registerFluid(String name, FlowableFluid fluid){
         return Registry.register(Registries.FLUID, new Identifier(BeyondEarth.MOD_ID, name), fluid);

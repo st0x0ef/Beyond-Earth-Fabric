@@ -2,10 +2,7 @@ package com.st0x0ef.beyond_earth.common.items;
 
 import com.st0x0ef.beyond_earth.common.blocks.ModBlocks;
 import com.st0x0ef.beyond_earth.common.entity.ModEntities;
-import com.st0x0ef.beyond_earth.common.items.custom.HammerItem;
-import com.st0x0ef.beyond_earth.common.items.custom.ModifiedBucketItem;
-import com.st0x0ef.beyond_earth.common.items.custom.RadioactiveItem;
-import com.st0x0ef.beyond_earth.common.items.custom.RocketUpgradeItem;
+import com.st0x0ef.beyond_earth.common.items.custom.*;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
@@ -30,15 +27,14 @@ public class ModItems {
     /**
      * SPECIAL ITEMS
      */
+    public static final Item COAL_TORCH_ITEM = registerItemGroupNormal("coal_torch_item",  new CoalTorchItem(ModBlocks.COAL_TORCH_BLOCK, ModBlocks.WALL_COAL_TORCH_BLOCK, new FabricItemSettings()));
+
     public static final Item FLAG_ITEM =  registerItemGroupNormal("flag_item", new TallBlockItem(ModBlocks.FLAG_BLOCK, new FabricItemSettings()));
 
 
     /**
      * NORMAL ITEMS
      */
-    // SPECIAL ITEMS
-    //public static final RegistryObject<Item> COAL_TORCH_ITEM = ITEMS.register("coal_torch", () -> new CoalTorchItem(BlockRegistry.COAL_TORCH_BLOCK.get(), BlockRegistry.WALL_COAL_TORCH_BLOCK.get(),new Item.Properties().tab(Tabs.tab_basics)));
-
     public static final Item CHEESE = registerItemGroupNormal("cheese", new Item(new FabricItemSettings().food(ModFoodComponents.CHEESE)));
     public static final Item HAMMER = registerItemGroupBasics("hammer", new HammerItem(new FabricItemSettings().maxDamage(9)));
     public static final Item IRON_ROD = registerItemGroupBasics("iron_rod", new Item(new FabricItemSettings()));

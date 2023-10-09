@@ -54,6 +54,9 @@ public class BeyondEarthClient implements ClientModInitializer {
     private void registerBlocksWithCutout(){
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GLACIO_WOOD_DOOR, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GLACIO_WOOD_TRAPDOOR, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.COAL_LANTERN_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.COAL_TORCH_BLOCK, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.WALL_COAL_TORCH_BLOCK, RenderLayer.getCutout());
     }
 
 

@@ -106,6 +106,5 @@ public class MartianRaptorModel<T extends MartianRaptorEntity> extends EntityMod
         body.render(matrices, vertices, light, overlay, red, green, blue, alpha);
         leg1.render(matrices, vertices, light, overlay, red, green, blue, alpha);
         leg2.render(matrices, vertices, light, overlay, red, green, blue, alpha);
-
     }
 }
