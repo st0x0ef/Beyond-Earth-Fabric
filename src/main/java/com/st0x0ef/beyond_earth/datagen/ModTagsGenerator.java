@@ -56,6 +56,7 @@ public class ModTagsGenerator {
 
         private void addDirt() {
             getOrCreateTagBuilder(BlockTags.DIRT).add(ModBlocks.PERMAFROST_DIRT);
+            getOrCreateTagBuilder(BlockTags.DIRT).add(ModBlocks.PERMAFROST_GRASS);
         }
 
         private void addGlacioWoodSet() {

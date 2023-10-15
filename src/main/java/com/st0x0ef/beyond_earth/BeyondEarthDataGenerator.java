@@ -1,5 +1,6 @@
 package com.st0x0ef.beyond_earth;
 
+import com.st0x0ef.beyond_earth.datagen.ModLootTableGenerator;
 import com.st0x0ef.beyond_earth.datagen.ModModelGenerator;
 import com.st0x0ef.beyond_earth.datagen.ModTagsGenerator;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
@@ -14,5 +15,6 @@ public class BeyondEarthDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModTagsGenerator.ModBlockTagsGenerator::new);
 		pack.addProvider(ModTagsGenerator.ModItemTagsGenerator::new);
 		pack.addProvider(ModTagsGenerator.ModFluidTagsGenerator::new);
+		pack.addProvider(ModLootTableGenerator::new);
 	}
 }

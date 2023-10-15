@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "beyond_earth:permafrost_dirt"
+    "beyond_earth:permafrost_dirt",
+    "beyond_earth:permafrost_grass"
   ]
 }
