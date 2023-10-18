@@ -17,8 +17,11 @@ import com.st0x0ef.beyond_earth.client.renderers.entities.starCrawler.StarCrawle
 import com.st0x0ef.beyond_earth.client.renderers.entities.starCrawler.StarCrawlerRenderer;
 import com.st0x0ef.beyond_earth.common.blocks.entities.ModBlockEntities;
 import com.st0x0ef.beyond_earth.common.entity.ModEntities;
+import com.st0x0ef.beyond_earth.common.particles.ModParticles;
+import com.st0x0ef.beyond_earth.common.particles.custom.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
@@ -39,14 +42,11 @@ import com.st0x0ef.beyond_earth.common.fluids.ModFluids;
 public class BeyondEarthClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        registerFluidRendererHandlers();
-    }
-
-    private void registerFluidRendererHandlers() {
         registerFluids();
         registerGlobes();
         registerBlocksWithCutout();
         registerEntityRenderers();
+        registerParticles();
     }
 
 
@@ -122,5 +122,13 @@ public class BeyondEarthClient implements ClientModInitializer {
                         new Identifier(BeyondEarth.MOD_ID, "block/fluid/oil_flow"),
                         new Identifier(BeyondEarth.MOD_ID, "block/fluid/oil_overlay")));
 
+    }
+
+    private void registerParticles() {
+        ParticleFactoryRegistry.getInstance().register(ModParticles.LARGE_FLAME_PARTICLE, LargeFlameParticle.ParticleFactory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.LARGE_SMOKE_PARTICLE, LargeSmokeParticle.ParticleFactory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.SMALL_FLAME_PARTICLE, SmallFlameParticle.ParticleFactory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.SMALL_SMOKE_PARTICLE, SmallSmokeParticle.ParticleFactory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.VENUS_RAIN_PARTICLE, VenusRainParticle.ParticleFactory::new);
     }
 }
