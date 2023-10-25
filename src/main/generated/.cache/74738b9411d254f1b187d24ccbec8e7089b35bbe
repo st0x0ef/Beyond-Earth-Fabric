@@ -1,4 +1,4 @@
-// 1.19.4	2023-10-15T19:47:30.4489729	beyond_earth/Tags for minecraft:block
+// 1.19.4	2023-10-22T13:59:58.2052155	Beyond Earth/Tags for minecraft:block
 ef4d0e3f14954f59af2f7457cab875f1aa58dbc3 data\minecraft\tags\blocks\wooden_doors.json
 8965f0c6a828056b382a65e287ce4d330632090e data\minecraft\tags\blocks\wooden_slabs.json
 8c58d7b07137cd998819241cccbf51028c5ddf03 data\minecraft\tags\blocks\fence_gates.json
@@ -8,8 +8,8 @@ b2e6fc9738d7338d30f20ef305835433c7afab8a data\minecraft\tags\blocks\slabs.json
 8b5dd50686fca25af53345e7e1d129ff6ba33a88 data\minecraft\tags\blocks\wooden_fences.json
 02165f530a59b851ea58f69dadc0b213eb62f211 data\minecraft\tags\blocks\wooden_buttons.json
 099dbff1bbd381f1e8522906f5956750b203df56 data\minecraft\tags\blocks\planks.json
-a92075571583ff18ec5f3e2378f5d8a5f824cfc2 data\minecraft\tags\blocks\wooden_stairs.json
 3d7498d9cfab433e8d023f75d62ec9491225af7c data\minecraft\tags\blocks\stairs.json
+a92075571583ff18ec5f3e2378f5d8a5f824cfc2 data\minecraft\tags\blocks\wooden_stairs.json
 f8a0d1b6a25b7e43affe28e4feacfea7567ba4d6 data\minecraft\tags\blocks\leaves.json
 ad7f8f6998e16d57c092122434ea65be9ced01da data\minecraft\tags\blocks\beacon_base_blocks.json
 2c936909aa25386474ddb538c911c21df31c0df2 data\minecraft\tags\blocks\wooden_pressure_plates.json

@@ -26,7 +26,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Random;
 
 
-//bug with entity hitting itself with ice spit
 public class AlienZombieEntity extends HostileEntity implements RangedAttackMob {
     public AlienZombieEntity(EntityType<? extends HostileEntity> entityType, World world) {
         super(entityType, world);

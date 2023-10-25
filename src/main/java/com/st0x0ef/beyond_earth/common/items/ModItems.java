@@ -11,8 +11,12 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import com.st0x0ef.beyond_earth.BeyondEarth;
 import com.st0x0ef.beyond_earth.common.fluids.ModFluids;
+import net.minecraft.util.Rarity;
 
 public class ModItems {
+    /** VEHICLE ITEMS*/
+    public static final Item ROVER_ITEM = registerItemGroupNormal("rover", new RoverItem(new FabricItemSettings().maxCount(1).rarity(Rarity.RARE)));
+
     /**
      * SPAWN EGG ITEMS
      */
@@ -100,6 +104,7 @@ public class ModItems {
     public static final Item BASIC_FUEL_UPGRADE = registerItemGroupBasics("basic_fuel_upgrade", new RocketUpgradeItem(new FabricItemSettings(), 1, 0));
     public static final Item ADVANCED_FUEL_UPGRADE = registerItemGroupBasics("advanced_fuel_upgrade", new RocketUpgradeItem(new FabricItemSettings(), 3, 0));
     public static final Item HYDROGEN_MOTOR_UPGRADE = registerItemGroupBasics("hydrogen_motor_upgrade", new RocketUpgradeItem(new FabricItemSettings(), 0, -2));
+    public static final Item URANIUM_MOTOR_UPGRADE = registerItemGroupBasics("uranium_motor_upgrade",  new RocketUpgradeItem(new FabricItemSettings(), 0, 1000000000));
 
 
 

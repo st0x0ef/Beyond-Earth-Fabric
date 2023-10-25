@@ -3,6 +3,7 @@ package com.st0x0ef.beyond_earth.common.entity;
 import com.st0x0ef.beyond_earth.common.entity.custom.IceSpitEntity;
 import com.st0x0ef.beyond_earth.common.entity.custom.livingEntities.*;
 import com.st0x0ef.beyond_earth.common.entity.custom.livingEntities.alien.AlienEntity;
+import com.st0x0ef.beyond_earth.common.entity.custom.nonLivingEntities.RoverEntity;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
@@ -25,7 +26,10 @@ public class ModEntities {
     public static final EntityType<MartianRaptorEntity> MARTIAN_RAPTOR = Registry.register(Registries.ENTITY_TYPE, new Identifier(BeyondEarth.MOD_ID, "martian_raptor"), FabricEntityTypeBuilder.create(SpawnGroup.MONSTER, MartianRaptorEntity::new).dimensions(EntityDimensions.fixed(0.75f, 2.0f)).build());
 
     /** PROJECTILE ENTITIES */
-    public static final EntityType<IceSpitEntity> ICE_SPIT_ENTITY = Registry.register(Registries.ENTITY_TYPE,new Identifier(BeyondEarth.MOD_ID, "ice_spit_entity"), FabricEntityTypeBuilder.create(SpawnGroup.AMBIENT, IceSpitEntity::new).dimensions(EntityDimensions.fixed(0.5f, 0.5f)).build());
+    public static final EntityType<IceSpitEntity> ICE_SPIT_ENTITY = Registry.register(Registries.ENTITY_TYPE, new Identifier(BeyondEarth.MOD_ID, "ice_spit_entity"), FabricEntityTypeBuilder.create(SpawnGroup.AMBIENT, IceSpitEntity::new).dimensions(EntityDimensions.fixed(0.5f, 0.5f)).build());
+
+    /** VEHICLE ENTITIES*/
+    public static final EntityType<RoverEntity> ROVER = Registry.register(Registries.ENTITY_TYPE, new Identifier(BeyondEarth.MOD_ID, "rover"), FabricEntityTypeBuilder.create(SpawnGroup.MISC, RoverEntity::new).dimensions(EntityDimensions.fixed(2.5f, 1.0f)).fireImmune().build());
 
 
     public static void registerModEntities(){

@@ -13,10 +13,14 @@ import com.st0x0ef.beyond_earth.client.renderers.entities.mogler.MoglerRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.pygro.PygroModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.pygro.PygroRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.pygrobrute.PygroBruteRenderer;
+import com.st0x0ef.beyond_earth.client.renderers.entities.rover.RoverItemRenderer;
+import com.st0x0ef.beyond_earth.client.renderers.entities.rover.RoverModel;
+import com.st0x0ef.beyond_earth.client.renderers.entities.rover.RoverRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.starCrawler.StarCrawlerModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.starCrawler.StarCrawlerRenderer;
 import com.st0x0ef.beyond_earth.common.blocks.entities.ModBlockEntities;
 import com.st0x0ef.beyond_earth.common.entity.ModEntities;
+import com.st0x0ef.beyond_earth.common.items.ModItems;
 import com.st0x0ef.beyond_earth.common.particles.ModParticles;
 import com.st0x0ef.beyond_earth.common.particles.custom.*;
 import net.fabricmc.api.ClientModInitializer;
@@ -28,9 +32,11 @@ import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
+import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import com.st0x0ef.beyond_earth.BeyondEarth;
 import com.st0x0ef.beyond_earth.client.renderers.entities.globe.GlobeBlockRenderer;
@@ -47,6 +53,7 @@ public class BeyondEarthClient implements ClientModInitializer {
         registerBlocksWithCutout();
         registerEntityRenderers();
         registerParticles();
+        registerItemRenderers();
     }
 
 
@@ -82,6 +89,7 @@ public class BeyondEarthClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(AlienModel.LAYER_LOCATION, AlienModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(AlienZombieModel.LAYER_LOCATION, AlienZombieModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(FlagHeadModel.LAYER_LOCATION, FlagHeadModel::createHumanoidHeadLayer);
+        EntityModelLayerRegistry.registerModelLayer(RoverModel.LAYER_LOCATION, RoverModel::createBodyLayer);
 
         BlockEntityRendererRegistry.register(ModBlockEntities.FLAG_BLOCK_ENTITY, ctx -> new FlagHeadRenderer());
 
@@ -94,6 +102,11 @@ public class BeyondEarthClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.ALIEN, AlienRenderer::new);
         EntityRendererRegistry.register(ModEntities.ALIEN_ZOMBIE, AlienZombieRenderer::new);
         EntityRendererRegistry.register(ModEntities.ICE_SPIT_ENTITY, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.ROVER, RoverRenderer::new);
+    }
+
+    private void registerItemRenderers() {
+        BuiltinItemRendererRegistry.INSTANCE.register(ModItems.ROVER_ITEM, new RoverItemRenderer());
     }
 
 
