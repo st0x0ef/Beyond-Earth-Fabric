@@ -129,11 +129,17 @@ public class BeyondEarthClient implements ClientModInitializer {
                         new Identifier(BeyondEarth.MOD_ID, "block/fluid/oil_flow"),
                         new Identifier(BeyondEarth.MOD_ID, "block/fluid/oil_overlay")));
 
-        FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.OIL_STILL,
+        FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.HYDROGEN_STILL,
                 new SimpleFluidRenderHandler(
-                        new Identifier(BeyondEarth.MOD_ID, "block/fluid/oil_still"),
-                        new Identifier(BeyondEarth.MOD_ID, "block/fluid/oil_flow"),
-                        new Identifier(BeyondEarth.MOD_ID, "block/fluid/oil_overlay")));
+                        new Identifier(BeyondEarth.MOD_ID, "block/fluid/hydrogen_still"),
+                        new Identifier(BeyondEarth.MOD_ID, "block/fluid/hydrogen_flow"),
+                        new Identifier(BeyondEarth.MOD_ID, "block/fluid/hydrogen_overlay")));
+
+        FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.HYDROGEN_FLOWING,
+                new SimpleFluidRenderHandler(
+                        new Identifier(BeyondEarth.MOD_ID, "block/fluid/hydrogen_still"),
+                        new Identifier(BeyondEarth.MOD_ID, "block/fluid/hydrogen_flow"),
+                        new Identifier(BeyondEarth.MOD_ID, "block/fluid/hydrogen_overlay")));
 
     }
 

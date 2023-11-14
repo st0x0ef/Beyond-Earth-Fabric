@@ -127,6 +127,7 @@ public class ModModelGenerator extends FabricModelProvider {
         // FLUIDS
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.FUEL_BLOCK);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.OIL_BLOCK);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.HYDROGEN_BLOCK);
     }
 
     @Override
@@ -175,6 +176,7 @@ public class ModModelGenerator extends FabricModelProvider {
         itemModelGenerator.register(ModItems.BASIC_FUEL_UPGRADE, Models.GENERATED);
         itemModelGenerator.register(ModItems.HYDROGEN_MOTOR_UPGRADE, Models.GENERATED);
         itemModelGenerator.register(ModItems.URANIUM_MOTOR_UPGRADE, Models.GENERATED);
-
+        itemModelGenerator.register(ModItems.HYDROGEN_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SPACE_BALISE, Models.GENERATED);
     }
 }

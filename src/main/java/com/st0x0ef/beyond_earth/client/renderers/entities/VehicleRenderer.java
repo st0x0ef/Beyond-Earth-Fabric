@@ -81,14 +81,14 @@ public abstract class VehicleRenderer <T extends IVehicleEntity, M extends Entit
         p_115311_.translate(0.0D, -1.501F, 0.0D);
         float f8 = 0.0F;
         float f5 = 0.0F;
-        if (p_115308_ instanceof RoverEntity) {
+        /*if (p_115308_ instanceof RoverEntity) {
             f8 = MathHelper.lerp(p_115310_, ((RoverEntity) p_115308_).animationSpeedOld, ((RoverEntity) p_115308_).animationSpeed);
             f5 = ((RoverEntity) p_115308_).animationPosition - ((RoverEntity) p_115308_).animationSpeed * (1.0F - p_115310_);
 
             if (f8 > 1.0F) {
                 f8 = 1.0F;
             }
-        }
+        }*/
 
         this.model.animateModel(p_115308_, f5, f8, p_115310_);
         this.model.setAngles(p_115308_, f5, f8, f7, f2, f6);

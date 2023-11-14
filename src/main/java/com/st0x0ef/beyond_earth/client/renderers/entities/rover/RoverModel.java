@@ -144,6 +144,7 @@ public class RoverModel <T extends RoverEntity> extends EntityModel<T> {
     }
     @Override
     public void setAngles(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+        BeyondEarth.LOGGER.info("limbAngle: " + limbAngle + ", limbDistance: " + limbDistance + ", animationProgress: " + animationProgress + ", headYaw: " + headYaw + ", headPitch: " + headPitch);
         this.rover.yaw = headYaw / (180F / (float) Math.PI);
 
         this.rover.getChild("wheels").getChild("wheel1").pitch = limbDistance / (180F / (float) Math.PI);

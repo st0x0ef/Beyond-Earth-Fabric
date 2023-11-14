@@ -1,6 +1,5 @@
 package com.st0x0ef.beyond_earth.common.entity.custom.nonLivingEntities;
 
-import com.st0x0ef.beyond_earth.BeyondEarth;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.PowderSnowBlock;
 import net.minecraft.entity.Entity;
@@ -10,7 +9,6 @@ import net.minecraft.entity.MovementType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.tag.FluidTags;
-import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -26,6 +24,7 @@ public abstract class IVehicleEntity extends Entity {
     private double lerpZ;
     private double lerpYRot;
     private double lerpXRot;
+    private int field_7708;
 
     private float speed;
     private boolean discardFriction = false;
@@ -74,7 +73,7 @@ public abstract class IVehicleEntity extends Entity {
         super.tick();
 
         /** ROT Anim */
-        this.tickLerp();
+        this.updatePositionAndRotation();
         this.rotAnim();
 
         /** Movement Physic */
@@ -112,6 +111,20 @@ public abstract class IVehicleEntity extends Entity {
         }
     }
 
+    private void updatePositionAndRotation() {
+        if (this.isLogicalSideForUpdatingMovement()) {
+            this.field_7708 = 0;
+            this.updateTrackedPosition(this.getX(), this.getY(), this.getZ());
+        }
+
+        if (this.field_7708 > 0) {
+            double d = this.getX() + (this.lerpX - this.getX()) / (double)this.field_7708;
+            double e = this.getY() + (this.lerpY - this.getY()) / (double)this.field_7708;
+            double f = this.getZ() + (this.lerpZ - this.getZ()) / (double)this.field_7708;
+            this.setPosition(d, e, f);
+        }
+    }
+
     @Override
     public void updateTrackedPositionAndAngles(double x, double y, double z, float yaw, float pitch, int interpolationSteps, boolean interpolate) {
         this.lerpX = x;
@@ -120,9 +133,7 @@ public abstract class IVehicleEntity extends Entity {
         this.lerpYRot = yaw;
         this.lerpXRot = pitch;
         this.lerpSteps = interpolationSteps;
-        //this.updatePosition(x, y, z);
-        //this.updateTrackedPosition(x, y, z);
-        this.setBoundingBox(this.calculateBoundingBox());
+        this.field_7708 = 10;
     }
 
     @Override
@@ -130,24 +141,24 @@ public abstract class IVehicleEntity extends Entity {
         return this.getDimensions(EntityPose.STANDING).getBoxAt(getSyncedPos());
     }
 
-    private void tickLerp() {
+    /*private void tickLerp() {
         if (this.isLogicalSideForUpdatingMovement()) {
             this.lerpSteps = 0;
             this.updateTrackedPosition(this.getX(), this.getY(), this.getZ());
         }
 
         if (this.lerpSteps > 0) {
-            double d0 = this.getX() + (this.lerpX - this.getX()) / (double) this.lerpSteps;
-            double d2 = this.getY() + (this.lerpY - this.getY()) / (double) this.lerpSteps;
-            double d4 = this.getZ() + (this.lerpZ - this.getZ()) / (double) this.lerpSteps;
-            double d6 = MathHelper.wrapDegrees(this.lerpYRot - (double) this.getYaw());
-            this.setYaw(this.getYaw() + (float) d6 / (float) this.lerpSteps);
-            this.setPitch(this.getPitch() + (float) (this.lerpXRot - (double) this.getPitch()) / (float) this.lerpSteps);
+            double d0 = this.getX() + (this.lerpX - this.getX()) / (double)this.lerpSteps;
+            double d2 = this.getY() + (this.lerpY - this.getY()) / (double)this.lerpSteps;
+            double d4 = this.getZ() + (this.lerpZ - this.getZ()) / (double)this.lerpSteps;
+            double d6 = MathHelper.wrapDegrees(this.lerpYRot - (double)this.getYaw());
+            this.setYaw(this.getYaw() + (float)d6 / (float)this.lerpSteps);
+            this.setPitch(this.getPitch() + (float)(this.lerpXRot - (double)this.getPitch()) / (float)this.lerpSteps);
             --this.lerpSteps;
             this.setPos(d0, d2, d4);
             this.setRotation(this.getYaw(), this.getPitch());
         }
-    }
+    }*/
 
     /**
      * Movement Physic

@@ -180,6 +180,7 @@ public class ModBlocks {
      */
     public static final FluidBlock FUEL_BLOCK = (FluidBlock) registerBlockWithoutBlockItem("fuel", new FluidBlock(ModFluids.FUEL_STILL, FabricBlockSettings.of(Material.WATER).noCollision().nonOpaque().strength(100).dropsNothing()));
     public static final FluidBlock OIL_BLOCK = (FluidBlock) registerBlockWithoutBlockItem("oil", new FluidBlock(ModFluids.OIL_STILL, FabricBlockSettings.of(Material.WATER).noCollision().nonOpaque().strength(100).dropsNothing()));
+    public static final FluidBlock HYDROGEN_BLOCK = (FluidBlock) registerBlockWithoutBlockItem("hydrogen", new FluidBlock(ModFluids.HYDROGEN_STILL, FabricBlockSettings.of(Material.WATER).noCollision().nonOpaque().strength(100).dropsNothing()));
 
 
     private static Block registerBlock(String name, Block block) {

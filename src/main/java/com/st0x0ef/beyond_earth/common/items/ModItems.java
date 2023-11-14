@@ -57,6 +57,7 @@ public class ModItems {
     public static final Item DESH_TANK = registerItemGroupBasics("desh_tank", new Item(new FabricItemSettings()));
     public static final Item OSTRUM_TANK = registerItemGroupBasics("ostrum_tank", new Item(new FabricItemSettings()));
     public static final Item CALORITE_TANK = registerItemGroupBasics("calorite_tank", new Item(new FabricItemSettings()));
+    public static final Item SPACE_BALISE = registerItemGroupBasics("space_balise",  new SpaceBaliseItem(new FabricItemSettings().maxCount(1)));
 
     // INGOTS
     public static final Item STEEL_INGOT = registerItemGroupMaterials("steel_ingot", new Item(new FabricItemSettings()));
@@ -93,12 +94,15 @@ public class ModItems {
      */
     public static final ModifiedBucketItem FUEL_BUCKET = (ModifiedBucketItem) registerItemGroupNormal("fuel_bucket", new ModifiedBucketItem(ModFluids.FUEL_STILL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1), true));
     public static final ModifiedBucketItem OIL_BUCKET = (ModifiedBucketItem) registerItemGroupNormal("oil_bucket", new ModifiedBucketItem(ModFluids.OIL_STILL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1), false));
+    public static final ModifiedBucketItem HYDROGEN_BUCKET = (ModifiedBucketItem) registerItemGroupNormal("hydrogen_bucket", new ModifiedBucketItem(ModFluids.HYDROGEN_STILL, new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1), false));
+
 
     /**
      * URANIUM
      */
     public static final Item URANIUM_INGOT = registerItemGroupMaterials("uranium_ingot", new RadioactiveItem(new FabricItemSettings()));
     public static final Item RAW_URANIUM = registerItemGroupMaterials("raw_uranium", new RadioactiveItem(new FabricItemSettings()));
+
 
     /** ROCKET UPGRADE */
     public static final Item BASIC_FUEL_UPGRADE = registerItemGroupBasics("basic_fuel_upgrade", new RocketUpgradeItem(new FabricItemSettings(), 1, 0));

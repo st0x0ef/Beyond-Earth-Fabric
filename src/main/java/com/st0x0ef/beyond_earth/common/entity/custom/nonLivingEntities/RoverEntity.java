@@ -238,7 +238,7 @@ public class RoverEntity extends IVehicleEntity implements ImplementedInventory 
     public void rotateRover() {
         PlayerEntity player = this.getFirstPlayerPassenger();
 
-        if (player != null) {
+        if (player != null && player.getVehicle() instanceof RoverEntity) {
             try {
                 if ((KeyVariables.isHoldingRight(player) && KeyVariables.isHoldingLeft(player)) || player.getVehicle().getDataTracker().get(RoverEntity.FUEL) == 0 || player.getVehicle().isSubmergedIn(FluidTags.WATER)) {
                     return;
@@ -278,8 +278,8 @@ public class RoverEntity extends IVehicleEntity implements ImplementedInventory 
 
         if (!this.world.isClient) {
             if (player.isSneaking()) {
+                this.dataTracker.set(FUEL, 3000);
                 player.sendMessage(Text.of("fuel" + this.dataTracker.get(FUEL).toString()));
-                this.dataTracker.set(FUEL, 3500);
                 /*NetworkHooks.openScreen((ServerPlayerEntity) player, new MenuProvider() {
                     @Override
                     public Text getDisplayName() {
