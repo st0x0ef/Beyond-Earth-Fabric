@@ -32,11 +32,15 @@ import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
-import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.item.CompassAnglePredicateProvider;
+import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
-import net.minecraft.item.Item;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import com.st0x0ef.beyond_earth.BeyondEarth;
 import com.st0x0ef.beyond_earth.client.renderers.entities.globe.GlobeBlockRenderer;
@@ -44,6 +48,12 @@ import com.st0x0ef.beyond_earth.client.renderers.entities.globe.EarthGlobeItemRe
 import com.st0x0ef.beyond_earth.client.renderers.entities.globe.GlobeModel;
 import com.st0x0ef.beyond_earth.common.blocks.ModBlocks;
 import com.st0x0ef.beyond_earth.common.fluids.ModFluids;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.GlobalPos;
+import net.minecraft.world.World;
+import net.minecraft.world.dimension.DimensionOptions;
+import net.minecraft.world.dimension.DimensionType;
+import net.minecraft.world.dimension.DimensionTypes;
 
 public class BeyondEarthClient implements ClientModInitializer {
     @Override
@@ -54,6 +64,7 @@ public class BeyondEarthClient implements ClientModInitializer {
         registerEntityRenderers();
         registerParticles();
         registerItemRenderers();
+        registerPredicateProviders();
     }
 
 
@@ -149,5 +160,19 @@ public class BeyondEarthClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.SMALL_FLAME_PARTICLE, SmallFlameParticle.ParticleFactory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.SMALL_SMOKE_PARTICLE, SmallSmokeParticle.ParticleFactory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.VENUS_RAIN_PARTICLE, VenusRainParticle.ParticleFactory::new);
+    }
+
+    private void registerPredicateProviders() {
+        ModelPredicateProviderRegistry.register(ModItems.SPACE_BALISE, new Identifier("angle"), new CompassAnglePredicateProvider((world, stack, entity) -> {
+            if (stack.getOrCreateSubNbt("coords") != null && stack.getOrCreateSubNbt("coords").getBoolean("coordsSet")) {
+                NbtCompound coords = stack.getOrCreateSubNbt("coords");
+                return GlobalPos.create(getWorld(coords), new BlockPos(coords.getInt("x"), coords.getInt("y"), coords.getInt("z")));
+            }
+            return null;
+        }));
+    }
+
+    private RegistryKey<World> getWorld(NbtCompound compound) {
+        return RegistryKey.of(RegistryKey.ofRegistry(new Identifier(compound.getString("levelNamespace"), compound.getString("level"))), new Identifier(compound.getString("levelValueNamespace"), compound.getString("levelValuePath")));
     }
 }
