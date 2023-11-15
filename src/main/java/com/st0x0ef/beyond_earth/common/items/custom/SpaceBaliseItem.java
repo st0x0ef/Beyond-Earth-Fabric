@@ -73,7 +73,7 @@ public class SpaceBaliseItem extends Item {
                 player.sendMessage(Text.translatable("message.beyond_earth.space_balise.no_launch_pad", coords.getInt("x"), coords.getInt("y"), coords.getInt("z"), coords.getString("level")));
                 coords.putBoolean("coordsSet", false);
             } else {
-                player.sendMessage(Text.translatable("message.beyond_earth.space_balise.launch_pad_coordinates", coords.getInt("x"), coords.getInt("y"), coords.getInt("z"), coords.get("levelValuePath")));
+                player.sendMessage(Text.translatable("message.beyond_earth.space_balise.launch_pad_coordinates", coords.getInt("x"), coords.getInt("y"), coords.getInt("z"), coords.getString("levelValuePath")));
             }
 
             player.getItemCooldownManager().set(stack.getItem(), 20);
@@ -88,7 +88,7 @@ public class SpaceBaliseItem extends Item {
             tooltip.add(Text.translatable("message.beyond_earth.space_balise.right_click"));
         } else {
             if (coords.getBoolean("coordsSet")) {
-                tooltip.add(Text.translatable("message.beyond_earth.space_balise.launch_pad_coordinates", coords.getInt("x"), coords.getInt("y"), coords.getInt("z"), coords.get("levelValuePath")));
+                tooltip.add(Text.translatable("message.beyond_earth.space_balise.launch_pad_coordinates", coords.getInt("x"), coords.getInt("y"), coords.getInt("z"), coords.getString("levelValuePath")));
             } else {
                 tooltip.add(Text.translatable("message.beyond_earth.space_balise.right_click"));
             }
