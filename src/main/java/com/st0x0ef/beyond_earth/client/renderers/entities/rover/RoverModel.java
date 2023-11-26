@@ -10,6 +10,7 @@ import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
+import org.joml.Vector3f;
 
 @Environment(EnvType.CLIENT)
 public class RoverModel <T extends RoverEntity> extends EntityModel<T> {
@@ -144,7 +145,7 @@ public class RoverModel <T extends RoverEntity> extends EntityModel<T> {
     }
     @Override
     public void setAngles(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-        BeyondEarth.LOGGER.info("limbAngle: " + limbAngle + ", limbDistance: " + limbDistance + ", animationProgress: " + animationProgress + ", headYaw: " + headYaw + ", headPitch: " + headPitch);
+        //BeyondEarth.LOGGER.info("entityYaw:" + entity.getYaw() + ", entityprevYaw:" + entity.prevYaw + ", roverYaw:" + rover.yaw/*", limbAngle: " + limbAngle + ", limbDistance: " + limbDistance + ", animationProgress: " + animationProgress + ", headYaw: " + headYaw + ", headPitch: " + headPitch*/);
         this.rover.yaw = headYaw / (180F / (float) Math.PI);
 
         this.rover.getChild("wheels").getChild("wheel1").pitch = limbDistance / (180F / (float) Math.PI);
@@ -158,6 +159,7 @@ public class RoverModel <T extends RoverEntity> extends EntityModel<T> {
             this.rover.getChild("wheels").getChild("wheel3").pitch = limbAngle / 4;
             this.rover.getChild("wheels").getChild("wheel4").pitch = limbAngle / 4;
         }
+
         if (!entity.getforward()) {
             this.rover.getChild("wheels").getChild("wheel1").pitch = limbAngle / 4;
             this.rover.getChild("wheels").getChild("wheel2").pitch = limbAngle / 4;

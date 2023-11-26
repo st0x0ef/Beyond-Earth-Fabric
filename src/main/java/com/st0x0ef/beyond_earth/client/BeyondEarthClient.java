@@ -1,5 +1,6 @@
 package com.st0x0ef.beyond_earth.client;
 
+import com.st0x0ef.beyond_earth.client.events.ClientKeyEvents;
 import com.st0x0ef.beyond_earth.client.renderers.entities.alien.AlienModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.alien.AlienRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.alienZombie.AlienZombieModel;
@@ -21,6 +22,7 @@ import com.st0x0ef.beyond_earth.client.renderers.entities.starCrawler.StarCrawle
 import com.st0x0ef.beyond_earth.common.blocks.entities.ModBlockEntities;
 import com.st0x0ef.beyond_earth.common.entity.ModEntities;
 import com.st0x0ef.beyond_earth.common.items.ModItems;
+import com.st0x0ef.beyond_earth.common.networking.ModPackets;
 import com.st0x0ef.beyond_earth.common.particles.ModParticles;
 import com.st0x0ef.beyond_earth.common.particles.custom.*;
 import net.fabricmc.api.ClientModInitializer;
@@ -38,9 +40,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import com.st0x0ef.beyond_earth.BeyondEarth;
 import com.st0x0ef.beyond_earth.client.renderers.entities.globe.GlobeBlockRenderer;
@@ -51,9 +51,6 @@ import com.st0x0ef.beyond_earth.common.fluids.ModFluids;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.GlobalPos;
 import net.minecraft.world.World;
-import net.minecraft.world.dimension.DimensionOptions;
-import net.minecraft.world.dimension.DimensionType;
-import net.minecraft.world.dimension.DimensionTypes;
 
 public class BeyondEarthClient implements ClientModInitializer {
     @Override
@@ -65,8 +62,14 @@ public class BeyondEarthClient implements ClientModInitializer {
         registerParticles();
         registerItemRenderers();
         registerPredicateProviders();
+        registerEvents();
+        ModPackets.registerS2CPackets();
     }
 
+
+    private void registerEvents() {
+        ClientKeyEvents.tick();
+    }
 
 
     private void registerBlocksWithCutout(){
@@ -90,6 +93,8 @@ public class BeyondEarthClient implements ClientModInitializer {
         BuiltinItemRendererRegistry.INSTANCE.register(ModBlocks.VENUS_GLOBE_BLOCK, new EarthGlobeItemRenderer());
         BuiltinItemRendererRegistry.INSTANCE.register(ModBlocks.GLACIO_GLOBE_BLOCK, new EarthGlobeItemRenderer());
     }
+
+
 
 
     private void registerEntityRenderers() {
@@ -116,9 +121,14 @@ public class BeyondEarthClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.ROVER, RoverRenderer::new);
     }
 
+
+
+
     private void registerItemRenderers() {
         BuiltinItemRendererRegistry.INSTANCE.register(ModItems.ROVER_ITEM, new RoverItemRenderer());
     }
+
+
 
 
     private void registerFluids() {
@@ -151,8 +161,10 @@ public class BeyondEarthClient implements ClientModInitializer {
                         new Identifier(BeyondEarth.MOD_ID, "block/fluid/hydrogen_still"),
                         new Identifier(BeyondEarth.MOD_ID, "block/fluid/hydrogen_flow"),
                         new Identifier(BeyondEarth.MOD_ID, "block/fluid/hydrogen_overlay")));
-
     }
+
+
+
 
     private void registerParticles() {
         ParticleFactoryRegistry.getInstance().register(ModParticles.LARGE_FLAME_PARTICLE, LargeFlameParticle.ParticleFactory::new);
@@ -161,6 +173,10 @@ public class BeyondEarthClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.SMALL_SMOKE_PARTICLE, SmallSmokeParticle.ParticleFactory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.VENUS_RAIN_PARTICLE, VenusRainParticle.ParticleFactory::new);
     }
+
+
+
+
 
     private void registerPredicateProviders() {
         ModelPredicateProviderRegistry.register(ModItems.SPACE_BALISE, new Identifier("angle"), new CompassAnglePredicateProvider((world, stack, entity) -> {

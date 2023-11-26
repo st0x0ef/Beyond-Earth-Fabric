@@ -249,13 +249,13 @@ public class RoverEntity extends IVehicleEntity implements ImplementedInventory 
                         Methods.setEntityRotation(this, 1);
                     }
                 } else {
-                    if (KeyVariables.isHoldingRight(player)) {
+                    if (KeyVariables.isHoldingLeft(player)) {
                         Methods.setEntityRotation(this, -1);
                     }
                 }
 
-                if (this.getforward()) {
-                    if (KeyVariables.isHoldingLeft(player)) {
+                if (!this.getforward()) {
+                    if (KeyVariables.isHoldingRight(player)) {
                         Methods.setEntityRotation(this, -1);
                     }
                 } else {

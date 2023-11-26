@@ -79,7 +79,7 @@ public class AlienZombieEntity extends HostileEntity implements RangedAttackMob 
     private IceSpitEntity getIceSpitEntity(LivingEntity target, ServerWorld serverWorld) {
         IceSpitEntity iceSpitEntity = new IceSpitEntity(ModEntities.ICE_SPIT_ENTITY, serverWorld);
 
-        double d0 = target.getY() - this.getY() + target.getStandingEyeHeight()*2 - this.getStandingEyeHeight();
+        double d0 = target.getY() - this.getY() + target.getStandingEyeHeight() * 2 - this.getStandingEyeHeight();
         double d1 = target.getX() - this.getX();
         double d3 = target.getZ() - this.getZ();
 

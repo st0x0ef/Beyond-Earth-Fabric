@@ -1,6 +1,7 @@
 package com.st0x0ef.beyond_earth.client.renderers.entities;
 
 import com.google.common.collect.Lists;
+import com.st0x0ef.beyond_earth.BeyondEarth;
 import com.st0x0ef.beyond_earth.common.entity.custom.nonLivingEntities.IVehicleEntity;
 import com.st0x0ef.beyond_earth.common.entity.custom.nonLivingEntities.RoverEntity;
 import net.fabricmc.api.EnvType;
@@ -44,15 +45,18 @@ public abstract class VehicleRenderer <T extends IVehicleEntity, M extends Entit
         return this.model;
     }
 
-    public void render(T p_115308_, float p_115309_, float p_115310_, MatrixStack p_115311_, VertexConsumerProvider p_115312_, int p_115313_) {
+    @Override
+    public void render(T entity, float p_115309_, float p_115310_, MatrixStack p_115311_, VertexConsumerProvider p_115312_, int p_115313_) {
         p_115311_.push();
 
-        boolean shouldSit = p_115308_.hasVehicle() && (p_115308_.getVehicle() != null && p_115308_.getVehicle().hasPlayerRider());
+        boolean shouldSit = entity.hasVehicle() && (entity.getVehicle() != null && entity.getVehicle().hasPlayerRider());
         this.model.riding = shouldSit;
-        float f = MathHelper.lerpAngleDegrees(p_115310_, p_115308_.prevYaw, p_115308_.getYaw());
-        float f1 = MathHelper.lerpAngleDegrees(p_115310_, p_115308_.prevYaw, p_115308_.getYaw());
+        float f = MathHelper.lerpAngleDegrees(p_115310_, entity.prevYaw, entity.getYaw());
+        float f1 = MathHelper.lerpAngleDegrees(p_115310_, entity.prevYaw, entity.getYaw());
         float f2 = f1 - f;
-        if (shouldSit && p_115308_.getVehicle() instanceof LivingEntity livingentity) {
+
+
+        if (shouldSit && entity.getVehicle() instanceof LivingEntity livingentity) {
             f = MathHelper.lerpAngleDegrees(p_115310_, livingentity.prevBodyYaw, livingentity.getBodyYaw());
             f2 = f1 - f;
             float f3 = MathHelper.wrapDegrees(f2);
@@ -72,46 +76,47 @@ public abstract class VehicleRenderer <T extends IVehicleEntity, M extends Entit
             f2 = f1 - f;
         }
 
-        float f6 = MathHelper.lerp(p_115310_, p_115308_.prevYaw, p_115308_.getPitch());
+        float f6 = MathHelper.lerp(p_115310_, entity.prevYaw, entity.getPitch());
 
-        float f7 = this.getBob(p_115308_, p_115310_);
-        this.setupRotations(p_115308_, p_115311_, f7, f, p_115310_);
+        float f7 = this.getBob(entity, p_115310_);
+        this.setupRotations(entity, p_115311_, f7, f, p_115310_);
         p_115311_.scale(-1.0F, -1.0F, 1.0F);
-        this.scale(p_115308_, p_115311_, p_115310_);
+        this.scale(entity, p_115311_, p_115310_);
         p_115311_.translate(0.0D, -1.501F, 0.0D);
         float f8 = 0.0F;
         float f5 = 0.0F;
-        /*if (p_115308_ instanceof RoverEntity) {
-            f8 = MathHelper.lerp(p_115310_, ((RoverEntity) p_115308_).animationSpeedOld, ((RoverEntity) p_115308_).animationSpeed);
-            f5 = ((RoverEntity) p_115308_).animationPosition - ((RoverEntity) p_115308_).animationSpeed * (1.0F - p_115310_);
+        if (entity instanceof RoverEntity) {
+            f8 = MathHelper.lerp(p_115310_, ((RoverEntity) entity).animationSpeedOld, ((RoverEntity) entity).animationSpeed);
+            f5 = ((RoverEntity) entity).animationPosition - ((RoverEntity) entity).animationSpeed * (1.0F - p_115310_);
 
             if (f8 > 1.0F) {
                 f8 = 1.0F;
             }
-        }*/
+        }
 
-        this.model.animateModel(p_115308_, f5, f8, p_115310_);
-        this.model.setAngles(p_115308_, f5, f8, f7, f2, f6);
+        this.model.animateModel(entity, f5, f8, p_115310_);
+        this.model.setAngles(entity, f5, f8, f7, f2, f6);
         MinecraftClient minecraft = MinecraftClient.getInstance();
-        boolean flag = this.isBodyVisible(p_115308_);
-        boolean flag1 = !flag && !p_115308_.isInvisibleTo(minecraft.player);
-        boolean flag2 = minecraft.hasOutline(p_115308_);
-        RenderLayer rendertype = this.getRenderType(p_115308_, flag, flag1, flag2);
+        boolean flag = this.isBodyVisible(entity);
+        boolean flag1 = !flag && !entity.isInvisibleTo(minecraft.player);
+        boolean flag2 = minecraft.hasOutline(entity);
+        RenderLayer rendertype = this.getRenderType(entity, flag, flag1, flag2);
         if (rendertype != null) {
             VertexConsumer vertexconsumer = p_115312_.getBuffer(rendertype);
-            int i = getOverlayCoords(p_115308_, this.getWhiteOverlayProgress(p_115308_, p_115310_));
+            int i = getOverlayCoords(entity, this.getWhiteOverlayProgress(entity, p_115310_));
             this.model.render(p_115311_, vertexconsumer, p_115313_, i, 1.0F, 1.0F, 1.0F, flag1 ? 0.15F : 1.0F);
         }
 
-        if (!p_115308_.isSpectator()) {
+        if (!entity.isSpectator()) {
             for(FeatureRenderer<T, M> renderlayer : this.layers) {
-                renderlayer.render(p_115311_, p_115312_, p_115313_, p_115308_, f5, f8, p_115310_, f7, f2, f6);
+                renderlayer.render(p_115311_, p_115312_, p_115313_, entity, f5, f8, p_115310_, f7, f2, f6);
             }
         }
 
         p_115311_.pop();
-        super.render(p_115308_, p_115309_, p_115310_, p_115311_, p_115312_, p_115313_);
+        super.render(entity, p_115309_, p_115310_, p_115311_, p_115312_, p_115313_);
     }
+
 
     public RenderLayer getRenderType(T entity, boolean p_115323_, boolean p_115324_, boolean p_115325_) {
         Identifier resourcelocation = getTexture(entity);
