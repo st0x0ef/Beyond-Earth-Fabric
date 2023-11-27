@@ -1,9 +1,8 @@
 package com.st0x0ef.beyond_earth.client.renderers.entities;
 
 import com.google.common.collect.Lists;
-import com.st0x0ef.beyond_earth.BeyondEarth;
-import com.st0x0ef.beyond_earth.common.entity.custom.nonLivingEntities.IVehicleEntity;
-import com.st0x0ef.beyond_earth.common.entity.custom.nonLivingEntities.RoverEntity;
+import com.st0x0ef.beyond_earth.common.entity.custom.vehicles.IVehicleEntity;
+import com.st0x0ef.beyond_earth.common.entity.custom.vehicles.RoverEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -46,8 +45,8 @@ public abstract class VehicleRenderer <T extends IVehicleEntity, M extends Entit
     }
 
     @Override
-    public void render(T entity, float p_115309_, float p_115310_, MatrixStack p_115311_, VertexConsumerProvider p_115312_, int p_115313_) {
-        p_115311_.push();
+    public void render(T entity, float p_115309_, float p_115310_, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int p_115313_) {
+        matrices.push();
 
         boolean shouldSit = entity.hasVehicle() && (entity.getVehicle() != null && entity.getVehicle().hasPlayerRider());
         this.model.riding = shouldSit;
@@ -79,10 +78,10 @@ public abstract class VehicleRenderer <T extends IVehicleEntity, M extends Entit
         float f6 = MathHelper.lerp(p_115310_, entity.prevYaw, entity.getPitch());
 
         float f7 = this.getBob(entity, p_115310_);
-        this.setupRotations(entity, p_115311_, f7, f, p_115310_);
-        p_115311_.scale(-1.0F, -1.0F, 1.0F);
-        this.scale(entity, p_115311_, p_115310_);
-        p_115311_.translate(0.0D, -1.501F, 0.0D);
+        this.setupRotations(entity, matrices, f7, (float) f1, p_115310_);
+        matrices.scale(-1.0F, -1.0F, 1.0F);
+        this.scale(entity, matrices, p_115310_);
+        matrices.translate(0.0D, -1.501F, 0.0D);
         float f8 = 0.0F;
         float f5 = 0.0F;
         if (entity instanceof RoverEntity) {
@@ -102,19 +101,19 @@ public abstract class VehicleRenderer <T extends IVehicleEntity, M extends Entit
         boolean flag2 = minecraft.hasOutline(entity);
         RenderLayer rendertype = this.getRenderType(entity, flag, flag1, flag2);
         if (rendertype != null) {
-            VertexConsumer vertexconsumer = p_115312_.getBuffer(rendertype);
+            VertexConsumer vertexconsumer = vertexConsumers.getBuffer(rendertype);
             int i = getOverlayCoords(entity, this.getWhiteOverlayProgress(entity, p_115310_));
-            this.model.render(p_115311_, vertexconsumer, p_115313_, i, 1.0F, 1.0F, 1.0F, flag1 ? 0.15F : 1.0F);
+            this.model.render(matrices, vertexconsumer, p_115313_, i, 1.0F, 1.0F, 1.0F, flag1 ? 0.15F : 1.0F);
         }
 
         if (!entity.isSpectator()) {
             for(FeatureRenderer<T, M> renderlayer : this.layers) {
-                renderlayer.render(p_115311_, p_115312_, p_115313_, entity, f5, f8, p_115310_, f7, f2, f6);
+                renderlayer.render(matrices, vertexConsumers, p_115313_, entity, f5, f8, p_115310_, f7, f2, f6);
             }
         }
 
-        p_115311_.pop();
-        super.render(entity, p_115309_, p_115310_, p_115311_, p_115312_, p_115313_);
+        matrices.pop();
+        super.render(entity, p_115309_, p_115310_, matrices, vertexConsumers, p_115313_);
     }
 
 
@@ -146,16 +145,17 @@ public abstract class VehicleRenderer <T extends IVehicleEntity, M extends Entit
         return 0.0F;
     }
 
-    protected void setupRotations(T p_115317_, MatrixStack p_115318_, float p_115319_, float p_115320_, float p_115321_) {
-        if (this.isShaking(p_115317_)) {
+    protected void setupRotations(T entity, MatrixStack matrixStack, float f, float f1, float f2) {
+        if (this.isShaking(entity)) {
             if (!MinecraftClient.getInstance().isPaused()) {
-                double shakeDirection1 = (p_115321_ * (p_115317_.world.random.nextBoolean() ? 1 : -1)) / 50;
-                double shakeDirection2 = (p_115321_ * (p_115317_.world.random.nextBoolean() ? 1 : -1)) / 50;
-                double shakeDirection3 = (p_115321_ * (p_115317_.world.random.nextBoolean() ? 1 : -1)) / 50;
-                p_115318_.translate(shakeDirection1, shakeDirection2, shakeDirection3);
+                double shakeDirection1 = (f2 * (entity.world.random.nextBoolean() ? 1 : -1)) / 50;
+                double shakeDirection2 = (f2 * (entity.world.random.nextBoolean() ? 1 : -1)) / 50;
+                double shakeDirection3 = (f2 * (entity.world.random.nextBoolean() ? 1 : -1)) / 50;
+                matrixStack.translate(shakeDirection1, shakeDirection2, shakeDirection3);
             }
         }
-        p_115318_.multiply(RotationAxis.POSITIVE_Y.rotation(180.0F - p_115320_));
+
+        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(180 - f1));
     }
 
     protected float getBob(T p_115305_, float p_115306_) {

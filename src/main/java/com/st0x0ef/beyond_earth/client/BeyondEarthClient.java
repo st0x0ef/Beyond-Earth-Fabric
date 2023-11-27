@@ -69,6 +69,7 @@ public class BeyondEarthClient implements ClientModInitializer {
 
     private void registerEvents() {
         ClientKeyEvents.tick();
+        ClientKeyEvents.onDisconnect();
     }
 
 

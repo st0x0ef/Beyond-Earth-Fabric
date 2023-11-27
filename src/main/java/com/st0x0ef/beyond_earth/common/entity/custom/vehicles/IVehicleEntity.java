@@ -1,4 +1,4 @@
-package com.st0x0ef.beyond_earth.common.entity.custom.nonLivingEntities;
+package com.st0x0ef.beyond_earth.common.entity.custom.vehicles;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.block.PowderSnowBlock;
@@ -13,7 +13,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 

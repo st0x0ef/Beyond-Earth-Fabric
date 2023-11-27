@@ -1,6 +1,5 @@
 package com.st0x0ef.beyond_earth.common.keybinds;
 
-import com.st0x0ef.beyond_earth.BeyondEarth;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
@@ -34,7 +33,6 @@ public class KeyHandler {
 
     public static void handle(MinecraftServer server, ServerPlayerEntity player, ServerPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
         KeyHandler message = decode(buf);
-        BeyondEarth.LOGGER.info(message.key);
 
         switch (message.key) {
             case "key_up" -> KeyVariables.KEY_UP.put(player.getUuid(), message.condition);

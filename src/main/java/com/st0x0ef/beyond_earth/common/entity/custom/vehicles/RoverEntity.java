@@ -1,4 +1,4 @@
-package com.st0x0ef.beyond_earth.common.entity.custom.nonLivingEntities;
+package com.st0x0ef.beyond_earth.common.entity.custom.vehicles;
 
 import com.google.common.collect.Sets;
 import com.st0x0ef.beyond_earth.BeyondEarth;
@@ -79,7 +79,8 @@ public class RoverEntity extends IVehicleEntity implements ImplementedInventory 
     }
 
     @Override
-    public void pushAwayFrom(Entity entity) {}
+    public void pushAwayFrom(Entity entity) {
+    }
 
     @Deprecated
     public boolean canBeRiddenInWater() {
@@ -247,19 +248,13 @@ public class RoverEntity extends IVehicleEntity implements ImplementedInventory 
                 if (this.getforward()) {
                     if (KeyVariables.isHoldingRight(player)) {
                         Methods.setEntityRotation(this, 1);
-                    }
-                } else {
-                    if (KeyVariables.isHoldingLeft(player)) {
+                    } else if (KeyVariables.isHoldingLeft(player)) {
                         Methods.setEntityRotation(this, -1);
                     }
-                }
-
-                if (!this.getforward()) {
+                } else {
                     if (KeyVariables.isHoldingRight(player)) {
                         Methods.setEntityRotation(this, -1);
-                    }
-                } else {
-                    if (KeyVariables.isHoldingLeft(player)) {
+                    } else if (KeyVariables.isHoldingLeft(player)) {
                         Methods.setEntityRotation(this, 1);
                     }
                 }
@@ -267,6 +262,7 @@ public class RoverEntity extends IVehicleEntity implements ImplementedInventory 
                 throw new NullPointerException();
             }
         }
+
     }
 
     @Override

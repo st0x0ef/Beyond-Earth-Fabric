@@ -1,7 +1,7 @@
 package com.st0x0ef.beyond_earth.common.items.custom;
 
 import com.st0x0ef.beyond_earth.common.entity.ModEntities;
-import com.st0x0ef.beyond_earth.common.entity.custom.nonLivingEntities.RoverEntity;
+import com.st0x0ef.beyond_earth.common.entity.custom.vehicles.RoverEntity;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;

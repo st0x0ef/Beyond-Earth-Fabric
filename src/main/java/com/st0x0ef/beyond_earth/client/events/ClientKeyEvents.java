@@ -4,6 +4,7 @@ import com.st0x0ef.beyond_earth.common.keybinds.KeyHandler;
 import com.st0x0ef.beyond_earth.common.keybinds.KeyVariables;
 import com.st0x0ef.beyond_earth.common.networking.ModPackets;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
@@ -19,7 +20,6 @@ public class ClientKeyEvents {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
             MinecraftClient mc = MinecraftClient.getInstance();
             PlayerEntity player = mc.player;
-
 
             if (mc.options.forwardKey.isPressed() || mc.options.forwardKey.wasPressed()) {
                 /** UP */
@@ -53,6 +53,19 @@ public class ClientKeyEvents {
         });
     }
 
+    public static void onDisconnect() {
+        ClientPlayConnectionEvents.DISCONNECT.register((handler, client) -> {
+            UUID player = client.player.getUuid();
+            if (player != null) {
+                KeyVariables.KEY_DOWN.remove(player);
+                KeyVariables.KEY_UP.remove(player);
+                KeyVariables.KEY_LEFT.remove(player);
+                KeyVariables.KEY_RIGHT.remove(player);
+                KeyVariables.KEY_JUMP.remove(player);
+            }
+        });
+    }
+
     /**
      * Send to server and client side!
      * Save key press in KeyVariables
@@ -61,8 +74,6 @@ public class ClientKeyEvents {
         if (player == null) {
             return;
         }
-        //true - false
-
 
         if (!isPressed && key.isPressed()) {
             variableKey.put(player.getUuid(), true);

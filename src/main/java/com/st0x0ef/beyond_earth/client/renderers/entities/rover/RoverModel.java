@@ -1,16 +1,18 @@
 package com.st0x0ef.beyond_earth.client.renderers.entities.rover;
 
 import com.st0x0ef.beyond_earth.BeyondEarth;
-import com.st0x0ef.beyond_earth.common.entity.custom.nonLivingEntities.RoverEntity;
+import com.st0x0ef.beyond_earth.common.entity.custom.vehicles.RoverEntity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.client.util.SmoothUtil;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import org.joml.Vector3f;
+import net.minecraft.util.Util;
+import net.minecraft.util.math.MathHelper;
 
 @Environment(EnvType.CLIENT)
 public class RoverModel <T extends RoverEntity> extends EntityModel<T> {
@@ -146,7 +148,7 @@ public class RoverModel <T extends RoverEntity> extends EntityModel<T> {
     @Override
     public void setAngles(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
         //BeyondEarth.LOGGER.info("entityYaw:" + entity.getYaw() + ", entityprevYaw:" + entity.prevYaw + ", roverYaw:" + rover.yaw/*", limbAngle: " + limbAngle + ", limbDistance: " + limbDistance + ", animationProgress: " + animationProgress + ", headYaw: " + headYaw + ", headPitch: " + headPitch*/);
-        this.rover.yaw = headYaw / (180F / (float) Math.PI);
+        //this.rover.yaw = (float) Math.toRadians(headYaw);
 
         this.rover.getChild("wheels").getChild("wheel1").pitch = limbDistance / (180F / (float) Math.PI);
         this.rover.getChild("wheels").getChild("wheel2").pitch = limbDistance / (180F / (float) Math.PI);

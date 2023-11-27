@@ -2,7 +2,7 @@ package com.st0x0ef.beyond_earth.client.renderers.entities.rover;
 
 import com.st0x0ef.beyond_earth.BeyondEarth;
 import com.st0x0ef.beyond_earth.client.renderers.entities.VehicleRenderer;
-import com.st0x0ef.beyond_earth.common.entity.custom.nonLivingEntities.RoverEntity;
+import com.st0x0ef.beyond_earth.common.entity.custom.vehicles.RoverEntity;
 import net.minecraft.client.render.Frustum;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.util.Identifier;
