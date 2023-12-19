@@ -1,6 +1,8 @@
 package com.st0x0ef.beyond_earth.client;
 
 import com.st0x0ef.beyond_earth.client.events.ClientKeyEvents;
+import com.st0x0ef.beyond_earth.client.renderers.armor.SpaceSuitRenderer;
+import com.st0x0ef.beyond_earth.client.renderers.armor.models.SpaceSuitModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.alien.AlienModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.alien.AlienRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.alienZombie.AlienZombieModel;
@@ -30,14 +32,16 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
-import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.BuiltinItemRendererRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.*;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.item.CompassAnglePredicateProvider;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
+import net.minecraft.client.model.Dilation;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryKey;
@@ -63,6 +67,7 @@ public class BeyondEarthClient implements ClientModInitializer {
         registerItemRenderers();
         registerPredicateProviders();
         registerEvents();
+        registerArmorRenderers();
         ModPackets.registerS2CPackets();
     }
 
@@ -123,13 +128,16 @@ public class BeyondEarthClient implements ClientModInitializer {
     }
 
 
+    private void registerArmorRenderers() {
+        EntityModelLayerRegistry.registerModelLayer(SpaceSuitModel.LAYER_LOCATION, SpaceSuitModel::getTexturedModelData);
+
+        ArmorRenderer.register(new SpaceSuitRenderer(), ModItems.SPACE_HELMET, ModItems.SPACE_SUIT, ModItems.SPACE_PANTS, ModItems.SPACE_BOOTS);
+    }
 
 
     private void registerItemRenderers() {
         BuiltinItemRendererRegistry.INSTANCE.register(ModItems.ROVER_ITEM, new RoverItemRenderer());
     }
-
-
 
 
     private void registerFluids() {

@@ -1,4 +1,4 @@
-// 1.19.4	2023-11-14T19:43:20.9252773	Beyond Earth/Block Loot Tables
+// 1.19.4	2023-12-19T16:28:58.9279349	Beyond Earth/Block Loot Tables
 1a936bf60dfdb1e6c4bbedd9e84016baa6360250 data\beyond_earth\loot_tables\blocks\rocket_launch_pad.json
 1f8768229337af6789ef86ba15a1020cc99a81f8 data\beyond_earth\loot_tables\blocks\cracked_venus_stone_bricks.json
 bf8f9aa7c6f0f0c74eb8abe2f9dc778f810f8681 data\beyond_earth\loot_tables\blocks\barricade_block.json
@@ -23,8 +23,8 @@ a1abf19b4ec49612cb2d5738ee6c0fa22c5001b0 data\beyond_earth\loot_tables\blocks\gl
 a0c118460ebc5ea2b0fa62f59a42a39678e8df86 data\beyond_earth\loot_tables\blocks\venus_sandstone.json
 b2bde8f3b320646bf2876bc24f884a1f7d29fceb data\beyond_earth\loot_tables\blocks\venus_globe.json
 6f29becfc3f32a06f7de9689db010372f74df8a5 data\beyond_earth\loot_tables\blocks\mercury_stone.json
-4b3c9ab9acc0bb905cc78868a002498f2e6978b3 data\beyond_earth\loot_tables\blocks\glacio_pressure_plate.json
 dc64fdd046fbbceb5048d90d0fedc1f05c578476 data\beyond_earth\loot_tables\blocks\glacio_copper_ore.json
+4b3c9ab9acc0bb905cc78868a002498f2e6978b3 data\beyond_earth\loot_tables\blocks\glacio_pressure_plate.json
 6f98fa81f90aa018dcdabb3fbb9cd3c868d7a729 data\beyond_earth\loot_tables\blocks\venus_sandstone_bricks.json
 724ddeadf1021341d9fb74b9f28a5ccdf6f15fad data\beyond_earth\loot_tables\blocks\glacio_globe.json
 ca9e810620f1410fd677654d7a7d20ef6afaeb33 data\beyond_earth\loot_tables\blocks\moon_stone_bricks.json

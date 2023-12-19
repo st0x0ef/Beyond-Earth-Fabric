@@ -275,7 +275,7 @@ public class RoverEntity extends IVehicleEntity implements ImplementedInventory 
         if (!this.world.isClient) {
             if (player.isSneaking()) {
                 this.dataTracker.set(FUEL, 3000);
-                player.sendMessage(Text.of("fuel" + this.dataTracker.get(FUEL).toString()));
+                player.sendMessage(Text.of("Fuel set to " + this.dataTracker.get(FUEL).toString()));
                 /*NetworkHooks.openScreen((ServerPlayerEntity) player, new MenuProvider() {
                     @Override
                     public Text getDisplayName() {

@@ -1,21 +1,17 @@
 package com.st0x0ef.beyond_earth.common.armor;
 
-import com.google.common.collect.Maps;
 import com.st0x0ef.beyond_earth.BeyondEarth;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
 import java.util.List;
 
 public abstract class ISpaceArmor extends ArmorItem {
-    private static final HashMap<String, Identifier> TEXTURES = Maps.newHashMap();
     public static final String FUEL_TAG = BeyondEarth.MOD_ID + ":fuel";
 
     public ISpaceArmor(ArmorMaterial material, Type type, Settings settings) {
@@ -23,8 +19,8 @@ public abstract class ISpaceArmor extends ArmorItem {
     }
 
     public static abstract class Helmet extends ISpaceArmor {
-        public Helmet(ArmorMaterial armorMaterial, Type equipmentSlot, Settings properties) {
-            super(armorMaterial, equipmentSlot, properties);
+        public Helmet(ArmorMaterial armorMaterial, Settings properties) {
+            super(armorMaterial, Type.HELMET, properties);
         }
 
         @Override
@@ -36,8 +32,8 @@ public abstract class ISpaceArmor extends ArmorItem {
     }
 
     public static abstract class Chestplate extends ISpaceArmor {
-        public Chestplate(ArmorMaterial armorMaterial, Type equipmentSlot, Settings properties) {
-            super(armorMaterial, equipmentSlot, properties);
+        public Chestplate(ArmorMaterial armorMaterial, Settings properties) {
+            super(armorMaterial, Type.CHESTPLATE, properties);
         }
 
 
@@ -62,8 +58,8 @@ public abstract class ISpaceArmor extends ArmorItem {
     }
 
     public static abstract class Leggings extends ISpaceArmor {
-        public Leggings(ArmorMaterial armorMaterial, Type equipmentSlot, Settings properties) {
-            super(armorMaterial, equipmentSlot, properties);
+        public Leggings(ArmorMaterial armorMaterial, Settings properties) {
+            super(armorMaterial, Type.LEGGINGS, properties);
         }
 
         @Override
@@ -83,8 +79,8 @@ public abstract class ISpaceArmor extends ArmorItem {
     }
 
     public static abstract class Boots extends ISpaceArmor {
-        public Boots(ArmorMaterial armorMaterial, Type equipmentSlot, Settings properties) {
-            super(armorMaterial, equipmentSlot, properties);
+        public Boots(ArmorMaterial armorMaterial, Settings properties) {
+            super(armorMaterial, Type.BOOTS, properties);
         }
     }
 

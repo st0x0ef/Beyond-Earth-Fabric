@@ -1,5 +1,7 @@
 package com.st0x0ef.beyond_earth.common.items;
 
+import com.st0x0ef.beyond_earth.common.armor.ModArmorMaterials;
+import com.st0x0ef.beyond_earth.common.armor.SpaceSuit;
 import com.st0x0ef.beyond_earth.common.blocks.ModBlocks;
 import com.st0x0ef.beyond_earth.common.entity.ModEntities;
 import com.st0x0ef.beyond_earth.common.items.custom.*;
@@ -27,6 +29,26 @@ public class ModItems {
     public static final Item PYGRO_BRUTE_SPAWN_EGG = registerSpawnEgg("pygro_brute_spawn_egg", new SpawnEggItem(ModEntities.PYGRO_BRUTE, -3381760, -67208, new FabricItemSettings()));
     public static final Item MOGLER_SPAWN_EGG = registerSpawnEgg("mogler_spawn_egg", new SpawnEggItem(ModEntities.MOGLER, -13312, -3407872, new FabricItemSettings()));
     public static final Item MARTIAN_RAPTOR_SPAWN_EGG = registerSpawnEgg("martian_raptor_spawn_egg", new SpawnEggItem(ModEntities.MARTIAN_RAPTOR, 5349438, -13312, new FabricItemSettings()));
+
+    /** SPACE SUIT ITEMS */
+    public static final Item SPACE_HELMET = registerItemGroupNormal("space_helmet",  new SpaceSuit.Helmet(ModArmorMaterials.SPACE_SUIT_MATERIAL, new FabricItemSettings()));
+    public static final Item SPACE_SUIT = registerItemGroupNormal("space_suit",  new SpaceSuit.Suit(ModArmorMaterials.SPACE_SUIT_MATERIAL, new FabricItemSettings()));
+    public static final Item SPACE_PANTS = registerItemGroupNormal("space_pants",  new SpaceSuit.Pants(ModArmorMaterials.SPACE_SUIT_MATERIAL, new FabricItemSettings()));
+    public static final Item SPACE_BOOTS = registerItemGroupNormal("space_boots",  new SpaceSuit.Boots(ModArmorMaterials.SPACE_SUIT_MATERIAL, new FabricItemSettings()));
+
+    /** NETHERITE SPACE SUIT ITEMS */
+    /*public static final Item NETHERITE_SPACE_HELMET = registerItemGroupNormal("netherite_space_helmet",  new NetheriteSpaceSuit.Helmet(NetheriteSpaceSuitMaterial.ARMOR_MATERIAL, ArmorItem.Type.HELMET, new FabricItemSettings().fireproof()));
+    public static final Item NETHERITE_SPACE_SUIT = registerItemGroupNormal("netherite_space_suit",  new NetheriteSpaceSuit.Suit(NetheriteSpaceSuitMaterial.ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().fireproof()));
+    public static final Item NETHERITE_SPACE_PANTS = registerItemGroupNormal("netherite_space_pants",  new NetheriteSpaceSuit.Pants(NetheriteSpaceSuitMaterial.ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new FabricItemSettings().fireproof()));
+    public static final Item NETHERITE_SPACE_BOOTS = registerItemGroupNormal("netherite_space_boots",  new NetheriteSpaceSuit.Boots(NetheriteSpaceSuitMaterial.ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new FabricItemSettings().fireproof()));
+*/
+    /** JET SUIT ITEMS */
+    /*public static final Item JET_HELMET = registerItemGroupNormal("jet_helmet",  new JetSuit.Helmet(JetSuitMaterial.ARMOR_MATERIAL, ArmorItem.Type.HELMET, new FabricItemSettings().fireproof()));
+    public static final Item JET_SUIT = registerItemGroupNormal("jet_suit",  new JetSuit.Suit(JetSuitMaterial.ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().fireproof()));
+    public static final Item JET_PANTS = registerItemGroupNormal("jet_pants",  new JetSuit.Pants(JetSuitMaterial.ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new FabricItemSettings().fireproof()));
+    public static final Item JET_BOOTS = registerItemGroupNormal("jet_boots",  new JetSuit.Boots(JetSuitMaterial.ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new FabricItemSettings().fireproof()));
+*/
+
 
     /**
      * SPECIAL ITEMS

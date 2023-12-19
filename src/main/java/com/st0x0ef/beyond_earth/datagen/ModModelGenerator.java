@@ -177,6 +177,10 @@ public class ModModelGenerator extends FabricModelProvider {
         itemModelGenerator.register(ModItems.HYDROGEN_MOTOR_UPGRADE, Models.GENERATED);
         itemModelGenerator.register(ModItems.URANIUM_MOTOR_UPGRADE, Models.GENERATED);
         itemModelGenerator.register(ModItems.HYDROGEN_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SPACE_HELMET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SPACE_SUIT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SPACE_PANTS, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SPACE_BOOTS, Models.GENERATED);
         itemModelGenerator.registerCompass(ModItems.SPACE_BALISE);
     }
 }
