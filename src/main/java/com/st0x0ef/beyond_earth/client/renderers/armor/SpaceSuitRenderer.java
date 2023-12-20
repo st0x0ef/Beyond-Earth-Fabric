@@ -2,12 +2,12 @@ package com.st0x0ef.beyond_earth.client.renderers.armor;
 
 import com.st0x0ef.beyond_earth.BeyondEarth;
 import com.st0x0ef.beyond_earth.client.renderers.armor.models.ISpaceArmorModel;
-import com.st0x0ef.beyond_earth.common.armor.ISpaceArmor;
+import com.st0x0ef.beyond_earth.client.renderers.armor.models.SpaceSuitModel;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
-import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.*;
-import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
+import net.minecraft.client.render.entity.model.EntityModelPartNames;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
@@ -15,6 +15,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.*;
 
 public class SpaceSuitRenderer<A extends ISpaceArmorModel<LivingEntity>> implements ArmorRenderer {
 
@@ -40,11 +42,18 @@ public class SpaceSuitRenderer<A extends ISpaceArmorModel<LivingEntity>> impleme
             return;
         }
 
+        if (innerModel == null || model == null) {
+            model = (A) new SpaceSuitModel<>(new ModelPart(new ArrayList<>(), Map.of(EntityModelPartNames.HEAD, contextModel.head, EntityModelPartNames.HAT, contextModel.hat, EntityModelPartNames.BODY, contextModel.body, EntityModelPartNames.RIGHT_ARM, contextModel.rightArm, EntityModelPartNames.LEFT_ARM, contextModel.leftArm, EntityModelPartNames.RIGHT_LEG, contextModel.rightLeg, EntityModelPartNames.LEFT_LEG, contextModel.leftLeg)), entity);
+            //model = (A) new SpaceSuitModel<>(SpaceSuitModel.getTexturedModelData().createModel());
+            innerModel = model;
+            outerModel = model;
+        }
+
 
         contextModel.copyBipedStateTo(model);
         this.setVisible(model, armorSlot);
-        boolean bl = this.usesInnerModel(armorSlot);
-        boolean bl2 = itemStack.hasGlint();
+        boolean usesInnerModel = this.usesInnerModel(armorSlot);
+        boolean hasGlint = itemStack.hasGlint();
 
         model.head.copyTransform(contextModel.head);
         model.hat.copyTransform(contextModel.hat);
@@ -54,38 +63,7 @@ public class SpaceSuitRenderer<A extends ISpaceArmorModel<LivingEntity>> impleme
         model.rightLeg.copyTransform(contextModel.rightLeg);
         model.leftLeg.copyTransform(contextModel.leftLeg);
 
-        this.renderArmorParts(matrices, vertexConsumers, light, armorItem, bl2, model, 1.0f, 1.0f, 1.0f, null);
-        /*BipedEntityModel livingModel = (BipedEntityModel<LivingEntity>) ((LivingEntityRenderer) MinecraftClient.getInstance().getEntityRenderDispatcher().getRenderer(entity)).getModel();
-
-        model.handSwingProgress = livingModel.handSwingProgress;
-        model.riding = livingModel.riding;
-        model.child = livingModel.child;
-        model.leftArmPose = livingModel.leftArmPose;
-        model.rightArmPose = livingModel.rightArmPose;
-        model.sneaking = livingModel.sneaking;
-        model.head.copyTransform(livingModel.head);
-        model.body.copyTransform(livingModel.body);
-        model.rightArm.copyTransform(livingModel.rightArm);
-        model.leftArm.copyTransform(livingModel.leftArm);
-        model.rightLeg.copyTransform(livingModel.rightLeg);
-        model.leftLeg.copyTransform(livingModel.leftLeg);
-
-        matrices.push();
-        if (model.child) {
-            matrices.scale(0.5f, 0.5f, 0.5f);
-            matrices.translate(0, 1.5f, 0);
-        }
-
-        if (armorItem instanceof ISpaceArmor iSpaceArmor) {
-            VertexConsumer vertexConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumers, RenderLayer.getArmorCutoutNoCull(this.getArmorTexture(iSpaceArmor, null)), false, false);
-            model.head.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1.0f);
-            model.body.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1.0f);
-            model.rightArm.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1.0f);
-            model.leftArm.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1.0f);
-            model.rightLeg.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1.0f);
-            model.leftLeg.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, 1, 1, 1, 1.0f);
-        }
-        matrices.pop();*/
+        this.renderArmorParts(matrices, vertexConsumers, light, hasGlint, model, usesInnerModel,1.0f, 1.0f, 1.0f, null);
     }
 
     protected void setVisible(A bipedModel, EquipmentSlot slot) {
@@ -112,8 +90,8 @@ public class SpaceSuitRenderer<A extends ISpaceArmorModel<LivingEntity>> impleme
         }
     }
 
-    private void renderArmorParts(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, ArmorItem item, boolean glint, A model, float red, float green, float blue, @Nullable String overlay) {
-        VertexConsumer vertexConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumers, RenderLayer.getArmorCutoutNoCull(this.getArmorTexture(item, overlay)), false, glint);
+    private void renderArmorParts(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, boolean glint, A model, boolean secondTextureLayer, float red, float green, float blue, @Nullable String overlay) {
+        VertexConsumer vertexConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumers, RenderLayer.getArmorCutoutNoCull(this.getArmorTexture(secondTextureLayer)), false, glint);
         model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, red, green, blue, 1.0f);
     }
 
@@ -125,9 +103,7 @@ public class SpaceSuitRenderer<A extends ISpaceArmorModel<LivingEntity>> impleme
         return slot == EquipmentSlot.LEGS;
     }
 
-    private Identifier getArmorTexture(ArmorItem item, @Nullable String overlay) {
-        /*String string = "textures/models/armor/" + item.getMaterial().getName() + "_layer_" + 1 + (String) (overlay == null ? "" : "_" + overlay) + ".png";
-        return ARMOR_TEXTURE_CACHE.computeIfAbsent(string, Identifier::new);*/
-        return new Identifier(BeyondEarth.MOD_ID, "textures/armor/space_suit.png");
+    private Identifier getArmorTexture(boolean secondTextureLayer) {
+        return secondTextureLayer ? new Identifier(BeyondEarth.MOD_ID, "textures/armor/space_pants.png") : new Identifier(BeyondEarth.MOD_ID, "textures/armor/space_suit.png");
     }
 }

@@ -1,11 +1,18 @@
 package com.st0x0ef.beyond_earth.client.renderers.armor.models;
 
 import com.st0x0ef.beyond_earth.BeyondEarth;
+import com.st0x0ef.beyond_earth.common.armor.ISpaceArmor;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.*;
+import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.entity.LivingEntityRenderer;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
@@ -14,7 +21,11 @@ public class SpaceSuitModel<T extends LivingEntity> extends ISpaceArmorModel<T> 
     public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(new Identifier(BeyondEarth.MOD_ID, "space_suit"), "main");
 
     public SpaceSuitModel(ModelPart root) {
-        super(root);
+        super(root, null);
+    }
+
+    public SpaceSuitModel(ModelPart root, LivingEntity livingEntity) {
+        super(root, livingEntity);
     }
 
     public static ModelData getModelData() {
@@ -67,40 +78,45 @@ public class SpaceSuitModel<T extends LivingEntity> extends ISpaceArmorModel<T> 
         return TexturedModelData.of(meshdefinition, 64, 64);
     }
 
+    @Override
+    public ModelPart getHeadPart() {
+        ModelPart part = getTexturedModelData().createModel().getChild("head");
+        part.copyTransform(head);
+        return part;
+    }
 
-    /*@Override
-    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
-        BipedEntityModel livingModel = (BipedEntityModel<LivingEntity>) ((LivingEntityRenderer) MinecraftClient.getInstance().getEntityRenderDispatcher().getRenderer(this.getEntity())).getModel();
+    @Override
+    public ModelPart getBodyPart() {
+        ModelPart part = getTexturedModelData().createModel().getChild("body");
+        part.copyTransform(body);
+        return part;
+    }
 
-        this.handSwingProgress = livingModel.handSwingProgress;
-        this.riding = livingModel.riding;
-        this.child = livingModel.child;
-        this.leftArmPose = livingModel.leftArmPose;
-        this.rightArmPose = livingModel.rightArmPose;
-        this.sneaking = livingModel.sneaking;
-        this.head.copyTransform(livingModel.head);
-        this.body.copyTransform(livingModel.body);
-        this.rightArm.copyTransform(livingModel.rightArm);
-        this.leftArm.copyTransform(livingModel.leftArm);
-        this.rightLeg.copyTransform(livingModel.rightLeg);
-        this.leftLeg.copyTransform(livingModel.leftLeg);
+    @Override
+    public ModelPart getRightArmPart() {
+        ModelPart part = getTexturedModelData().createModel().getChild("right_arm");
+        part.copyTransform(rightArm);
+        return part;
+    }
 
-        matrices.push();
-        if (this.child) {
-            matrices.scale(0.5f, 0.5f, 0.5f);
-            matrices.translate(0, 1.5f, 0);
-        }
+    @Override
+    public ModelPart getLeftArmPart() {
+        ModelPart part = getTexturedModelData().createModel().getChild("left_arm");
+        part.copyTransform(leftArm);
+        return part;
+    }
 
-        if (this.getItemStack().getItem() instanceof ISpaceArmor item) {
-            VertexConsumer vertex = this.getVertex(TranslucentArmorType.translucentArmor(item.getTexture(this.getItemStack(), this.getEntity())), false, this.getItemStack().isEnchanted());
+    @Override
+    public ModelPart getRightLegPart() {
+        ModelPart part = getTexturedModelData().createModel().getChild("right_leg");
+        part.copyTransform(rightLeg);
+        return part;
+    }
 
-            this.head.render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            this.body.render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            this.rightArm.render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            this.leftArm.render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            this.rightLeg.render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            this.leftLeg.render(matrices, vertices, light, overlay, red, green, blue, alpha);
-        }
-        matrices.pop();
-    }*/
+    @Override
+    public ModelPart getLeftLegPart() {
+        ModelPart part = getTexturedModelData().createModel().getChild("left_leg");
+        part.copyTransform(leftLeg);
+        return part;
+    }
 }
