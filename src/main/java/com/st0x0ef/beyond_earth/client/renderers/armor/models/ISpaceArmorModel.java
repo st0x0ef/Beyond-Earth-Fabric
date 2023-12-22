@@ -137,13 +137,6 @@ public abstract class ISpaceArmorModel {
                 getLeftLegPart().render(matrices, vertices, light, overlay, red, green, blue, alpha);
             }
 
-
-            /*this.body.render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            this.rightArm.render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            this.leftArm.render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            this.rightLeg.render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            this.leftLeg.render(matrices, vertices, light, overlay, red, green, blue, alpha);*/
-
             matrices.pop();
         }
     }
@@ -211,13 +204,7 @@ public abstract class ISpaceArmorModel {
                 getLeftLegPart().render(matrices, vertices, light, overlay, red, green, blue, alpha);
             }
 
-            this.rightLeg.render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            this.leftLeg.render(matrices, vertices, light, overlay, red, green, blue, alpha);
-
-            BeyondEarth.LOGGER.info("rendering");
-
             matrices.pop();
         }
     }
 }
-

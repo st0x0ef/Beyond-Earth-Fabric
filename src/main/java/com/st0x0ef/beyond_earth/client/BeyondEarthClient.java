@@ -1,6 +1,7 @@
 package com.st0x0ef.beyond_earth.client;
 
 import com.st0x0ef.beyond_earth.client.events.ClientKeyEvents;
+import com.st0x0ef.beyond_earth.client.renderers.armor.NetheriteSpaceSuitRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.armor.SpaceSuitRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.armor.models.ISpaceArmorModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.alien.AlienModel;
@@ -128,6 +129,7 @@ public class BeyondEarthClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(ISpaceArmorModel.LayerTwo.LAYER_LOCATION, ISpaceArmorModel.LayerTwo::getTexturedModelData);
 
         ArmorRenderer.register(new SpaceSuitRenderer(), ModItems.SPACE_HELMET, ModItems.SPACE_SUIT, ModItems.SPACE_PANTS, ModItems.SPACE_BOOTS);
+        ArmorRenderer.register(new NetheriteSpaceSuitRenderer(), ModItems.NETHERITE_SPACE_HELMET, ModItems.NETHERITE_SPACE_SUIT, ModItems.NETHERITE_SPACE_PANTS, ModItems.NETHERITE_SPACE_BOOTS);
     }
 
 

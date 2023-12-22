@@ -1,4 +1,4 @@
-// 1.19.4	2023-12-19T16:28:58.9279349	Beyond Earth/Block Loot Tables
+// 1.19.4	2023-12-23T00:45:49.1803893	Beyond Earth/Block Loot Tables
 1a936bf60dfdb1e6c4bbedd9e84016baa6360250 data\beyond_earth\loot_tables\blocks\rocket_launch_pad.json
 1f8768229337af6789ef86ba15a1020cc99a81f8 data\beyond_earth\loot_tables\blocks\cracked_venus_stone_bricks.json
 bf8f9aa7c6f0f0c74eb8abe2f9dc778f810f8681 data\beyond_earth\loot_tables\blocks\barricade_block.json
@@ -8,8 +8,8 @@ bb11b121821637f15c29e708a4b4974da49afc61 data\beyond_earth\loot_tables\blocks\me
 d063165facc4d994eec3e2a937ff88354b46a28a data\beyond_earth\loot_tables\blocks\mars_ostrum_ore.json
 3ebc169f99340cf917b32b6a4ab7d13319441cf8 data\beyond_earth\loot_tables\blocks\blue_iron_pillar.json
 3cd2e6ac3c01bbe7426fc5f1b0e245d94e29934c data\beyond_earth\loot_tables\blocks\cracked_glacio_stone_bricks.json
-a6454b92322b95d9638e9af44dd6afa64b61d53f data\beyond_earth\loot_tables\blocks\glacio_wood_door.json
 61276c593001ff7d057038922786529642489e16 data\beyond_earth\loot_tables\blocks\raw_calorite_block.json
+a6454b92322b95d9638e9af44dd6afa64b61d53f data\beyond_earth\loot_tables\blocks\glacio_wood_door.json
 877de664e8f2e2850003262e303db39d3a363cce data\beyond_earth\loot_tables\blocks\mars_stone.json
 94cbebe911779317e61d7350e8d33e25278e9aea data\beyond_earth\loot_tables\blocks\desh_block.json
 94e3d61823c316510b6b54f68605bf91e9c62e16 data\beyond_earth\loot_tables\blocks\glacio_stone_bricks.json

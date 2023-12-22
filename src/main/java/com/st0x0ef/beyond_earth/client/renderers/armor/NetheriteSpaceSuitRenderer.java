@@ -3,26 +3,30 @@ package com.st0x0ef.beyond_earth.client.renderers.armor;
 import com.st0x0ef.beyond_earth.BeyondEarth;
 import com.st0x0ef.beyond_earth.client.renderers.armor.models.ISpaceArmorModel;
 import com.st0x0ef.beyond_earth.common.armor.ModArmorMaterials;
-import com.st0x0ef.beyond_earth.common.armor.NetheriteSpaceSuit;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.minecraft.client.model.ModelPart;
-import net.minecraft.client.render.*;
+import net.minecraft.client.render.OverlayTexture;
+import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.VertexConsumer;
+import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelPartNames;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.*;
+import net.minecraft.item.ArmorItem;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Map;
 
-public class SpaceSuitRenderer implements ArmorRenderer {
+public class NetheriteSpaceSuitRenderer implements ArmorRenderer {
     private ISpaceArmorModel.LayerTwo innerModel;
     private ISpaceArmorModel.LayerOne<LivingEntity> outerModel;
-
     @Override
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, ItemStack stack, LivingEntity livingEntity, EquipmentSlot slot, int light, BipedEntityModel<LivingEntity> contextModel) {
         if (innerModel == null || outerModel == null) {
@@ -48,7 +52,7 @@ public class SpaceSuitRenderer implements ArmorRenderer {
             return;
         }
 
-        if (!armorItem.getMaterial().equals(ModArmorMaterials.SPACE_SUIT_MATERIAL)) {
+        if (!armorItem.getMaterial().equals(ModArmorMaterials.NETHERITE_SPACE_SUIT_MATERIAL)) {
             return;
         }
 
@@ -106,6 +110,6 @@ public class SpaceSuitRenderer implements ArmorRenderer {
     }
 
     private Identifier getArmorTexture(boolean secondTextureLayer) {
-        return secondTextureLayer ? new Identifier(BeyondEarth.MOD_ID, "textures/armor/space_pants.png") : new Identifier(BeyondEarth.MOD_ID, "textures/armor/space_suit.png");
+        return secondTextureLayer ? new Identifier(BeyondEarth.MOD_ID, "textures/armor/netherite_space_pants.png") : new Identifier(BeyondEarth.MOD_ID, "textures/armor/netherite_space_suit.png");
     }
 }
