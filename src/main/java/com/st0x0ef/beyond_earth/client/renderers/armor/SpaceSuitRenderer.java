@@ -2,7 +2,6 @@ package com.st0x0ef.beyond_earth.client.renderers.armor;
 
 import com.st0x0ef.beyond_earth.BeyondEarth;
 import com.st0x0ef.beyond_earth.client.renderers.armor.models.ISpaceArmorModel;
-import com.st0x0ef.beyond_earth.client.renderers.armor.models.SpaceSuitModel;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.*;
@@ -18,13 +17,18 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
-public class SpaceSuitRenderer<A extends ISpaceArmorModel<LivingEntity>> implements ArmorRenderer {
+public class SpaceSuitRenderer implements ArmorRenderer {
 
-    private A innerModel;
-    private A outerModel;
+    private ISpaceArmorModel.LayerTwo innerModel;
+    private ISpaceArmorModel.LayerOne<LivingEntity> outerModel;
 
     @Override
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, ItemStack stack, LivingEntity livingEntity, EquipmentSlot slot, int light, BipedEntityModel<LivingEntity> contextModel) {
+        if (innerModel == null || outerModel == null) {
+            outerModel = new ISpaceArmorModel.LayerOne<>(new ModelPart(new ArrayList<>(), Map.of(EntityModelPartNames.HEAD, contextModel.head, EntityModelPartNames.HAT, contextModel.hat, EntityModelPartNames.BODY, contextModel.body, EntityModelPartNames.RIGHT_ARM, contextModel.rightArm, EntityModelPartNames.LEFT_ARM, contextModel.leftArm, EntityModelPartNames.RIGHT_LEG, contextModel.rightLeg, EntityModelPartNames.LEFT_LEG, contextModel.leftLeg)), livingEntity);
+            innerModel = new ISpaceArmorModel.LayerTwo(new ModelPart(new ArrayList<>(), Map.of(EntityModelPartNames.HEAD, contextModel.head, EntityModelPartNames.HAT, contextModel.hat, EntityModelPartNames.BODY, contextModel.body, EntityModelPartNames.RIGHT_ARM, contextModel.rightArm, EntityModelPartNames.LEFT_ARM, contextModel.leftArm, EntityModelPartNames.RIGHT_LEG, contextModel.rightLeg, EntityModelPartNames.LEFT_LEG, contextModel.leftLeg)), livingEntity);
+        }
+
         this.renderArmor(matrixStack, vertexConsumerProvider, livingEntity, EquipmentSlot.CHEST, light, this.getModel(EquipmentSlot.CHEST), contextModel);
         this.renderArmor(matrixStack, vertexConsumerProvider, livingEntity, EquipmentSlot.LEGS, light, this.getModel(EquipmentSlot.LEGS), contextModel);
         this.renderArmor(matrixStack, vertexConsumerProvider, livingEntity, EquipmentSlot.FEET, light, this.getModel(EquipmentSlot.FEET), contextModel);
@@ -32,23 +36,16 @@ public class SpaceSuitRenderer<A extends ISpaceArmorModel<LivingEntity>> impleme
     }
 
 
-    private void renderArmor(MatrixStack matrices, VertexConsumerProvider vertexConsumers, LivingEntity entity, EquipmentSlot armorSlot, int light, A model, BipedEntityModel<LivingEntity> contextModel) {
+    private void renderArmor(MatrixStack matrices, VertexConsumerProvider vertexConsumers, LivingEntity entity, EquipmentSlot armorSlot, int light, ISpaceArmorModel.LayerOne<LivingEntity> model, BipedEntityModel<LivingEntity> contextModel) {
         ItemStack itemStack = (entity).getEquippedStack(armorSlot);
         Item item = itemStack.getItem();
         if (!(item instanceof ArmorItem armorItem)) {
             return;
         }
+
         if (armorItem.getSlotType() != armorSlot) {
             return;
         }
-
-        if (innerModel == null || model == null) {
-            model = (A) new SpaceSuitModel<>(new ModelPart(new ArrayList<>(), Map.of(EntityModelPartNames.HEAD, contextModel.head, EntityModelPartNames.HAT, contextModel.hat, EntityModelPartNames.BODY, contextModel.body, EntityModelPartNames.RIGHT_ARM, contextModel.rightArm, EntityModelPartNames.LEFT_ARM, contextModel.leftArm, EntityModelPartNames.RIGHT_LEG, contextModel.rightLeg, EntityModelPartNames.LEFT_LEG, contextModel.leftLeg)), entity);
-            //model = (A) new SpaceSuitModel<>(SpaceSuitModel.getTexturedModelData().createModel());
-            innerModel = model;
-            outerModel = model;
-        }
-
 
         contextModel.copyBipedStateTo(model);
         this.setVisible(model, armorSlot);
@@ -66,7 +63,7 @@ public class SpaceSuitRenderer<A extends ISpaceArmorModel<LivingEntity>> impleme
         this.renderArmorParts(matrices, vertexConsumers, light, hasGlint, model, usesInnerModel,1.0f, 1.0f, 1.0f, null);
     }
 
-    protected void setVisible(A bipedModel, EquipmentSlot slot) {
+    protected void setVisible(ISpaceArmorModel.LayerOne<LivingEntity> bipedModel, EquipmentSlot slot) {
         bipedModel.setVisible(false);
         switch (slot) {
             case HEAD -> {
@@ -90,12 +87,12 @@ public class SpaceSuitRenderer<A extends ISpaceArmorModel<LivingEntity>> impleme
         }
     }
 
-    private void renderArmorParts(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, boolean glint, A model, boolean secondTextureLayer, float red, float green, float blue, @Nullable String overlay) {
-        VertexConsumer vertexConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumers, RenderLayer.getArmorCutoutNoCull(this.getArmorTexture(secondTextureLayer)), false, glint);
+    private void renderArmorParts(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, boolean glint, ISpaceArmorModel.LayerOne<LivingEntity> model, boolean usesSecondTextureLayer, float red, float green, float blue, @Nullable String overlay) {
+        VertexConsumer vertexConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumers, RenderLayer.getArmorCutoutNoCull(this.getArmorTexture(usesSecondTextureLayer)), true, glint);
         model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, red, green, blue, 1.0f);
     }
 
-    private A getModel(EquipmentSlot slot) {
+    private ISpaceArmorModel.LayerOne<LivingEntity> getModel(EquipmentSlot slot) {
         return usesInnerModel(slot) ? this.innerModel : this.outerModel;
     }
 
