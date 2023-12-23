@@ -1,6 +1,7 @@
 package com.st0x0ef.beyond_earth.datagen;
 
 import com.st0x0ef.beyond_earth.common.blocks.ModBlocks;
+import com.st0x0ef.beyond_earth.common.items.ModItems;
 import com.st0x0ef.beyond_earth.common.util.ModTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -92,6 +93,9 @@ public class ModTagsGenerator {
         protected void configure(RegistryWrapper.WrapperLookup arg) {
             //getOrCreateTagBuilder(ModTags.ROCKET_UPGRADE_TAG).add(ModItems.)
             getOrCreateTagBuilder(ItemTags.PIGLIN_LOVED).add(ModBlocks.VENUS_GOLD_ORE.asItem());
+            getOrCreateTagBuilder(ModTags.ItemTags.SPACE_SUIT_PART).add(ModItems.SPACE_HELMET).add(ModItems.SPACE_SUIT).add(ModItems.SPACE_PANTS).add(ModItems.SPACE_BOOTS)
+                    .add(ModItems.NETHERITE_SPACE_HELMET).add(ModItems.NETHERITE_SPACE_SUIT).add(ModItems.NETHERITE_SPACE_PANTS).add(ModItems.NETHERITE_SPACE_BOOTS)
+                    .add(ModItems.JET_HELMET).add(ModItems.JET_SUIT).add(ModItems.JET_PANTS).add(ModItems.JET_BOOTS);
         }
     }
 
@@ -105,8 +109,8 @@ public class ModTagsGenerator {
         protected void configure(RegistryWrapper.WrapperLookup arg) {
             //getOrCreateTagBuilder(FluidTags.WATER).add(ModFluids.FUEL_STILL).add(ModFluids.FUEL_FLOWING);
             //getOrCreateTagBuilder(FluidTags.WATER).add(ModFluids.OIL_STILL).add(ModFluids.OIL_FLOWING);
-            getOrCreateTagBuilder(ModTags.FLUID_OIL_FLUID_TAG).add(ModFluids.OIL_FLOWING).add(ModFluids.OIL_STILL);
-            getOrCreateTagBuilder(ModTags.FLUID_VEHICLE_FUEL_TAG).add(ModFluids.FUEL_FLOWING).add(ModFluids.FUEL_STILL);
+            getOrCreateTagBuilder(ModTags.FluidTags.FLUID_OIL_FLUID_TAG).add(ModFluids.OIL_FLOWING).add(ModFluids.OIL_STILL);
+            getOrCreateTagBuilder(ModTags.FluidTags.FLUID_VEHICLE_FUEL_TAG).add(ModFluids.FUEL_FLOWING).add(ModFluids.FUEL_STILL);
         }
     }
 }

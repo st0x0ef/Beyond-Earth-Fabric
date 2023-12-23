@@ -1,17 +1,17 @@
-package com.st0x0ef.beyond_earth.client.renderers.armor;
+package com.st0x0ef.beyond_earth.client.renderers.armor.renderers;
 
 import com.st0x0ef.beyond_earth.BeyondEarth;
 import com.st0x0ef.beyond_earth.client.renderers.armor.models.ISpaceArmorModel;
+import com.st0x0ef.beyond_earth.client.renderers.types.TranslucentArmorType;
 import com.st0x0ef.beyond_earth.common.armor.ModArmorMaterials;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.rendering.v1.ArmorRenderer;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.model.ModelPart;
-import net.minecraft.client.render.OverlayTexture;
-import net.minecraft.client.render.RenderLayer;
-import net.minecraft.client.render.VertexConsumer;
-import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.*;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelPartNames;
-import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -19,14 +19,17 @@ import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Map;
 
+@Environment(EnvType.CLIENT)
 public class NetheriteSpaceSuitRenderer implements ArmorRenderer {
     private ISpaceArmorModel.LayerTwo innerModel;
     private ISpaceArmorModel.LayerOne<LivingEntity> outerModel;
+
+    //TODO Fix layer alpha rendering
+
     @Override
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, ItemStack stack, LivingEntity livingEntity, EquipmentSlot slot, int light, BipedEntityModel<LivingEntity> contextModel) {
         if (innerModel == null || outerModel == null) {
@@ -69,7 +72,7 @@ public class NetheriteSpaceSuitRenderer implements ArmorRenderer {
         model.rightLeg.copyTransform(contextModel.rightLeg);
         model.leftLeg.copyTransform(contextModel.leftLeg);
 
-        this.renderArmorParts(matrices, vertexConsumers, light, hasGlint, model, usesInnerModel,1.0f, 1.0f, 1.0f, null);
+        this.renderArmorParts(matrices, light, hasGlint, model, usesInnerModel,1.0f, 1.0f, 1.0f, 1.0f, isHelmet(armorSlot));
     }
 
     protected void setVisible(ISpaceArmorModel.LayerOne<LivingEntity> bipedModel, EquipmentSlot slot) {
@@ -96,9 +99,9 @@ public class NetheriteSpaceSuitRenderer implements ArmorRenderer {
         }
     }
 
-    private void renderArmorParts(MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, boolean glint, ISpaceArmorModel.LayerOne<LivingEntity> model, boolean usesSecondTextureLayer, float red, float green, float blue, @Nullable String overlay) {
-        VertexConsumer vertexConsumer = ItemRenderer.getArmorGlintConsumer(vertexConsumers, RenderLayer.getArmorCutoutNoCull(this.getArmorTexture(usesSecondTextureLayer)), true, glint);
-        model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, red, green, blue, 1.0f);
+    private void renderArmorParts(MatrixStack matrices, int light, boolean glint, ISpaceArmorModel.LayerOne<LivingEntity> model, boolean usesSecondTextureLayer, float red, float green, float blue, float alpha, boolean isHelmet) {
+        VertexConsumer vertexConsumer = this.getVertex(TranslucentArmorType.translucentArmor(getArmorTexture(usesSecondTextureLayer)), false, glint);
+        model.render(matrices, vertexConsumer, light, OverlayTexture.DEFAULT_UV, red, green, blue, alpha, isHelmet);
     }
 
     private ISpaceArmorModel.LayerOne<LivingEntity> getModel(EquipmentSlot slot) {
@@ -111,5 +114,14 @@ public class NetheriteSpaceSuitRenderer implements ArmorRenderer {
 
     private Identifier getArmorTexture(boolean secondTextureLayer) {
         return secondTextureLayer ? new Identifier(BeyondEarth.MOD_ID, "textures/armor/netherite_space_pants.png") : new Identifier(BeyondEarth.MOD_ID, "textures/armor/netherite_space_suit.png");
+    }
+
+    public VertexConsumer getVertex(RenderLayer renderType, boolean p_115187_, boolean glint) {
+        VertexConsumerProvider p_115185_ = MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers();
+        return glint ? VertexConsumers.union(p_115185_.getBuffer(p_115187_ ? RenderLayer.getArmorGlint() : RenderLayer.getArmorEntityGlint()), p_115185_.getBuffer(renderType)) : p_115185_.getBuffer(renderType);
+    }
+
+    private boolean isHelmet(EquipmentSlot slot) {
+        return slot.equals(EquipmentSlot.HEAD);
     }
 }

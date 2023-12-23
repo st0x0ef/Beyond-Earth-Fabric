@@ -91,6 +91,10 @@ public abstract class ISpaceArmorModel {
 
         @Override
         public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha) {
+            this.render(matrices, vertices, light, overlay, red, green, blue, alpha, false);
+        }
+
+        public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha, boolean isHelmet) {
             BipedEntityModel livingModel = (BipedEntityModel<LivingEntity>) ((LivingEntityRenderer) MinecraftClient.getInstance().getEntityRenderDispatcher().getRenderer(this.getEntity())).getModel();
 
             this.handSwingProgress = livingModel.handSwingProgress;
@@ -113,28 +117,28 @@ public abstract class ISpaceArmorModel {
                 matrices.translate(0, 1.5f, 0);
             }
 
-            if (head.visible && getHeadPart() != null) {
+            if (isHelmet && getHeadPart() != null && head.visible) {
                 getHeadPart().render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            }
+            } else {
+                if (body.visible && getBodyPart() != null) {
+                    getBodyPart().render(matrices, vertices, light, overlay, red, green, blue, alpha);
+                }
 
-            if (body.visible && getBodyPart() != null) {
-                getBodyPart().render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            }
+                if (rightArm.visible && getRightArmPart() != null) {
+                    getRightArmPart().render(matrices, vertices, light, overlay, red, green, blue, alpha);
+                }
 
-            if (rightArm.visible && getRightArmPart() != null) {
-                getRightArmPart().render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            }
+                if (leftArm.visible && getLeftArmPart() != null) {
+                    getLeftArmPart().render(matrices, vertices, light, overlay, red, green, blue, alpha);
+                }
 
-            if (leftArm.visible && getLeftArmPart() != null) {
-                getLeftArmPart().render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            }
+                if (rightLeg.visible && getRightLegPart() != null) {
+                    getRightLegPart().render(matrices, vertices, light, overlay, red, green, blue, alpha);
+                }
 
-            if (rightLeg.visible && getRightLegPart() != null) {
-                getRightLegPart().render(matrices, vertices, light, overlay, red, green, blue, alpha);
-            }
-
-            if (leftLeg.visible && getLeftLegPart() != null) {
-                getLeftLegPart().render(matrices, vertices, light, overlay, red, green, blue, alpha);
+                if (leftLeg.visible && getLeftLegPart() != null) {
+                    getLeftLegPart().render(matrices, vertices, light, overlay, red, green, blue, alpha);
+                }
             }
 
             matrices.pop();
@@ -158,6 +162,7 @@ public abstract class ISpaceArmorModel {
 
             return TexturedModelData.of(meshdefinition, 64, 32);
         }
+
         @Override
         public ModelPart getRightLegPart() {
             ModelPart part = getTexturedModelData().createModel().getChild("right_leg");

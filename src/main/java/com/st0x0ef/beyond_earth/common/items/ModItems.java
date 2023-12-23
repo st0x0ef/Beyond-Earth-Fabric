@@ -1,5 +1,6 @@
 package com.st0x0ef.beyond_earth.common.items;
 
+import com.st0x0ef.beyond_earth.common.armor.JetSuit;
 import com.st0x0ef.beyond_earth.common.armor.ModArmorMaterials;
 import com.st0x0ef.beyond_earth.common.armor.NetheriteSpaceSuit;
 import com.st0x0ef.beyond_earth.common.armor.SpaceSuit;
@@ -44,11 +45,11 @@ public class ModItems {
     public static final Item NETHERITE_SPACE_BOOTS = registerItemGroupNormal("netherite_space_boots",  new NetheriteSpaceSuit.Boots(ModArmorMaterials.NETHERITE_SPACE_SUIT_MATERIAL, new FabricItemSettings().fireproof()));
 
     /** JET SUIT ITEMS */
-    /*public static final Item JET_HELMET = registerItemGroupNormal("jet_helmet",  new JetSuit.Helmet(JetSuitMaterial.ARMOR_MATERIAL, ArmorItem.Type.HELMET, new FabricItemSettings().fireproof()));
-    public static final Item JET_SUIT = registerItemGroupNormal("jet_suit",  new JetSuit.Suit(JetSuitMaterial.ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().fireproof()));
-    public static final Item JET_PANTS = registerItemGroupNormal("jet_pants",  new JetSuit.Pants(JetSuitMaterial.ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS, new FabricItemSettings().fireproof()));
-    public static final Item JET_BOOTS = registerItemGroupNormal("jet_boots",  new JetSuit.Boots(JetSuitMaterial.ARMOR_MATERIAL, ArmorItem.Type.BOOTS, new FabricItemSettings().fireproof()));
-*/
+    public static final Item JET_HELMET = registerItemGroupNormal("jet_helmet",  new JetSuit.Helmet(ModArmorMaterials.JET_SUIT_MATERIAL, new FabricItemSettings().fireproof()));
+    public static final Item JET_SUIT = registerItemGroupNormal("jet_suit",  new JetSuit.Suit(ModArmorMaterials.JET_SUIT_MATERIAL, new FabricItemSettings().fireproof()));
+    public static final Item JET_PANTS = registerItemGroupNormal("jet_pants",  new JetSuit.Pants(ModArmorMaterials.JET_SUIT_MATERIAL, new FabricItemSettings().fireproof()));
+    public static final Item JET_BOOTS = registerItemGroupNormal("jet_boots",  new JetSuit.Boots(ModArmorMaterials.JET_SUIT_MATERIAL, new FabricItemSettings().fireproof()));
+
 
     /**
      * SPECIAL ITEMS

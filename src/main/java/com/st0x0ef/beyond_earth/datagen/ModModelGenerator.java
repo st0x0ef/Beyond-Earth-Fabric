@@ -186,5 +186,9 @@ public class ModModelGenerator extends FabricModelProvider {
         itemModelGenerator.register(ModItems.NETHERITE_SPACE_SUIT, Models.GENERATED);
         itemModelGenerator.register(ModItems.NETHERITE_SPACE_PANTS, Models.GENERATED);
         itemModelGenerator.register(ModItems.NETHERITE_SPACE_BOOTS, Models.GENERATED);
+        itemModelGenerator.register(ModItems.JET_HELMET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.JET_SUIT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.JET_PANTS, Models.GENERATED);
+        itemModelGenerator.register(ModItems.JET_BOOTS, Models.GENERATED);
     }
 }

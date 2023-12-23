@@ -2,6 +2,7 @@ package com.st0x0ef.beyond_earth.common.blocks.entities.custom.uranium;
 
 
 import com.st0x0ef.beyond_earth.common.effect.ModStatusEffects;
+import com.st0x0ef.beyond_earth.common.util.Methods;
 import com.st0x0ef.beyond_earth.common.util.ModTags;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -23,7 +24,7 @@ public class UraniumBaseBlockEntity extends BlockEntity {
 
         List<LivingEntity> entities = this.world.getNonSpectatingEntities(LivingEntity.class, area);
         for (LivingEntity entity : entities) {
-            if(/*!Methods.isLivingInJetSuit(entity) && */!entity.getType().isIn(ModTags.ENTITY_RADIATION_INVULNERABLE_TAG)) {
+            if(!Methods.isLivingInJetSuit(entity) && !entity.getType().isIn(ModTags.EntityTags.ENTITY_RADIATION_INVULNERABLE_TAG)) {
                 entity.addStatusEffect(new StatusEffectInstance(ModStatusEffects.RADIATION, 100));
             }
         }

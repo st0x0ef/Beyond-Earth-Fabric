@@ -1,9 +1,12 @@
 package com.st0x0ef.beyond_earth.client;
 
 import com.st0x0ef.beyond_earth.client.events.ClientKeyEvents;
-import com.st0x0ef.beyond_earth.client.renderers.armor.NetheriteSpaceSuitRenderer;
-import com.st0x0ef.beyond_earth.client.renderers.armor.SpaceSuitRenderer;
+import com.st0x0ef.beyond_earth.client.keyBinds.ModKeyBinds;
+import com.st0x0ef.beyond_earth.client.renderers.armor.renderers.JetSuitRenderer;
+import com.st0x0ef.beyond_earth.client.renderers.armor.renderers.NetheriteSpaceSuitRenderer;
+import com.st0x0ef.beyond_earth.client.renderers.armor.renderers.SpaceSuitRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.armor.models.ISpaceArmorModel;
+import com.st0x0ef.beyond_earth.client.renderers.armor.models.JetSuitModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.alien.AlienModel;
 import com.st0x0ef.beyond_earth.client.renderers.entities.alien.AlienRenderer;
 import com.st0x0ef.beyond_earth.client.renderers.entities.alienZombie.AlienZombieModel;
@@ -65,11 +68,13 @@ public class BeyondEarthClient implements ClientModInitializer {
         registerEvents();
         registerArmorRenderers();
         ModPackets.registerS2CPackets();
+
+        ModKeyBinds.registerKeyBinds();
     }
 
 
     private void registerEvents() {
-        ClientKeyEvents.tick();
+        ClientKeyEvents.registerTickEvent();
         ClientKeyEvents.onDisconnect();
     }
 
@@ -95,8 +100,6 @@ public class BeyondEarthClient implements ClientModInitializer {
         BuiltinItemRendererRegistry.INSTANCE.register(ModBlocks.VENUS_GLOBE_BLOCK, new EarthGlobeItemRenderer());
         BuiltinItemRendererRegistry.INSTANCE.register(ModBlocks.GLACIO_GLOBE_BLOCK, new EarthGlobeItemRenderer());
     }
-
-
 
 
     private void registerEntityRenderers() {
@@ -128,10 +131,14 @@ public class BeyondEarthClient implements ClientModInitializer {
         EntityModelLayerRegistry.registerModelLayer(ISpaceArmorModel.LayerOne.LAYER_LOCATION, ISpaceArmorModel.LayerOne::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(ISpaceArmorModel.LayerTwo.LAYER_LOCATION, ISpaceArmorModel.LayerTwo::getTexturedModelData);
 
+        EntityModelLayerRegistry.registerModelLayer(JetSuitModel.LayerOne.LAYER_LOCATION, JetSuitModel.LayerOne::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(JetSuitModel.LayerTwo.LAYER_LOCATION, JetSuitModel.LayerTwo::getTexturedModelData);
+
+
         ArmorRenderer.register(new SpaceSuitRenderer(), ModItems.SPACE_HELMET, ModItems.SPACE_SUIT, ModItems.SPACE_PANTS, ModItems.SPACE_BOOTS);
         ArmorRenderer.register(new NetheriteSpaceSuitRenderer(), ModItems.NETHERITE_SPACE_HELMET, ModItems.NETHERITE_SPACE_SUIT, ModItems.NETHERITE_SPACE_PANTS, ModItems.NETHERITE_SPACE_BOOTS);
+        ArmorRenderer.register(new JetSuitRenderer(), ModItems.JET_HELMET, ModItems.JET_SUIT, ModItems.JET_PANTS, ModItems.JET_BOOTS);
     }
-
 
     private void registerItemRenderers() {
         BuiltinItemRendererRegistry.INSTANCE.register(ModItems.ROVER_ITEM, new RoverItemRenderer());
