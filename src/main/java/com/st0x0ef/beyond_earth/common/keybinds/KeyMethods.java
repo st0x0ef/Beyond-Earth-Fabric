@@ -19,7 +19,7 @@ public class KeyMethods {
             ItemStack itemStack = player.getEquippedStack(EquipmentSlot.CHEST);
             JetSuit.Suit item = (JetSuit.Suit) itemStack.getItem();
 
-            //item.switchJetSuitMode(player, itemStack);
+            item.switchJetSuitMode(itemStack, player);
         }
     }
 }

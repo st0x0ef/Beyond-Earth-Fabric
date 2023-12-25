@@ -45,14 +45,15 @@ public class ClientKeyEvents {
                 /** JUMP */
                 sendKeyToServerAndClientHashMap(player, mc.options.jumpKey, KeyVariables.KEY_JUMP, "key_jump", KeyVariables.isHoldingJump(player));
             }
+
             /** ROCKET START KEY */
             if (ModKeyBinds.JET_SUIT_SWITCH_MODE_KEY.wasPressed()) {
-                sendKeyToServerMethod(player, "rocket_start");
+                sendKeyToServerMethod(player, "switch_jet_suit_mode");
             }
 
             /** SWITCH JET SUIT MODE KEY */
             if (ModKeyBinds.ROCKET_START_KEY.wasPressed()) {
-                sendKeyToServerMethod(player, "switch_jet_suit_mode");
+                sendKeyToServerMethod(player, "rocket_start");
             }
         });
     }

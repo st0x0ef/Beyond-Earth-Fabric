@@ -1,5 +1,6 @@
 package com.st0x0ef.beyond_earth.common.keybinds;
 
+import com.st0x0ef.beyond_earth.BeyondEarth;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
@@ -40,8 +41,8 @@ public class KeyHandler {
             case "key_right" -> KeyVariables.KEY_RIGHT.put(player.getUuid(), message.condition);
             case "key_left" -> KeyVariables.KEY_LEFT.put(player.getUuid(), message.condition);
             case "key_jump" -> KeyVariables.KEY_JUMP.put(player.getUuid(), message.condition);
-            /*case "rocket_start" -> KeyMethods.startRocket(player);
-            case "switch_jet_suit_mode" -> KeyMethods.switchJetSuitMode(player);*/
+            //case "rocket_start" -> KeyMethods.startRocket(player);
+            case "switch_jet_suit_mode" -> KeyMethods.switchJetSuitMode(player);
         }
     }
 }

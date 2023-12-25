@@ -33,18 +33,18 @@ public class JetSuitRenderer implements ArmorRenderer {
     @Override
     public void render(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, ItemStack stack, LivingEntity livingEntity, EquipmentSlot slot, int light, BipedEntityModel<LivingEntity> contextModel) {
         if (innerModel == null || outerModel == null) {
-            outerModel = new JetSuitModel.LayerOne(new ModelPart(new ArrayList<>(), Map.of(EntityModelPartNames.HEAD, contextModel.head, EntityModelPartNames.HAT, contextModel.hat, EntityModelPartNames.BODY, contextModel.body, EntityModelPartNames.RIGHT_ARM, contextModel.rightArm, EntityModelPartNames.LEFT_ARM, contextModel.leftArm, EntityModelPartNames.RIGHT_LEG, contextModel.rightLeg, EntityModelPartNames.LEFT_LEG, contextModel.leftLeg)), livingEntity);
-            innerModel = new JetSuitModel.LayerTwo(new ModelPart(new ArrayList<>(), Map.of(EntityModelPartNames.HEAD, contextModel.head, EntityModelPartNames.HAT, contextModel.hat, EntityModelPartNames.BODY, contextModel.body, EntityModelPartNames.RIGHT_ARM, contextModel.rightArm, EntityModelPartNames.LEFT_ARM, contextModel.leftArm, EntityModelPartNames.RIGHT_LEG, contextModel.rightLeg, EntityModelPartNames.LEFT_LEG, contextModel.leftLeg)), livingEntity);
+            outerModel = new JetSuitModel.LayerOne(new ModelPart(new ArrayList<>(), Map.of(EntityModelPartNames.HEAD, contextModel.head, EntityModelPartNames.HAT, contextModel.hat, EntityModelPartNames.BODY, contextModel.body, EntityModelPartNames.RIGHT_ARM, contextModel.rightArm, EntityModelPartNames.LEFT_ARM, contextModel.leftArm, EntityModelPartNames.RIGHT_LEG, contextModel.rightLeg, EntityModelPartNames.LEFT_LEG, contextModel.leftLeg)), livingEntity, stack);
+            innerModel = new JetSuitModel.LayerTwo(new ModelPart(new ArrayList<>(), Map.of(EntityModelPartNames.HEAD, contextModel.head, EntityModelPartNames.HAT, contextModel.hat, EntityModelPartNames.BODY, contextModel.body, EntityModelPartNames.RIGHT_ARM, contextModel.rightArm, EntityModelPartNames.LEFT_ARM, contextModel.leftArm, EntityModelPartNames.RIGHT_LEG, contextModel.rightLeg, EntityModelPartNames.LEFT_LEG, contextModel.leftLeg)), livingEntity, stack);
         }
 
-        this.renderArmor(matrixStack, vertexConsumerProvider, livingEntity, EquipmentSlot.CHEST, light, this.getModel(EquipmentSlot.CHEST), contextModel);
-        this.renderArmor(matrixStack, vertexConsumerProvider, livingEntity, EquipmentSlot.LEGS, light, this.getModel(EquipmentSlot.LEGS), contextModel);
-        this.renderArmor(matrixStack, vertexConsumerProvider, livingEntity, EquipmentSlot.FEET, light, this.getModel(EquipmentSlot.FEET), contextModel);
-        this.renderArmor(matrixStack, vertexConsumerProvider, livingEntity, EquipmentSlot.HEAD, light, this.getModel(EquipmentSlot.HEAD), contextModel);
+        this.renderArmor(matrixStack, livingEntity, EquipmentSlot.CHEST, light, this.getModel(EquipmentSlot.CHEST), contextModel);
+        this.renderArmor(matrixStack, livingEntity, EquipmentSlot.LEGS, light, this.getModel(EquipmentSlot.LEGS), contextModel);
+        this.renderArmor(matrixStack, livingEntity, EquipmentSlot.FEET, light, this.getModel(EquipmentSlot.FEET), contextModel);
+        this.renderArmor(matrixStack, livingEntity, EquipmentSlot.HEAD, light, this.getModel(EquipmentSlot.HEAD), contextModel);
     }
 
 
-    private void renderArmor(MatrixStack matrices, VertexConsumerProvider vertexConsumers, LivingEntity entity, EquipmentSlot armorSlot, int light, ISpaceArmorModel.LayerOne<LivingEntity> model, BipedEntityModel<LivingEntity> contextModel) {
+    private void renderArmor(MatrixStack matrices, LivingEntity entity, EquipmentSlot armorSlot, int light, ISpaceArmorModel.LayerOne<LivingEntity> model, BipedEntityModel<LivingEntity> contextModel) {
         ItemStack itemStack = (entity).getEquippedStack(armorSlot);
         Item item = itemStack.getItem();
         if (!(item instanceof ArmorItem armorItem)) {
