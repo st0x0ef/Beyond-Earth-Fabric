@@ -11,6 +11,7 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
 @Environment(EnvType.CLIENT)
@@ -18,10 +19,12 @@ public abstract class ISpaceArmorModel {
     public static class LayerOne<T extends LivingEntity> extends BipedEntityModel<T> {
         public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(new Identifier(BeyondEarth.MOD_ID, "space_suit"), "main");
         private final LivingEntity entity;
+        public final ItemStack item;
 
-        public LayerOne(ModelPart root, LivingEntity livingEntity) {
+        public LayerOne(ModelPart root, LivingEntity livingEntity, ItemStack item) {
             super(root);
             this.entity = livingEntity;
+            this.item = item;
         }
 
         public static TexturedModelData getTexturedModelData() {
@@ -51,6 +54,10 @@ public abstract class ISpaceArmorModel {
 
         public LivingEntity getEntity() {
             return entity;
+        }
+
+        public ItemStack getItem() {
+            return item;
         }
 
         public ModelPart getHeadPart() {
@@ -148,8 +155,8 @@ public abstract class ISpaceArmorModel {
     public static class LayerTwo extends LayerOne<LivingEntity> {
         public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(new Identifier(BeyondEarth.MOD_ID, "space_suit_pants"), "main");
 
-        public LayerTwo(ModelPart root, LivingEntity livingEntity) {
-            super(root, livingEntity);
+        public LayerTwo(ModelPart root, LivingEntity livingEntity, ItemStack stack) {
+            super(root, livingEntity, stack);
         }
 
         public static TexturedModelData getTexturedModelData() {
@@ -175,6 +182,11 @@ public abstract class ISpaceArmorModel {
             ModelPart part = getTexturedModelData().createModel().getChild("left_leg");
             part.copyTransform(leftLeg);
             return part;
+        }
+
+        @Override
+        public ModelPart getBodyPart() {
+            return null;
         }
 
         @Override

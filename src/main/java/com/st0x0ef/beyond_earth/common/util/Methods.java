@@ -9,12 +9,16 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+import java.util.HashMap;
+import java.util.UUID;
 import java.util.function.Function;
 
 public class Methods {
     public static final Identifier SPACE_STATION = new Identifier(BeyondEarth.MOD_ID, "space_station");
+    private static HashMap<Text, Boolean> antiCheatMap = new HashMap<>();
 
     public static void setEntityRotation(Entity vehicle, float rotation) {
         vehicle.setYaw(vehicle.getYaw() + rotation);
@@ -52,5 +56,13 @@ public class Methods {
 
     public static boolean isLivingInArmor(LivingEntity entity, EquipmentSlot slot, Item item) {
         return entity.getEquippedStack(slot).getItem() == item;
+    }
+
+    public static void disableFlyAntiCheat(ServerPlayerEntity player, boolean bl) {
+        antiCheatMap.put(player.getPlayerListName(), bl);
+    }
+
+    public static boolean shouldDisableAntiCheat(ServerPlayerEntity player) {
+        return antiCheatMap.containsKey(player.getPlayerListName()) && antiCheatMap.get(player.getPlayerListName());
     }
 }
